@@ -1,0 +1,15 @@
+
+Backend/node_modules/
+# Python
+rasa/__pycache__/
+*.py[cod]
+*~
+rasa/venv/
+rasa/env/
+rasa/.venv/
+.vscode/
+
+# Rasa specific
+rasa/.rasa/
+.logs/
+# models/

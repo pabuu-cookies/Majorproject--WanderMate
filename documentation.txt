@@ -1,0 +1,13 @@
+DOWNLOAD THE PYTHON VERSION FROM HERE FOR RESPECTIVE OS: REMEMEBER TO INCLUDEI IT IN YOUR PATH 
+https://www.python.org/downloads/release/python-3810/
+
+GO TO FRONTEND FOLDER: command: prachi remember to fill this place 
+GO TO BACKEND FOLDER: command: npm install
+GO TO RASA FOLDER: python -m venv venv   create virtual environment
+                   cd venv
+                   Scripts\activate         for windows to activate
+                   cd ../
+                   pip install -r requirements.txt    install dependency
+                   rasa train                        train bot
+                   rasa shell                        talk with IT
+                    

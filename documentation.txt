@@ -1,6 +1,0 @@
-DOWNLOAD THE PYTHON VERSION FROM HERE FOR RESPECTIVE OS: REMEMEBER TO INCLUDEI IT IN YOUR PATH 
-https://www.python.org/downloads/release/python-3810/
-
-GO TO FRONTEND FOLDER: command: npm install
-GO TO BACKEND FOLDER: command: npm install
-GO TO RASA FOLDER: 

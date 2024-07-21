@@ -11,3 +11,7 @@ GO TO RASA FOLDER: python -m venv venv   create virtual environment
                    rasa train                        train bot
                    rasa shell                        talk with IT
                     
+API'S
+-POST: http://localhost:5000/chatbot/query/          body:(raw/json): {
+                                                                        "message":"hello"
+                                                                        }

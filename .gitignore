@@ -8,7 +8,7 @@ rasa/venv/
 rasa/env/
 rasa/.venv/
 .vscode/
-
+.env
 # Rasa specific
 rasa/.rasa/
 .logs/

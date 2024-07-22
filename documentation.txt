@@ -1,7 +1,9 @@
 DOWNLOAD THE PYTHON VERSION FROM HERE FOR RESPECTIVE OS: REMEMEBER TO INCLUDEI IT IN YOUR PATH 
 https://www.python.org/downloads/release/python-3810/
 
-GO TO FRONTEND FOLDER: command: prachi remember to fill this place 
+GO TO FRONTEND FOLDER: command: i -g expo-cli
+                        npm install 
+                        to run: npx expo start (scan the qr using 'expo go' app on your phone) 
 GO TO BACKEND FOLDER: command: npm install
 GO TO RASA FOLDER: python -m venv venv   create virtual environment
                    cd venv

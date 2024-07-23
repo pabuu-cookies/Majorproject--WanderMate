@@ -1,16 +1,25 @@
 const express = require('express');
-const bodyParser  = require('body-parser');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const app = express();
-const chatbotRoute = require('./routes/rasaRoutes.js');
+const connectMongoDB = require('./services/connection');
+const { chatbotRoute, userRoute } = require('./routes/index');
+const User = require('./models/userModel');
 
-console.log('require mai xam ajhai');
+const app = express();
+const PORT = process.env.PORT || 5000;
+
 app.use(bodyParser.json());
 app.use(cors());
+app.use('/chatbot', chatbotRoute);
+app.use('/user', userRoute);
 
-app.use('/chatbot',chatbotRoute);
-
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+(async () => {
+  try {
+    await connectMongoDB(); 
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Error starting the server:', error);
+  }
+})();

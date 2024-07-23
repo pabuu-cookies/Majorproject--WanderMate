@@ -10,7 +10,17 @@ GO TO RASA FOLDER: python -m venv venv   create virtual environment
                    pip install -r requirements.txt    install dependency
                    rasa train                        train bot
                    rasa shell                        talk with IT
-                    
+setting up mongodb:
+install mongosh:   https://www.mongodb.com/docs/mongodb-shell/install/
+open cmd as administrator
+cd to the mongodb location:
+make a folder in the data folde of mongodb..."C:\Program Files\MongoDB\Server\7.0\data\db"
+to start mongodb server: mongod --dbpath "C:\Program Files\MongoDB\Server\7.0\data\db"
+        REMEMBER TO NOT CLOSE THIS CMD WINDOW 
+now open mongosh: bin ma gayera cmd gayera
+command: mongosh
+test> command: use wandermate
+
 API'S
 -POST: http://localhost:5000/chatbot/query/          body:(raw/json): {
                                                                         "message":"hello"

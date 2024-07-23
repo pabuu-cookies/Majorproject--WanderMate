@@ -7,8 +7,7 @@ function handleResponse(req, res, next){
     }
 
     if (results.error) {
-        
-        return res.status(500).json({ error: results.error });
+        return res.status(results.error.statusCode).json({ error: results.error.message });
     }
 
     return res.status(200).json(results);

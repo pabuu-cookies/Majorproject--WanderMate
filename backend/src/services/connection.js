@@ -1,18 +1,19 @@
-const mysql = require('mysql2');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
-const connection = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.loadEnvFile.MYSQL_DATABASE
-});
+const uri = process.env.MONGODB_URI;
 
-connection.connect((err)=>{
-    if(err){
-        console.error('Error connecting to MySql: ' + err.stack);
-    }
-    console.log('✌Connected to Mysql✌');
-});
+async function connectMongoDB() {
+  try {
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    console.log('✌ Connected to MongoDB ✌');
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+    process.exit(1);
+  }
+}
 
-module.exports = connection;
+module.exports = connectMongoDB;

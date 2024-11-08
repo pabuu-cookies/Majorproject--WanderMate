@@ -6,6 +6,7 @@ GO TO FRONTEND FOLDER: command: i -g expo-cli
                         npm install 
                         to run: npx expo start (scan the qr using 'expo go' app on your phone) 
 GO TO BACKEND FOLDER: command: npm install
+run garna npm start
 GO TO RASA FOLDER: python -m venv venv   create virtual environment
                    cd venv
                    Scripts\activate         for windows to activate

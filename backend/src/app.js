@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectMongoDB = require('./services/connection');
-const { chatbotRoute, userRoute } = require('./routes/index');
+const { chatbotRoute, userRoute } = require('./routers/index');
 const User = require('./models/userModel');
 
 const app = express();

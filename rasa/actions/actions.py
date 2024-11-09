@@ -8,23 +8,38 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+ from typing import Any, Text, Dict, List
+
+ from rasa_sdk import Action, Tracker
+ from rasa_sdk.executor import CollectingDispatcher
 
 
+class ActionHelloWorld(Action):
+
+  def name(self) -> Text:
+        return "action_hello_world"
+
+   def run(self, dispatcher: CollectingDispatcher,
+          tracker: Tracker,
+          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+     dispatcher.utter_message(text="Hello World!")
+        return []
+
+
+
+class ActionGetSiteInfo(Action):
+    def name(self) -> Text:
+        return "action_get_site_info"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        site_name = tracker.get_slot('site_name')
+        
+        # Replace with your logic to fetch real data
+        site_info = f"{site_name} is a beautiful site with a rich history."
+        
+        dispatcher.utter_message(text=site_info)
+        return []

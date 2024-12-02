@@ -19,11 +19,6 @@ class userController{
             const results = await UserService.loginUser(email, password);
             res.locals.responseData = results;
             console.log(results );
-            res.cookie('userId', results.id, {
-                httpOnly: true,
-                secure: true, 
-                sameSite: 'lax' 
-            });
             next();
         }catch(error){
             res.locals.responseData = { error: error };

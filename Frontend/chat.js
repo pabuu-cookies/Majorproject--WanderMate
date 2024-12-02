@@ -1,9 +1,8 @@
-
-import React, {useState, useEffect, useCallback} from 'react';
-import {View, ScrollView, Text, Button, StyleSheet} from 'react-native';
-import {Bubble, GiftedChat, Send} from 'react-native-gifted-chat';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import React, { useState, useEffect, useCallback } from "react";
+import { View, StyleSheet } from "react-native";
+import { Bubble, GiftedChat, Send } from "react-native-gifted-chat";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const ChatScreen = () => {
   const [messages, setMessages] = useState([]);
@@ -12,22 +11,22 @@ const ChatScreen = () => {
     setMessages([
       {
         _id: 1,
-        text: 'Hello User',
+        text: "Hello User",
         createdAt: new Date(),
         user: {
           _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
+          name: "React Native",
+          avatar: require("./assets/logo.png"),
         },
       },
       {
         _id: 2,
-        text: 'Hello',
+        text: "Hello",
         createdAt: new Date(),
         user: {
           _id: 1,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
+          name: "React Native",
+          avatar: require("./assets/logo.png"),
         },
       },
     ]);
@@ -35,17 +34,18 @@ const ChatScreen = () => {
 
   const onSend = useCallback((messages = []) => {
     setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messages),
+      GiftedChat.append(previousMessages, messages)
     );
   }, []);
 
+  // renderSend function
   const renderSend = (props) => {
     return (
       <Send {...props}>
         <View>
           <MaterialCommunityIcons
             name="send-circle"
-            style={{marginBottom: 5, marginRight: 5}}
+            style={{ marginBottom: 5, marginRight: 5 }}
             size={32}
             color="green"
           />
@@ -54,29 +54,22 @@ const ChatScreen = () => {
     );
   };
 
+  // renderBubble function with default parameters
   const renderBubble = (props) => {
+    const {
+      wrapperStyle = { right: { backgroundColor: "green" } },
+      textStyle = { right: { color: "#fff" } },
+    } = props;
+
     return (
-      <Bubble
-        {...props}
-        wrapperStyle={{
-          right: {
-            backgroundColor: 'green',
-          },
-        }}
-        textStyle={{
-          right: {
-            color: '#fff',
-          },
-        }}
-      />
+      <Bubble {...props} wrapperStyle={wrapperStyle} textStyle={textStyle} />
     );
   };
 
+  // Scroll-to-bottom component
   const scrollToBottomComponent = () => {
-    return(
-      <FontAwesome name='angle-double-down' size={22} color='#333' />
-    );
-  }
+    return <FontAwesome name="angle-double-down" size={22} color="#333" />;
+  };
 
   return (
     <GiftedChat
@@ -99,7 +92,7 @@ export default ChatScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

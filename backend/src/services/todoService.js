@@ -42,11 +42,10 @@ class TodoService {
     try {
       const todos = await Todo.find({ user: userId });
       if (!todos || todos.length === 0) {
-        throw HttpMessage.NO_TODOS_FOUND;
+        throw HttpMessage.NOT_FOUND;
       }
       return todos;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -65,15 +64,19 @@ class TodoService {
 
   async deleteTodoById(todoId) {
     try {
-      const todo = await Todo.findByIdAndDelete(todoId);
+      console.log(todoId);
+      const todo = await Todo.findById(todoId);
       if (!todo) {
         throw HttpMessage.NOT_FOUND;
       }
+      await todo.deleteOne();
       return todo;
     } catch (error) {
+      console.error("Error deleting todo:", JSON.stringify(error, null, 2));
       throw error;
     }
   }
+  
 }
 
 module.exports = new TodoService();

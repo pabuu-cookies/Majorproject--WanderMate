@@ -26,6 +26,120 @@ command: mongosh
 test> command: use wandermate
 
 API'S
--POST: http://localhost:5000/chatbot/query/          body:(raw/json): {
-                                                                        "message":"hello"
-                                                                        }
+-http://localhost:5500/user/login/
+{
+    "email":"pabitra@example.com",
+    "password": "12345"
+}
+{
+    "user": {
+        "_id": "6741ea924883da8c6999e97b",
+        "name": "pabitra",
+        "email": "pabitra@example.com",
+        "password": "$2b$10$gdZQoPuzmIzNLEyXqzmntOGxc4j5k0dtO1tBe7FURJnS5PZfkdSYq",
+        "__v": 0
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYml0cmFAZXhhbXBsZS5jb20iLCJ1c2VySWQiOiI2NzQxZWE5MjQ4ODNkYThjNjk5OWU5N2IiLCJpYXQiOjE3MzM0NjMxMjUsImV4cCI6MTczMzQ2NjcyNX0.f_1xZazhcl-Y1I4hnLaxlq3yKSFj__1Dzuf5Q1XICAM"
+}
+
+-POST: http://localhost:5500/chatbot/query/         
+ body:(raw/json): {                                 
+        "message":"hello"
+}
+[
+    {
+        "recipient_id": "default",
+        "text": "Hello, how can I help you?"
+    }
+]
+--post: http://localhost:5500/todo/  Authorization--bearer token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYml0cmFAZXhhbXBsZS5jb20iLCJ1c2VySWQiOiI2NzQxZWE5MjQ4ODNkYThjNjk5OWU5N2IiLCJpYXQiOjE3MzM0NjMxMjUsImV4cCI6MTczMzQ2NjcyNX0.f_1xZazhcl-Y1I4hnLaxlq3yKSFj__1Dzuf5Q1XICAM
+{
+    "task":"row row row row the boat"
+}
+{
+    "task": "row row row row the boat",
+    "status": "pending",
+    "user": "6741ea924883da8c6999e97b",
+    "_id": "67528db7cb0b6a97e6a49521",
+    "createdAt": "2024-12-06T05:37:59.210Z",
+    "updatedAt": "2024-12-06T05:37:59.242Z",
+    "__v": 0
+}
+
+--patch: http://localhost:5500/todo/status/67528db7cb0b6a97e6a49521  
+{
+    "status" :"pending"
+}
+{
+    "_id": "67528db7cb0b6a97e6a49521",
+    "task": "row row row row the boat",
+    "status": "pending",
+    "user": "6741ea924883da8c6999e97b",
+    "createdAt": "2024-12-06T05:37:59.210Z",
+    "updatedAt": "2024-12-06T05:41:48.432Z",
+    "__v": 0
+}
+
+--get: http://localhost:5500/todo/user
+[
+    {
+        "_id": "674c77e43eaf17591c88dcab",
+        "task": "row row row the boat",
+        "status": "pending",
+        "user": "6741ea924883da8c6999e97b",
+        "createdAt": "2024-12-01T14:51:16.343Z",
+        "updatedAt": "2024-12-01T14:51:16.364Z",
+        "__v": 0
+    },
+    {
+        "_id": "674c77f53eaf17591c88dcad",
+        "task": "row row the boat",
+        "status": "pending",
+        "user": "6741ea924883da8c6999e97b",
+        "createdAt": "2024-12-01T14:51:33.250Z",
+        "updatedAt": "2024-12-01T14:51:33.252Z",
+        "__v": 0
+    },
+    {
+        "_id": "674c78053eaf17591c88dcaf",
+        "task": "row the boat",
+        "status": "completed",
+        "user": "6741ea924883da8c6999e97b",
+        "createdAt": "2024-12-01T14:51:49.337Z",
+        "updatedAt": "2024-12-01T15:26:15.423Z",
+        "__v": 0
+    },
+    {
+        "_id": "67528db7cb0b6a97e6a49521",
+        "task": "row row row row the boat",
+        "status": "pending",
+        "user": "6741ea924883da8c6999e97b",
+        "createdAt": "2024-12-06T05:37:59.210Z",
+        "updatedAt": "2024-12-06T05:41:48.432Z",
+        "__v": 0
+    }
+]
+
+--delete: http://localhost:5500/todo/67528db7cb0b6a97e6a49521
+{
+    "_id": "674c77e43eaf17591c88dcab",
+    "task": "row row row the boat",
+    "status": "pending",
+    "user": "6741ea924883da8c6999e97b",
+    "createdAt": "2024-12-01T14:51:16.343Z",
+    "updatedAt": "2024-12-01T14:51:16.364Z",
+    "__v": 0
+}
+-- Post: http://localhost:5500/chatbot/suggestions/kathmandu durbar square
+{
+    "tasks": [
+        "Take a guided tour of Hanuman Dhoka Palace to learn about Nepal's royal history.",
+        "Visit Kumari Ghar to catch a glimpse of the Living Goddess.",
+        "Climb Basantapur Tower for panoramic views of the square.",
+        "Offer prayers to the Kal Bhairav Statue for protection and justice.",
+        "Walk around the square and admire the intricate carvings of Jagannath Temple.",
+        "Visit during Indra Jatra Festival to enjoy the Lakhey Dance and chariot processions.",
+        "Explore the Hanuman Dhoka Palace Museum to view artifacts from Nepal’s monarchy."
+    ]
+}
+

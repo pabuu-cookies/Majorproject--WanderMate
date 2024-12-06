@@ -9,7 +9,13 @@ class todoController {
       res.locals.responseData = newTodo;
       next();
     } catch (error) {
-      res.locals.responseData = { error: error.message };
+      console.log(error);
+      const responseError = {
+        statusCode: error.statusCode || 500,
+        message: error.message || "An unexpected error occurred",
+    };
+
+    res.locals.responseData = { error: responseError };
       next();
     }
   }
@@ -22,43 +28,67 @@ class todoController {
       res.locals.responseData = updatedTodo;
       next();
     } catch (error) {
-      res.locals.responseData = { error: error.message };
+      console.log(error);
+      const responseError = {
+        statusCode: error.statusCode || 500,
+        message: error.message || "An unexpected error occurred",
+    };
+
+    res.locals.responseData = { error: responseError };
       next();
     }
   }
 
   async getTodosByUser(req, res, next) {
-    const { userId } = req.userId ;
+    const { userId } = req ;
     try {
       const todos = await TodoService.getTodosByUser(userId);
       res.locals.responseData = todos;
       next();
     } catch (error) {
-      res.locals.responseData = { error: error.message };
+      console.log(error, JSON.stringify(error.message , null, 2));
+      const responseError = {
+        statusCode: error.statusCode || 500,
+        message: error.message || "An unexpected error occurred",
+    };
+
+    res.locals.responseData = { error: responseError };
       next();
     }
   }
 
   async getTodoById(req, res, next) {
-    const { todoId } = req.params.todoId;
+    const { todoId } = req.params;
     try {
       const todo = await TodoService.getTodoById(todoId);
       res.locals.responseData = todo;
       next();
     } catch (error) {
-      res.locals.responseData = { error: error.message };
+      console.log(error);
+      const responseError = {
+        statusCode: error.statusCode || 500,
+        message: error.message || "An unexpected error occurred",
+    };
+
+    res.locals.responseData = { error: responseError };
       next();
     }
   }
 
   async deleteTodoById(req, res, next) {
-    const { todoId } = req.params.todoId;
+    const { todoId } = req.params;
     try {
       const deletedTodo = await TodoService.deleteTodoById(todoId);
       res.locals.responseData = deletedTodo;
       next();
     } catch (error) {
-      res.locals.responseData = { error: error.message };
+      console.log(error);
+      const responseError = {
+        statusCode: error.statusCode || 500,
+        message: error.message || "An unexpected error occurred",
+    };
+
+    res.locals.responseData = { error: responseError };
       next();
     }
   }

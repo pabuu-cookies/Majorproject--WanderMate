@@ -1,5 +1,6 @@
 function handleResponse(req, res, next){
-    console.log(`✌${req.originalUrl}✌`)
+    console.log(`✌${req.originalUrl}✌`);
+    console.log(res.locals.responseData);
     const results = res.locals.responseData;
 
     if (results === undefined) {

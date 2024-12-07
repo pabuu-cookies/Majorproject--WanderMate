@@ -7,13 +7,10 @@ GO TO FRONTEND FOLDER: command: i -g expo-cli
                         to run: npx expo start (scan the qr using 'expo go' app on your phone) 
 GO TO BACKEND FOLDER: command: npm install
 run garna npm start
-GO TO RASA FOLDER: python -m venv venv   create virtual environment
-                   cd venv
-                   Scripts\activate         for windows to activate
-                   cd ../
-                   pip install -r requirements.txt    install dependency
-                   rasa train                        train bot
-                   rasa shell                        talk with IT
+GO TO nlp FOLDER: npm install node-nlp
+node bot.js
+
+
 setting up mongodb:
 install mongosh:   https://www.mongodb.com/docs/mongodb-shell/install/
 open cmd as administrator

@@ -13,3 +13,4 @@ rasa/.venv/
 rasa/.rasa/
 .logs/
 # models/
+node_modules

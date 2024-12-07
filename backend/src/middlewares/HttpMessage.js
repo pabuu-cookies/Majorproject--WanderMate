@@ -11,9 +11,17 @@ module.exports = {
         statusCode: 401,
         message: 'Invalid email or password',
     },
+    UNAUTHORIZED: {
+        statusCode: 401,
+        message: 'Unauthorized access',
+    },
     BAD_REQUEST: {
         statusCode: 400,
         message: 'Bad request',
+    },
+    FORBIDDEN:{
+        statusCode: 403,
+        message:'Forbidden Request'
     },
     OK:{
         statusCode: 200,

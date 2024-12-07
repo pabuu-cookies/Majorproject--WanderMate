@@ -47,8 +47,8 @@ stories:
       - intent: ask_opening_hours
         entities:
           - site_name: "Boudhanath" 
-          -site_name: "bouddha"
-            -site_name: "boudha"
+          - site_name: "bouddha"
+          - site_name: "boudha"
 
       - action: utter_opening_hours
 
@@ -57,6 +57,6 @@ stories:
       - intent: ask_entry_fee
         entities:
           - site_name: "Pashupatinath"
-            -site_name: "pashupati"
+          - site_name: "pashupati"
             
       - action: utter_entry_fee

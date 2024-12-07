@@ -7,10 +7,16 @@ class userController{
             const results = await UserService.registerUser(name, email, password);
             res.locals.responseData = results;
         next();
-        }catch(error){
-            res.locals.responseData = { error: error }; 
+        }catch (error) {
+            console.log(error);
+            const responseError = {
+              statusCode: error.statusCode || 500,
+              message: error.message || "An unexpected error occurred",
+          };
+      
+          res.locals.responseData = { error: responseError };
             next();
-        }
+          }
     }
     
     async loginUser(req, res, next){
@@ -19,17 +25,17 @@ class userController{
             const results = await UserService.loginUser(email, password);
             res.locals.responseData = results;
             console.log(results );
-            res.cookie('userId', results.id, {
-                httpOnly: true,
-                secure: true, 
-                sameSite: 'lax' 
-            });
             next();
-        }catch(error){
-            res.locals.responseData = { error: error };
+        }catch (error) {
             console.log(error);
+            const responseError = {
+              statusCode: error.statusCode || 500,
+              message: error.message || "An unexpected error occurred",
+          };
+      
+          res.locals.responseData = { error: responseError };
             next();
-        }
+          }
     }
 }
 

@@ -6,5 +6,7 @@ const authenticateToken = require('../middlewares/isAuthenticated');
 
 router.post('/query', authenticateToken, rasaController.sendMessage, handleResponse);
 router.post('/suggestions/:location', authenticateToken , rasaController.getSuggestions, handleResponse);
+router.post('/translate', authenticateToken , rasaController.translate, handleResponse);
+
 
 module.exports = router;

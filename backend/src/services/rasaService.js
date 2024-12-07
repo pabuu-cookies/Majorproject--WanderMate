@@ -1,5 +1,6 @@
 const axios =  require('axios');
 require('dotenv').config();
+const translator = require("open-google-translator");
 const rasa_url = process.env.RASA_URL;
 
 class rasaService{
@@ -60,7 +61,28 @@ class rasaService{
           return { error: error.message };
       }
     }
-    
+
+    async translate(translatefrom, text, translateTo) {
+        try {
+            if (!translatefrom || !translateTo || !text) {
+                throw new Error("Missing required fields: 'fromLanguage', 'toLanguage', or 'text'");
+            }
+            const supportedLanguages = await translator.supportedLanguages();
+            console.log(supportedLanguages); 
+
+            const data = await translator.TranslateLanguageData({
+                listOfWordsToTranslate: [text],  
+                fromLanguage: translatefrom,     
+                toLanguage: translateTo,        
+            });
+
+            return { translatedText: data };
+
+        } catch (error) {
+            console.log("Error during translation:", error);
+            return { error: error.message }; 
+        }
+    }
 }
 
 

@@ -38,6 +38,23 @@ class rasaController{
           next();
         }
       }
+
+      async translate(req, res, next) {
+        const { translatefrom, text, translateTo } = req.body; 
+        try {
+            const result = await rasaService.translate(translatefrom, text, translateTo);
+            res.locals.responseData = result;
+            next();
+        } catch (error) {
+            console.log(error);
+            const responseError = {
+                statusCode: error.statusCode || 500,
+                message: error.message || "An unexpected error occurred",
+            };
+            res.locals.responseData = { error: responseError };
+            next();
+        }
+    }
 }
 
 module.exports = new rasaController();

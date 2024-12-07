@@ -33,7 +33,7 @@ const ToDoListScreen2 = () => {
   };
   // Function to add task
   const addTask = () => {
-    if (tasks.trim()) {
+    if (userTasks.trim()) {
       setTasks((prevTasks) => [
         ...prevTasks,
         { id: Math.random().toString(), taskName: tasks, completed: false },
@@ -81,7 +81,9 @@ const ToDoListScreen2 = () => {
             </TouchableOpacity>
           </View>
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) =>
+          item?.id ? item.id.toString() : index.toString()
+        }
       />
 
       <Text style={styles.title}>Your To-Do List</Text>
@@ -101,13 +103,15 @@ const ToDoListScreen2 = () => {
             </TouchableOpacity>
           </View>
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) =>
+          item?.id ? item.id.toString() : index.toString()
+        }
       />
       <TextInput
         style={styles.input}
         placeholder="Add a new task"
-        value={tasks}
-        onChangeText={setTasks}
+        value={userTasks}
+        onChangeText={setUserTasks}
       />
       <Button title="Add Task" onPress={addTask} color={"green"} />
     </View>

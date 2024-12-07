@@ -5,7 +5,28 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const ChatScreen = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      _id: 1,
+      text: "Hello User",
+      createdAt: new Date(),
+      user: {
+        _id: 2,
+        name: "React Native",
+        avatar: require("./assets/logo.png"),
+      },
+    },
+    {
+      _id: 2,
+      text: "Hello",
+      createdAt: new Date(),
+      user: {
+        _id: 1,
+        name: "React Native",
+        avatar: require("./assets/logo.png"),
+      },
+    },
+  ]);
 
   useEffect(() => {
     setMessages([

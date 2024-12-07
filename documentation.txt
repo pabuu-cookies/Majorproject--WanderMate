@@ -29,3 +29,7 @@ API'S
 -POST: http://localhost:5000/chatbot/query/          body:(raw/json): {
                                                                         "message":"hello"
                                                                         }
+
+
+ nlp.js
+ npm install node-nlp 

@@ -2,7 +2,6 @@ DOWNLOAD THE PYTHON VERSION FROM HERE FOR RESPECTIVE OS: REMEMEBER TO INCLUDEI I
 https://www.python.org/downloads/release/python-3810/
 
 GO TO FRONTEND FOLDER: command: i -g expo-cli
-                        cd project
                         npm install 
                         to run: npx expo start (scan the qr using 'expo go' app on your phone) 
 GO TO BACKEND FOLDER: command: npm install

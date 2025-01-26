@@ -1,26 +1,67 @@
 import React, { useState } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-
 import {
-  Alert,
-  Button,
-  Image,
-  Pressable,
   SafeAreaView,
   StyleSheet,
-  Switch,
   Text,
   TextInput,
+  Pressable,
+  Image,
   View,
 } from "react-native";
+import axios from "axios";
+import api from "./api";
+
 const logo = require("./assets/logo.png");
-const Stack = createStackNavigator();
 
 export default function SignUpScreen({ navigation }) {
-  const [click, setClick] = useState(false);
-  const { name, setname } = useState("");
-  const { username, setUsername } = useState("");
-  const { password, setPassword } = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const API_endpoint = "user/register/";
+
+  const handleSignUp = async () => {
+    try {
+      try {
+        const response = await api.post(
+          API_endpoint,
+          {
+            name,
+            email: username,
+            password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const data = response.data; // Axios stores the response data here
+        console.log(data);
+      } catch (error) {
+        console.error(
+          "Error during the API call:",
+          error.response?.data || error.message
+        );
+      }
+
+      if (response.ok) {
+        if (data.success) {
+          navigation.navigate("Home");
+        } else {
+          Alert.alert("Error", data.message || "Registration failed.");
+        }
+      } else {
+        Alert.alert("Error", "Something went wrong. Please try again.");
+        console.error("Error response:", data); // Log server error details
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      Alert.alert("Error", "Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Image source={logo} style={styles.image} resizeMode="contain" />
@@ -31,7 +72,7 @@ export default function SignUpScreen({ navigation }) {
           style={styles.input}
           placeholder="FULL NAME"
           value={name}
-          onChangeText={setname}
+          onChangeText={setName}
           autoCorrect={false}
           autoCapitalize="none"
         />
@@ -55,10 +96,7 @@ export default function SignUpScreen({ navigation }) {
       </View>
 
       <View style={styles.buttonView}>
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("Home")}
-        >
+        <Pressable style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>SIGN UP</Text>
         </Pressable>
       </View>
@@ -96,27 +134,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 7,
   },
-  rememberView: {
-    width: "100%",
-    paddingHorizontal: 50,
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
-    marginBottom: 8,
-  },
-  switch: {
-    flexDirection: "row",
-    gap: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  rememberText: {
-    fontSize: 13,
-  },
-  forgetText: {
-    fontSize: 11,
-    color: "green",
-  },
   button: {
     backgroundColor: "green",
     height: 45,
@@ -134,31 +151,5 @@ const styles = StyleSheet.create({
   buttonView: {
     width: "100%",
     paddingHorizontal: 50,
-  },
-  optionsText: {
-    textAlign: "center",
-    paddingVertical: 10,
-    color: "gray",
-    fontSize: 13,
-    marginBottom: 6,
-  },
-  mediaIcons: {
-    flexDirection: "row",
-    gap: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 23,
-  },
-  icons: {
-    width: 40,
-    height: 40,
-  },
-  footerText: {
-    textAlign: "center",
-    color: "gray",
-  },
-  signup: {
-    color: "green",
-    fontSize: 13,
   },
 });

@@ -1,6 +1,9 @@
 const User = require('../models/userModel');
 const HttpMessage = require('../middlewares/HttpMessage');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const SECRET_KEY = process.env.SECRET_KEY;
 
 class UserService {
   async registerUser(name, email, password) {
@@ -36,7 +39,9 @@ class UserService {
       if (!isPasswordValid) {
         throw HttpMessage.INVALID_CREDENTIALS;
       }
-      return user;
+
+      const token = jwt.sign({ email: user.email, userId: user._id }, SECRET_KEY, { expiresIn: '1h' });
+      return { user, token };
     } catch (error) {
       throw error;
     }

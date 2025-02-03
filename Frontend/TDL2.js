@@ -10,25 +10,21 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
 import api from "./api";
-
 const ToDoListScreen2 = () => {
   const [tasks, setTasks] = useState([]);
   const [userTasks, setUserTasks] = useState([]);
-  const [newTask, setNewTask] = useState(""); // For new task input
-  const [authToken, setAuthToken] = useState(null); // Store the auth token
-  const [location, setLocation] = useState(""); // Holds the location input
+  const [newTask, setNewTask] = useState("");
+  const [authToken, setAuthToken] = useState(null);
+  const [location, setLocation] = useState("");
 
-  // API URL
-  const API_endpoint = "/todo"; // Replace with actual API base URL
+  const API_endpoint = "/todo";
 
   useEffect(() => {
     const fetchTokenAndTasks = async () => {
       try {
-        // Get the auth token from AsyncStorage
         const token = await AsyncStorage.getItem("authToken");
         if (token) {
           setAuthToken(token);
-          // Fetch user's tasks if token exists
           fetchUserTasks(token);
         }
       } catch (error) {
@@ -36,15 +32,13 @@ const ToDoListScreen2 = () => {
       }
     };
 
-    fetchTokenAndTasks(); // Call the function on component mount
+    fetchTokenAndTasks();
   }, []);
 
   const fetchUserTasks = async (token) => {
     try {
       const response = await api.get(`${API_endpoint}/user/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       console.log(response.data, "todos");
       setUserTasks(response.data);
@@ -59,35 +53,29 @@ const ToDoListScreen2 = () => {
         const response = await api.post(
           `${API_endpoint}`,
           { task: newTask },
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`, // Use the auth token here
-            },
-          }
+          { headers: { Authorization: `Bearer ${authToken}` } }
         );
         setUserTasks([...userTasks, response.data]);
-        setNewTask(""); // Reset input field
+        setNewTask("");
       } catch (error) {
         console.error("Error adding task", error);
       }
     }
   };
 
-  // Function to add a task to the user's list
   const addTaskToUserList = (task) => {
     if (task) {
-      setUserTasks((prevTasks) => [...prevTasks, task]); // Add the task to the user's list
+      setUserTasks((prevTasks) => [...prevTasks, task]);
     }
   };
 
-  // Function to delete a task from the user's personal list
   const deleteTaskFromUserList = async (taskId) => {
     await deleteTask(taskId);
     const taskToReAdd = userTasks.find((task) => task._id === taskId);
     setUserTasks((prevTasks) =>
       prevTasks.filter((task) => task._id !== taskId)
     );
-    // Re-add the deleted task back to the recommended list
+
     if (taskToReAdd) {
       setTasks((prevTasks) => [...prevTasks, taskToReAdd]);
     }
@@ -97,9 +85,7 @@ const ToDoListScreen2 = () => {
     if (authToken) {
       try {
         await api.delete(`${API_endpoint}/${taskId}`, {
-          headers: {
-            Authorization: `Bearer ${authToken}`, // Use the auth token here
-          },
+          headers: { Authorization: `Bearer ${authToken}` },
         });
         setUserTasks(userTasks.filter((task) => task._id !== taskId));
       } catch (error) {
@@ -114,15 +100,14 @@ const ToDoListScreen2 = () => {
         const response = await api.post(
           `/chatbot/suggestions/${location}`,
           {},
-          {
-            headers: { Authorization: `Bearer ${authToken}` },
-          }
+          { headers: { Authorization: `Bearer ${authToken}` } }
         );
         console.log(response.data);
-        if (response.data.tasks) {
+
+        if (Array.isArray(response.data.tasks)) {
           setTasks(response.data.tasks);
         } else {
-          setTasks([response.data.message]);
+          setTasks([{ task: response.data.message }]); // ✅ Ensure object structure
         }
       } catch (error) {
         console.error("Error fetching recommendations", error);
@@ -132,14 +117,13 @@ const ToDoListScreen2 = () => {
 
   const updateTaskStatus = async (taskId, status) => {
     try {
-      const response = await api.patch(`/status/${taskId}`, {
-        status: status,
-      });
+      const response = await api.patch(`/status/${taskId}`, { status });
 
       console.log("Task status updated successfully:", response.data);
+
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
-          task._id === taskId ? { ...task, status: updatedTask.status } : task
+          task._id === taskId ? { ...task, status: response.data.status } : task
         )
       );
     } catch (error) {
@@ -153,7 +137,7 @@ const ToDoListScreen2 = () => {
         style={styles.input}
         placeholder="Choose location"
         value={location}
-        onChangeText={setLocation} // Update location state as user types
+        onChangeText={setLocation}
       />
       <Button
         title="Recommend Task"
@@ -162,12 +146,14 @@ const ToDoListScreen2 = () => {
       />
       <Text style={styles.title}>Recommended Tasks</Text>
 
-      {/* Display the available tasks */}
       <FlatList
         data={tasks}
+        keyExtractor={(item, index) =>
+          item._id ? item._id.toString() : index.toString()
+        }
         renderItem={({ item }) => (
           <View style={styles.taskContainer}>
-            <Text style={styles.taskText}>{item}</Text>
+            <Text style={styles.taskText}>{item.task}</Text>
             <TouchableOpacity
               onPress={() => addTaskToUserList(item)}
               style={styles.addButton}
@@ -180,9 +166,9 @@ const ToDoListScreen2 = () => {
 
       <Text style={styles.title}>Your To-Do List</Text>
 
-      {/* Display the user's added tasks */}
       <FlatList
         data={userTasks}
+        keyExtractor={(item) => item._id.toString()}
         renderItem={({ item }) => (
           <View style={styles.userTaskContainer}>
             <Text style={styles.taskText}>{item.task}</Text>
@@ -194,13 +180,13 @@ const ToDoListScreen2 = () => {
             </TouchableOpacity>
           </View>
         )}
-        keyExtractor={(item) => item._id.toString()}
       />
+
       <TextInput
         style={styles.input}
         placeholder="Add a new task"
-        value={newTask} // Use newTask here
-        onChangeText={setNewTask} // Update newTask
+        value={newTask}
+        onChangeText={setNewTask}
       />
       <Button title="Add Task" onPress={addTask} color={"green"} />
     </View>

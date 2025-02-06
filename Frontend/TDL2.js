@@ -107,7 +107,7 @@ const ToDoListScreen2 = () => {
         if (Array.isArray(response.data.tasks)) {
           setTasks(response.data.tasks);
         } else {
-          setTasks([{ task: response.data.message }]); // ✅ Ensure object structure
+          setTasks([{ task: response.data.message }]);
         }
       } catch (error) {
         console.error("Error fetching recommendations", error);

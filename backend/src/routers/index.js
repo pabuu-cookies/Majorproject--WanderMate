@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const chatbotRouter = require("./rasaRouter");
+const chatbotRouter = require("./botRouter");
 const userRouter = require("./userRouter");
 const todoRouter = require("./todoRouter");
 

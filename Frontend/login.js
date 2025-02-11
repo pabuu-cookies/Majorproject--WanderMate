@@ -1,28 +1,56 @@
 import React, { useState } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
-  Alert,
-  Button,
-  Image,
-  Pressable,
   SafeAreaView,
   StyleSheet,
-  Switch,
   Text,
   TextInput,
+  Pressable,
+  Image,
   View,
+  Switch,
+  Alert,
 } from "react-native";
+import api from "./api";
+
 const logo = require("./assets/logo.png");
 
 export default function LoginForm({ navigation }) {
   const [click, setClick] = useState(false);
-  const { username, setUsername } = useState("");
-  const { password, setPassword } = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const API_endpoint = "/user/login";
+
+  const handleLogin = async () => {
+    try {
+      const response = await api.post(API_endpoint, {
+        email: username,
+        password,
+      });
+      // Check if the response contains a token
+      if (response.data && response.data.token) {
+        // Save the token to AsyncStorage
+        await AsyncStorage.setItem("authToken", response.data.token);
+
+        // Navigate to the home screen
+        navigation.navigate("Home");
+      } else {
+        // If no token is found in the response
+        Alert.alert("Error", "Login failed. Please check your credentials.");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      Alert.alert("Error", "Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Image source={logo} style={styles.image} resizeMode="contain" />
       <Text style={styles.title}>WANDERMATE</Text>
       <Text style={styles.title}>Login</Text>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.input}
@@ -42,6 +70,7 @@ export default function LoginForm({ navigation }) {
           autoCapitalize="none"
         />
       </View>
+
       <View style={styles.rememberView}>
         <View style={styles.switch}>
           <Switch
@@ -59,17 +88,14 @@ export default function LoginForm({ navigation }) {
       </View>
 
       <View style={styles.buttonView}>
-        <Pressable
-          style={styles.button}
-          onPress={() => Alert.alert("Login Successful!")}
-        >
+        <Pressable style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>LOGIN</Text>
         </Pressable>
       </View>
 
       <Text style={styles.footerText}>
         {" "}
-        Don't Have Account?
+        Don't Have an Account?
         <Pressable onPress={() => navigation.navigate("SignUp")}>
           <Text style={styles.signup}> Sign Up</Text>
         </Pressable>
@@ -146,24 +172,6 @@ const styles = StyleSheet.create({
   buttonView: {
     width: "100%",
     paddingHorizontal: 50,
-  },
-  optionsText: {
-    textAlign: "center",
-    paddingVertical: 10,
-    color: "gray",
-    fontSize: 13,
-    marginBottom: 6,
-  },
-  mediaIcons: {
-    flexDirection: "row",
-    gap: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 23,
-  },
-  icons: {
-    width: 40,
-    height: 40,
   },
   footerText: {
     textAlign: "center",

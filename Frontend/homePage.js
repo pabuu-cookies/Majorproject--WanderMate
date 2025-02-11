@@ -17,7 +17,10 @@ export default function HomePage({ navigation }) {
         >
           <Text style={styles.buttonText}>To Do List</Text>
         </Pressable>
-        <Pressable style={styles.button} onPress={() => handlePress("Maps")}>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Maps")}
+        >
           <Text style={styles.buttonText}>Maps</Text>
         </Pressable>
         <Pressable
@@ -37,7 +40,7 @@ export default function HomePage({ navigation }) {
         </Pressable>
         <Pressable
           style={styles.button}
-          onPress={() => handlePress("Hire a Guide")}
+          onPress={() => navigation.navigate("Guide")}
         >
           <Text style={styles.buttonText}>Hire a Guide</Text>
         </Pressable>

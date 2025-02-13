@@ -1,5 +1,5 @@
-const Todo = require('../models/todoModel');
-const HttpMessage = require('../middlewares/HttpMessage');
+const Todo = require("../models/todoModel");
+const HttpMessage = require("../middlewares/HttpMessage");
 
 class TodoService {
   async createTodo(userId, task) {
@@ -18,14 +18,14 @@ class TodoService {
   async updateTodoStatus(todoId, status) {
     try {
       console.log(todoId, status);
-      const validStatuses = ['pending', 'in progress', 'completed'];
+      const validStatuses = ["pending", "in progress", "completed"];
       if (!validStatuses.includes(status)) {
-        console.log('invalid status');
+        console.log("invalid status");
         throw HttpMessage.INVALID_STATUS;
       }
       const todo = await Todo.findById(todoId);
       if (!todo) {
-      console.log('not found');
+        console.log("not found");
         throw HttpMessage.NOT_FOUND;
       }
       todo.status = status;
@@ -46,13 +46,14 @@ class TodoService {
       }
       return todos;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }
 
   async getTodoById(todoId) {
     try {
-      const todo = await Todo.findById(todoId).populate('user');
+      const todo = await Todo.findById(todoId).populate("user");
       if (!todo) {
         throw HttpMessage.NOT_FOUND;
       }
@@ -64,19 +65,15 @@ class TodoService {
 
   async deleteTodoById(todoId) {
     try {
-      console.log(todoId);
-      const todo = await Todo.findById(todoId);
+      const todo = await Todo.findByIdAndDelete(todoId);
       if (!todo) {
         throw HttpMessage.NOT_FOUND;
       }
-      await todo.deleteOne();
       return todo;
     } catch (error) {
-      console.error("Error deleting todo:", JSON.stringify(error, null, 2));
       throw error;
     }
   }
-  
 }
 
 module.exports = new TodoService();

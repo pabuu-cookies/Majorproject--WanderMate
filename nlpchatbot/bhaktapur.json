@@ -1,0 +1,242 @@
+{
+    "data": [
+      {
+        "intent": "ask_about_square",
+        "question": "What is Bhaktapur Durbar Square known for?",
+        "answer": "Bhaktapur Durbar Square is known for its well-preserved medieval architecture, showcasing the grandeur of Newari architecture with ornate wood and brick structures."
+      },
+      {
+        "intent": "ask_about_architecture",
+        "question": "How does Bhaktapur Durbar Square reflect Newari architecture?",
+        "answer": "Bhaktapur Durbar Square reflects Newari architecture through its intricate woodwork, fine carvings, and pagoda-style roofs."
+      },
+      {
+        "intent": "ask_about_heritage",
+        "question": "When was Bhaktapur Durbar Square designated a UNESCO World Heritage Site?",
+        "answer": "Bhaktapur Durbar Square was designated a UNESCO World Heritage Site in 1979 due to its architectural and cultural significance."
+      },
+      {
+        "intent": "ask_about_palace",
+        "question": "What is the purpose of the 55-Window Palace?",
+        "answer": "The 55-Window Palace was the royal residence during the Malla kings' reign and remains an architectural landmark in Bhaktapur. It is famous for its intricately carved wooden windows and doors, which are significant examples of Newari craftsmanship."
+      },
+      {
+        "intent": "ask_about_festivals",
+        "question": "How do traditional festivals impact Bhaktapur Durbar Square?",
+        "answer": "Traditional festivals, such as Bisket Jatra, bring the community together and help preserve the cultural heritage of Bhaktapur Durbar Square."
+      },
+      {
+        "intent": "ask_about_vatsala_temple",
+        "question": "What is the architectural style of the Vatsala Temple?",
+        "answer": "The Vatsala Temple showcases traditional Newari architecture with its finely crafted wooden windows and intricate carvings."
+      },
+      {
+        "intent": "ask_about_bhairavnath_temple",
+        "question": "What is the significance of the Bhairavnath Temple?",
+        "answer": "The Bhairavnath Temple is dedicated to Lord Bhairav, one of the fiercest deities in Hinduism, and is an important religious site in Bhaktapur."
+      },
+      {
+        "intent": "ask_about_nyatapola_temple",
+        "question": "What makes the Nyatapola Temple unique?",
+        "answer": "The Nyatapola Temple is the tallest pagoda-style temple in Nepal and is famous for its five tiers and impressive architecture."
+      },
+      {
+        "intent": "ask_about_peacock_window",
+        "question": "What is the story behind the Peacock Window?",
+        "answer": "The Peacock Window is an intricately carved wooden window that symbolizes the artistic excellence of Newari craftsmanship in Bhaktapur."
+      },
+      {
+        "intent": "ask_about_preservation",
+        "question": "What efforts are being made to preserve Bhaktapur Durbar Square?",
+        "answer": "Restoration projects, funded by both local and international organizations, are ongoing to repair the structures damaged by time and disasters."
+      },
+      {
+        "intent": "ask_about_earthquake_impact",
+        "question": "How did the 2015 earthquake impact Bhaktapur Durbar Square?",
+        "answer": "The 2015 earthquake caused significant damage to several structures in Bhaktapur Durbar Square, including temples, shrines, and monuments."
+      },
+      {
+        "intent": "ask_about_pottery_square",
+        "question": "What is Pottery Square famous for?",
+        "answer": "Pottery Square is renowned for its traditional pottery-making, where artisans create various clay products that are sold to locals and tourists."
+      },
+      {
+        "intent": "ask_about_lions_gate",
+        "question": "What is the significance of the Lion's Gate?",
+        "answer": "The Lion's Gate is a historical entrance to Bhaktapur Durbar Square, known for its detailed sculptures of lions that protect the entrance."
+      },
+      {
+        "intent": "ask_about_newari_culture",
+        "question": "How is Newari culture preserved in Bhaktapur?",
+        "answer": "Newari culture is preserved in Bhaktapur through the maintenance of historical buildings, traditional crafts, and cultural practices."
+      },
+      {
+        "intent": "ask_about_local_government_involvement",
+        "question": "What role does the local government play in the preservation of Bhaktapur Durbar Square?",
+        "answer": "The local government plays a key role by funding preservation projects, implementing policies for heritage conservation, and managing tourist activities."
+      },
+      {
+        "intent": "ask_about_siddhi_laxmi_temple",
+        "question": "What is the history behind the Siddhi Laxmi Temple?",
+        "answer": "The Siddhi Laxmi Temple dates back to the Malla period and is an important site for religious worship dedicated to the goddess Laxmi."
+      },
+      {
+        "intent": "ask_about_taleju_bhawani_temple",
+        "question": "What is the significance of the Taleju Bhawani Temple?",
+        "answer": "The Taleju Bhawani Temple is dedicated to the goddess Taleju, a protector deity worshipped by the Malla kings, and is an important religious site."
+      },
+      {
+        "intent": "ask_about_preservation_challenges",
+        "question": "What challenges are faced in the preservation of Bhaktapur Durbar Square?",
+        "answer": "Challenges include damage from natural disasters, such as earthquakes, and the need for continuous maintenance to preserve its historical integrity."
+      },
+      {
+        "intent": "ask_about_identity_and_heritage",
+        "question": "How does Bhaktapur Durbar Square contribute to Nepal's identity?",
+        "answer": "Bhaktapur Durbar Square contributes to Nepal's identity by preserving its rich cultural heritage, architecture, and religious significance."
+      },
+      {
+        "intent": "ask_about_traditional_and_modern_integration",
+        "question": "How does Bhaktapur Durbar Square integrate traditional and modern elements?",
+        "answer": "Bhaktapur Durbar Square blends traditional architecture with modern infrastructure to accommodate contemporary needs while preserving its historic charm."
+      },
+      {
+        "intent": "ask_about_local_artisans_contribution",
+        "question": "How do local artisans contribute to Bhaktapur Durbar Square?",
+        "answer": "Local artisans contribute by practicing traditional crafts such as wood carving, pottery, and metalwork, which help maintain the cultural heritage of Bhaktapur."
+      },
+      {
+        "intent": "ask_about_artistic_heritage",
+        "question": "What artistic heritage is reflected in Bhaktapur Durbar Square?",
+        "answer": "The stone carvings, wooden windows, and pagoda-style roofs in Bhaktapur Durbar Square reflect a rich artistic heritage passed down by Newari artisans."
+      },
+      {
+        "intent": "ask_about_economy_through_tourism",
+        "question": "How does Bhaktapur Durbar Square support the local economy?",
+        "answer": "Bhaktapur Durbar Square supports the local economy by attracting tourists who contribute to the economy through entrance fees, local crafts, and guided tours."
+      },
+      {
+        "intent": "ask_about_cultural_exchange",
+        "question": "How does Bhaktapur Durbar Square promote cultural exchange?",
+        "answer": "Bhaktapur Durbar Square promotes cultural exchange through its festivals, events, and educational programs that showcase Nepal's rich cultural heritage."
+      },
+      {
+        "intent": "ask_about_water_spouts",
+        "question": "What is the significance of the water spouts (Hiti) in Bhaktapur Durbar Square?",
+        "answer": "The water spouts in Bhaktapur Durbar Square were part of an ancient water supply system used for both daily activities and religious rituals."
+      },
+      {
+        "intent": "ask_about_urban_landscape_integration",
+        "question": "How does Bhaktapur Durbar Square integrate with the local urban landscape?",
+        "answer": "Bhaktapur Durbar Square serves as the heart of the local urban landscape, integrating historical sites with the modern city while maintaining cultural heritage."
+      },
+      {
+        "intent": "ask_about_local_festivals",
+        "question": "What local festivals are celebrated in Bhaktapur Durbar Square?",
+        "answer": "Local festivals such as Bisket Jatra, Indra Jatra, and Dashain are celebrated in Bhaktapur Durbar Square, showcasing traditional music, dance, and processions."
+      },
+      {
+        "intent": "ask_about_bhaktapur_museum",
+        "question": "What role does Bhaktapur Museum play in preserving heritage?",
+        "answer": "Bhaktapur Museum plays a vital role by displaying artifacts that preserve the history, culture, and architecture of Bhaktapur Durbar Square."
+      },
+      {
+        "intent": "ask_about_local_communities",
+        "question": "How do the local communities contribute to Bhaktapur Durbar Square?",
+        "answer": "Local communities contribute by engaging in the preservation of historical sites, participating in cultural events, and ensuring the upkeep of public spaces."
+      },
+
+          {
+            "intent": "ask_about_local_food",
+            "question": "What local food can I try in Bhaktapur?",
+            "answer": "Bhaktapur is known for its traditional Newari food, including 'Bara' (fried lentil patties), 'Yomari' (steamed dumplings), and 'Kwati' (a spicy soup made of mixed beans). You can also try 'King Curd' (a sweet yogurt dessert)."
+          },
+          {
+            "intent": "ask_about_accommodation",
+            "question": "Where can I stay near Bhaktapur Durbar Square?",
+            "answer": "Bhaktapur offers various accommodations ranging from budget guesthouses to luxury hotels. Some popular choices include the 'Hotel Heritage' for a traditional experience, and 'Bhaktapur Inn' for budget options."
+          },
+          {
+            "intent": "ask_about_activities_in_bhaktapur",
+            "question": "What activities can I do in Bhaktapur?",
+            "answer": "In Bhaktapur, you can explore the ancient architecture, visit temples and museums, shop for traditional crafts, participate in local festivals like Bisket Jatra, or enjoy pottery making in Pottery Square."
+          },
+          {
+            "intent": "ask_about_tourist_destinations_near_bhaktapur",
+            "question": "What are some tourist destinations near Bhaktapur?",
+            "answer": "Some notable nearby tourist destinations include the famous 'Patan Durbar Square', 'Nagarkot' for scenic views, 'Swayambhunath' (Monkey Temple), and 'Changu Narayan Temple', one of the oldest Hindu temples in the Kathmandu Valley."
+          },
+          {
+            "intent": "ask_about_local_language",
+            "question": "What language is spoken in Bhaktapur?",
+            "answer": "The primary language spoken in Bhaktapur is Nepali, but the Newari language is also widely spoken, especially among the local Newar community."
+          },
+          {
+            "intent": "ask_about_sightseeing_in_bhaktapur",
+            "question": "What are the main sightseeing spots in Bhaktapur?",
+            "answer": "Some main sightseeing spots in Bhaktapur include Bhaktapur Durbar Square, the 55-Window Palace, Vatsala Temple, Nyatapola Temple, the Peacock Window, Pottery Square, and the Bhaktapur Museum."
+          },
+          {
+            "intent": "ask_about_nightlife_in_bhaktapur",
+            "question": "Is there any nightlife in Bhaktapur?",
+            "answer": "Bhaktapur is a cultural city with a laid-back atmosphere, and while it does not have a vibrant nightlife like Kathmandu, you can find small cafes, restaurants, and local bars to enjoy a relaxed evening."
+          },
+          {
+            "intent": "ask_about_shopping_in_bhaktapur",
+            "question": "Where can I shop in Bhaktapur?",
+            "answer": "You can shop for traditional Newari handicrafts, pottery, jewelry, and souvenirs at the local markets near Bhaktapur Durbar Square and Pottery Square. The Bhaktapur Craft Center is a good place to find authentic crafts."
+          },
+          {
+            "intent": "ask_about_local_art_and_culture",
+            "question": "What is the local art and culture in Bhaktapur like?",
+            "answer": "Bhaktapur is known for its rich Newari culture, traditional wood carvings, metalworks, pottery, and stone carvings. Local festivals, rituals, and artistic performances are deeply rooted in the community, with many artworks dedicated to religious themes."
+          },
+          {
+            "intent": "ask_about_famous_festivals_in_bhaktapur",
+            "question": "What are the famous festivals celebrated in Bhaktapur?",
+            "answer": "The most famous festivals in Bhaktapur are Bisket Jatra (a chariot procession), Indra Jatra (a religious and cultural festival), and Teej (celebrating women). These festivals are celebrated with grand processions, music, dancing, and rituals."
+          },
+          {
+            "intent": "ask_about_best_time_to_visit_bhaktapur",
+            "question": "When is the best time to visit Bhaktapur?",
+            "answer": "The best time to visit Bhaktapur is during the spring (March to May) and autumn (September to November), when the weather is mild and clear, perfect for sightseeing and festivals."
+          },
+          {
+            "intent": "ask_about_historical_significance_of_bhaktapur",
+            "question": "What is the historical significance of Bhaktapur?",
+            "answer": "Bhaktapur, once a royal city of the Malla kings, is renowned for its ancient palaces, temples, and rich cultural heritage. It served as an important political and religious center in Nepal during the medieval period."
+          },
+          {
+            "intent": "ask_about_hotel_recommendations_in_bhaktapur",
+            "question": "Can you recommend any hotels near Bhaktapur Durbar Square?",
+            "answer": "Some recommended hotels near Bhaktapur Durbar Square are Hotel Heritage, Bhaktapur Inn, and The Boutique Hotel. These offer comfortable stays with close proximity to the Durbar Square and local attractions."
+          },
+          {
+            "intent": "ask_about_shopping",
+            "question": "What can I buy souvenirs in Bhaktapur?",
+            "answer": "Bhaktapur is famous for its handicrafts, including pottery, wood carvings, and textiles. You can buy traditional Newari art, clay figurines, and handcrafted jewelry from local artisans, especially in Pottery Square and around the Durbar Square."
+          },
+          {
+            "intent": "ask_about_transportation_in_bhaktapur",
+            "question": "How can I get around Bhaktapur?",
+            "answer": "You can get around Bhaktapur on foot, as most of the major attractions are within walking distance from each other. Taxis and rickshaws are also available for longer distances or trips to nearby areas."
+          },
+          {
+            "intent": "ask_about_accommodation_for_backpackers",
+            "question": "Are there any budget accommodations for backpackers in Bhaktapur?",
+            "answer": "Yes, Bhaktapur has several budget accommodations for backpackers. Popular options include small guesthouses, homestays, and hostels, especially around the Durbar Square area, offering affordable rates and a local experience."
+          },
+          {
+            "intent": "ask_about_nearby_temple_tourism",
+            "question": "What are the nearby temples to visit in Bhaktapur?",
+            "answer": "Nearby temples to visit include Changu Narayan Temple, one of the oldest Hindu temples in the Kathmandu Valley, and the Siddhi Laxmi Temple, a significant temple dedicated to the goddess Laxmi."
+          },
+          {
+            "intent": "ask_about_bhaktapur_entrance_fee",
+            "question": "Is there an entrance fee to visit Bhaktapur Durbar Square?",
+            "answer": "Yes, there is an entrance fee to visit Bhaktapur Durbar Square. The fee is typically around NPR 1500 (for foreign tourists), which contributes to the preservation of the site. The fee may vary for different nationalities."
+          }
+        ]
+    }
+      
+  

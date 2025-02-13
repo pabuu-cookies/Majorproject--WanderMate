@@ -1,14 +1,14 @@
-const User = require('../models/userModel');
-const HttpMessage = require('../middlewares/HttpMessage');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const User = require("../models/userModel");
+const HttpMessage = require("../middlewares/HttpMessage");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const SECRET_KEY = process.env.SECRET_KEY;
 
 class UserService {
-  async registerUser(name, email, password) {
+  async registerUser(name, email, password, role) {
     try {
-      console.log(email, name, password);
+      console.log(email, name, password, role);
       const user = await User.findOne({ email });
       if (user) {
         throw HttpMessage.ALREADY_PRESENT;
@@ -18,6 +18,7 @@ class UserService {
       const newUser = new User({
         name,
         email,
+        role,
         password: hashedPassword,
       });
       await newUser.save();
@@ -40,7 +41,11 @@ class UserService {
         throw HttpMessage.INVALID_CREDENTIALS;
       }
 
-      const token = jwt.sign({ email: user.email, userId: user._id }, SECRET_KEY, { expiresIn: '1h' });
+      const token = jwt.sign(
+        { email: user.email, userId: user._id, role: user.role },
+        SECRET_KEY,
+        { expiresIn: "1h" }
+      );
       return { user, token };
     } catch (error) {
       throw error;

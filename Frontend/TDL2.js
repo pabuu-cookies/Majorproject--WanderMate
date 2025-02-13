@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,48 +7,127 @@ import {
   TouchableOpacity,
   TextInput,
   Button,
-  toString,
 } from "react-native";
-
+import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
+import api from "./api";
 const ToDoListScreen2 = () => {
-  // Initialize the recommended tasks with dummy data
-  const [tasks, setTasks] = useState([
-    { id: 1, name: "Lakhe dance" },
-    { id: 2, name: "Indra jatra" },
-    { id: 3, name: "Bisket jatra" },
-    { id: 4, name: "Kathmandu durbar square" },
-    { id: 5, name: "Local newari cuisine" },
-  ]);
+  const [tasks, setTasks] = useState([]);
+  const [userTasks, setUserTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
+  const [authToken, setAuthToken] = useState(null);
+  const [location, setLocation] = useState("");
 
-  const [userTasks, setUserTasks] = useState([]); // Tasks added to the user's to-do list
+  const API_endpoint = "/todo";
 
-  // Function to add a task to the user's personal list
+  useEffect(() => {
+    const fetchTokenAndTasks = async () => {
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          setAuthToken(token);
+          fetchUserTasks(token);
+        }
+      } catch (error) {
+        console.error("Error retrieving auth token", error);
+      }
+    };
+
+    fetchTokenAndTasks();
+  }, []);
+
+  const fetchUserTasks = async (token) => {
+    try {
+      const response = await api.get(`${API_endpoint}/user/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log(response.data, "todos");
+      setUserTasks(response.data);
+    } catch (error) {
+      console.error("Error fetching user tasks", error);
+    }
+  };
+
+  const addTask = async () => {
+    if (newTask.trim() && authToken) {
+      try {
+        const response = await api.post(
+          `${API_endpoint}`,
+          { task: newTask },
+          { headers: { Authorization: `Bearer ${authToken}` } }
+        );
+        setUserTasks([...userTasks, response.data]);
+        setNewTask("");
+      } catch (error) {
+        console.error("Error adding task", error);
+      }
+    }
+  };
+
   const addTaskToUserList = (task) => {
-    if (!userTasks.find((t) => t.id === task.id)) {
-      // Avoid adding duplicates
+    if (task) {
       setUserTasks((prevTasks) => [...prevTasks, task]);
-      // Remove the task from the recommended tasks list
-      setTasks((prevTasks) => prevTasks.filter((t) => t.id !== task.id));
-    }
-  };
-  // Function to add task
-  const addTask = () => {
-    if (tasks.trim()) {
-      setTasks((prevTasks) => [
-        ...prevTasks,
-        { id: Math.random().toString(), taskName: tasks, completed: false },
-      ]);
-      setTasks(""); // Reset the input field
     }
   };
 
-  // Function to delete a task from the user's personal list
-  const deleteTaskFromUserList = (taskId) => {
-    const taskToReAdd = userTasks.find((task) => task.id === taskId);
-    setUserTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
-    // Re-add the deleted task back to the recommended list
+  const deleteTaskFromUserList = async (taskId) => {
+    await deleteTask(taskId);
+    const taskToReAdd = userTasks.find((task) => task._id === taskId);
+    setUserTasks((prevTasks) =>
+      prevTasks.filter((task) => task._id !== taskId)
+    );
+
     if (taskToReAdd) {
       setTasks((prevTasks) => [...prevTasks, taskToReAdd]);
+    }
+  };
+
+  const deleteTask = async (taskId) => {
+    if (authToken) {
+      try {
+        await api.delete(`${API_endpoint}/${taskId}`, {
+          headers: { Authorization: `Bearer ${authToken}` },
+        });
+        setUserTasks(userTasks.filter((task) => task._id !== taskId));
+      } catch (error) {
+        console.error("Error deleting task", error);
+      }
+    }
+  };
+
+  const fetchRecommendations = async () => {
+    if (location.trim()) {
+      try {
+        const response = await api.post(
+          `/chatbot/suggestions/${location}`,
+          {},
+          { headers: { Authorization: `Bearer ${authToken}` } }
+        );
+        console.log(response.data);
+
+        if (Array.isArray(response.data.tasks)) {
+          setTasks(response.data.tasks);
+        } else {
+          setTasks([{ task: response.data.message }]);
+        }
+      } catch (error) {
+        console.error("Error fetching recommendations", error);
+      }
+    }
+  };
+
+  const updateTaskStatus = async (taskId, status) => {
+    try {
+      const response = await api.patch(`/status/${taskId}`, { status });
+
+      console.log("Task status updated successfully:", response.data);
+
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task._id === taskId ? { ...task, status: response.data.status } : task
+        )
+      );
+    } catch (error) {
+      console.error("Error updating task status:", error);
     }
   };
 
@@ -57,22 +136,24 @@ const ToDoListScreen2 = () => {
       <TextInput
         style={styles.input}
         placeholder="Choose location"
-        value={tasks}
-        onChangeText={setTasks}
+        value={location}
+        onChangeText={setLocation}
       />
       <Button
         title="Recommend Task"
-        onPress={console.log("recommend gara sathi")}
+        onPress={fetchRecommendations}
         color={"green"}
       />
       <Text style={styles.title}>Recommended Tasks</Text>
 
-      {/* Display the available tasks */}
       <FlatList
         data={tasks}
+        keyExtractor={(item, index) =>
+          item._id ? item._id.toString() : index.toString()
+        }
         renderItem={({ item }) => (
           <View style={styles.taskContainer}>
-            <Text style={styles.taskText}>{item.name}</Text>
+            <Text style={styles.taskText}>{item.task}</Text>
             <TouchableOpacity
               onPress={() => addTaskToUserList(item)}
               style={styles.addButton}
@@ -81,33 +162,31 @@ const ToDoListScreen2 = () => {
             </TouchableOpacity>
           </View>
         )}
-        keyExtractor={(item) => item.id.toString()}
       />
 
       <Text style={styles.title}>Your To-Do List</Text>
 
-      {/* Display the user's added tasks */}
-
       <FlatList
         data={userTasks}
+        keyExtractor={(item) => item._id.toString()}
         renderItem={({ item }) => (
           <View style={styles.userTaskContainer}>
-            <Text style={styles.taskText}>{item.name}</Text>
+            <Text style={styles.taskText}>{item.task}</Text>
             <TouchableOpacity
-              onPress={() => deleteTaskFromUserList(item.id)}
+              onPress={() => deleteTaskFromUserList(item._id)}
               style={styles.deleteButton}
             >
-              <Text style={styles.deleteText}>Delete</Text>
+              <Text style={styles.deleteText}>Complete</Text>
             </TouchableOpacity>
           </View>
         )}
-        keyExtractor={(item) => item.id.toString()}
       />
+
       <TextInput
         style={styles.input}
         placeholder="Add a new task"
-        value={tasks}
-        onChangeText={setTasks}
+        value={newTask}
+        onChangeText={setNewTask}
       />
       <Button title="Add Task" onPress={addTask} color={"green"} />
     </View>
@@ -164,7 +243,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   deleteButton: {
-    backgroundColor: "#ff4d4d",
+    backgroundColor: "green",
     padding: 10,
     borderRadius: 5,
   },

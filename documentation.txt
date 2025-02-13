@@ -27,7 +27,7 @@ API'S
                                                                         "message":"hello"
                                                                         }
 
-
+inside bot folder
 nlp.js 
 install dependencies  npm install express body-parser cors node-nlp
 npm install @nlpjs/nlp @nlpjs/lang-en-min 

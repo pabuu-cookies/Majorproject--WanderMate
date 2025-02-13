@@ -26,3 +26,21 @@ API'S
 -POST: http://localhost:5000/chatbot/query/          body:(raw/json): {
                                                                         "message":"hello"
                                                                         }
+
+
+nlp.js 
+install dependencies  npm install express body-parser cors node-nlp
+npm install @nlpjs/nlp @nlpjs/lang-en-min 
+node server.js
+Training complete!
+Server is running on http://localhost:3000
+lsof -i :3000 [kill -9 pid]
+in postman 
+new-> http-> post -> http://localhost:3000/chat
+body->raw->text
+then write ques on body and send
+
+
+
+
+

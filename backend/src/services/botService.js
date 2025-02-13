@@ -19,7 +19,7 @@ class rasaService {
     try {
       // Actionable tasks for specific locations in Nepal
       const suggestionsData = {
-        "kathmandu durbar square": [
+        "kathmandu_durbar_square": [
           "Take a guided tour of Hanuman Dhoka Palace to learn about Nepal's royal history.",
           "Visit Kumari Ghar to catch a glimpse of the Living Goddess.",
           "Climb Basantapur Tower for panoramic views of the square.",
@@ -28,7 +28,7 @@ class rasaService {
           "Visit during Indra Jatra Festival to enjoy the Lakhey Dance and chariot processions.",
           "Explore the Hanuman Dhoka Palace Museum to view artifacts from Nepal’s monarchy.",
         ],
-        "Pashupatinath Temple": [
+        "PashupatinathTemple": [
           "Attend the evening aarti ceremony on the Bagmati River for a spiritual experience.",
           "Pay respects at the main shrine of Pashupatinath, dedicated to Lord Shiva.",
           "Watch cremation rituals at Arya Ghat and learn about Nepalese traditions.",

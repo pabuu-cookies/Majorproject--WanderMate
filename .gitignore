@@ -1,5 +1,7 @@
 
 Backend/node_modules/
+nlpchatbot/node_modules/
+
 # Python
 rasa/__pycache__/
 *.py[cod]
@@ -13,4 +15,5 @@ rasa/.venv/
 rasa/.rasa/
 .logs/
 # models/
+node_modules
 node_modules

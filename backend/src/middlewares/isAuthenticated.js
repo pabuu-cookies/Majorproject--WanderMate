@@ -3,20 +3,29 @@ const HttpMessage = require("../middlewares/HttpMessage");
 const SECRET_KEY = process.env.SECRET_KEY;
 
 function authenticateToken(req, res, next) {
-  const token = req.headers["authorization"]?.split(" ")[1];
+  try {
+    const token = req.headers["authorization"]?.split(" ")[1];
 
-  if (!token) {
-    console.log("unauthorized");
-    throw HttpMessage.UNAUTHORIZED;
-  }
-
-  jwt.verify(token, SECRET_KEY, (err, decoded) => {
-    if (err) {
-      throw HttpMessage.FORBIDDEN;
+    if (!token) {
+      return res
+        .status(HttpMessage.UNAUTHORIZED.statusCode)
+        .json({ message: HttpMessage.UNAUTHORIZED.message });
     }
-    req.userId = decoded.userId;
-    next();
-  });
+
+    jwt.verify(token, SECRET_KEY, (err, decoded) => {
+      if (err) {
+        return res
+          .status(HttpMessage.FORBIDDEN.statusCode)
+          .json({ message: HttpMessage.FORBIDDEN.message });
+      }
+      req.userId = decoded.userId;
+      next();
+    });
+  } catch (error) {
+    return res
+      .status(HttpMessage.INTERNAL_SERVER_ERROR.statusCode)
+      .json({ message: HttpMessage.INTERNAL_SERVER_ERROR.message });
+  }
 }
 
 module.exports = authenticateToken;

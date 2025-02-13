@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const todoController = require("../controllers/todoController");
+const todoController = require("../controllers/todosController");
 const authenticateToken = require("../middlewares/isAuthenticated");
 const handleResponse = require("../middlewares/handleResponse");
 

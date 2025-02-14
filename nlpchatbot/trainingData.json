@@ -1,0 +1,511 @@
+{
+	"intents": [
+	  {
+		"intent": "greeting",
+		"examples": [
+		  "Hi",
+		  "Hello",
+		  "Hey",
+		  "Good morning",
+		  "Good afternoon",
+		  "Good evening",
+		  "What's up"
+		],
+		"responses": ["Hello! How can I assist you today?"]
+	  },
+	  {
+		"intent": "ask_how_are_you",
+		"examples": [
+		  "How are you?",
+		  "How are you doing?",
+		  "tell me about you"
+		],
+		"responses": ["I'm just a bot, but I'm here to help you!"]
+	  },
+	  {
+		"intent": "ask_name",
+		"examples": [
+		  "What's your name?",
+		  "Who are you?"
+		],
+		"responses": ["I'm WanderMate, your virtual assistant."]
+	  },
+	  {
+		"intent": "ask_capabilities",
+		"examples": [
+		  "What can you do?",
+		  "What help can you provide?",
+		  "can you help me?"
+		],
+		"responses": ["I can help answer your questions or provide information on various topics."]
+	  },
+	  {
+		"intent": "thank",
+		"examples": [
+		  "Thank you",
+		  "Thanks",
+		  "tysm",
+		  "ty"
+		],
+		"responses": ["You're welcome! If you have any more questions, feel free to ask."]
+	  },
+	  {
+		"intent": "farewell",
+		"examples": [
+		  "Bye",
+		  "See you later",
+		  "ttyl",
+		  "byebye",
+		  "see you"
+		],
+		"responses": ["Goodbye! Have a great day!"]
+	  },
+	  {
+		"intent": "about_kathmandu",
+		"examples": [
+		  "Tell me about Kathmandu",
+		  "What is Kathmandu famous for?",
+		  "Give me details about Kathmandu"
+		],
+		"responses": ["Kathmandu, the capital of Nepal, is a vibrant city known for its rich culture, historic temples, and unique blend of modern and traditional lifestyles. It serves as a gateway to Nepal's majestic Himalayas and is a cultural hub with significant historical and religious importance."]
+	  },
+	  {
+		"intent": "world_heritage_sites_kathmandu",
+		"examples": [
+		  "What are the World Heritage Sites in Kathmandu?",
+		  "Tell me about Kathmandu's UNESCO World Heritage Sites",
+		  "Which UNESCO sites are located in Kathmandu?"
+		],
+		"responses": ["Kathmandu is home to several UNESCO World Heritage Sites, including: 1. Kathmandu Durbar Square – A historic royal palace complex. 2. Swayambhunath Stupa (Monkey Temple) – A sacred Buddhist site with panoramic views of the city. 3. Boudhanath Stupa – One of the largest Buddhist stupas in the world. 4. Pashupatinath Temple – A revered Hindu temple complex dedicated to Lord Shiva. These sites are known for their historical, cultural, and religious significance."]
+	  },
+	  {
+		"intent": "hiking_spots_kathmandu",
+		"examples": [
+		  "What are the best hiking spots near Kathmandu?",
+		  "Where can I hike around Kathmandu?",
+		  "Suggest some hiking destinations near Kathmandu"
+		],
+		"responses": ["Kathmandu offers access to stunning hiking trails. Popular hiking spots near the city include: 1. Nagarkot – Known for sunrise views over the Himalayas. 2. Shivapuri National Park – A serene forested area with trails leading to Shivapuri Peak. 3. Phulchowki – The highest hill around the valley, offering beautiful views and diverse flora. 4. Chandragiri Hills – Accessible by both cable car and hiking, with breathtaking views of the Kathmandu Valley and surrounding peaks. These spots are ideal for nature lovers and adventurers."]
+	  },
+	  {
+		"intent": "ask_about_bhaktapur",
+		"examples": [
+		  "What is Bhaktapur Durbar Square known for?"
+		],
+		"responses": ["Bhaktapur Durbar Square is known for its well-preserved medieval architecture, showcasing the grandeur of Newari architecture with ornate wood and brick structures."]
+	  },
+	  {
+		"intent": "ask_about_Bhaktapur_architecture",
+		"examples": [
+		  "How does Bhaktapur Durbar Square reflect Newari architecture?"
+		],
+		"responses": ["Bhaktapur Durbar Square reflects Newari architecture through its intricate woodwork, fine carvings, and pagoda-style roofs."]
+	  },
+	  {
+		"intent": "ask_about_Bhaktapur_heritage",
+		"examples": [
+		  "When was Bhaktapur Durbar Square designated a UNESCO World Heritage Site?"
+		],
+		"responses": ["Bhaktapur Durbar Square was designated a UNESCO World Heritage Site in 1979 due to its architectural and cultural significance."]
+	  },
+	  {
+		"intent": "ask_about_Bhaktapur_palace",
+		"examples": [
+		  "What is the purpose of the 55-Window Palace?"
+		],
+		"responses": ["The 55-Window Palace was the royal residence during the Malla kings' reign and remains an architectural landmark in Bhaktapur. It is famous for its intricately carved wooden windows and doors, which are significant examples of Newari craftsmanship."]
+	  },
+	  {
+		"intent": "ask_about_Bhaktapur_festivals",
+		"examples": [
+		  "How do traditional festivals impact Bhaktapur Durbar Square?"
+		],
+		"responses": ["Traditional festivals, such as Bisket Jatra, bring the community together and help preserve the cultural heritage of Bhaktapur Durbar Square."]
+	  },
+	  {
+		"intent": "ask_about_vatsala_temple",
+		"examples": [
+		  "What is the architectural style of the Vatsala Temple?"
+		],
+		"responses": ["The Vatsala Temple showcases traditional Newari architecture with its finely crafted wooden windows and intricate carvings."]
+	  },
+	  {
+		"intent": "ask_about_bhairavnath_temple",
+		"examples": [
+		  "What is the significance of the Bhairavnath Temple?"
+		],
+		"responses": ["The Bhairavnath Temple is dedicated to Lord Bhairav, one of the fiercest deities in Hinduism, and is an important religious site in Bhaktapur."]
+	  },
+	  {
+		"intent": "ask_about_nyatapola_temple",
+		"examples": [
+		  "What makes the Nyatapola Temple unique?"
+		],
+		"responses": ["The Nyatapola Temple is the tallest pagoda-style temple in Nepal and is famous for its five tiers and impressive architecture."]
+	  },
+	  {
+		"intent": "ask_about_peacock_window",
+		"examples": [
+		  "What is the story behind the Peacock Window?"
+		],
+		"responses": ["The Peacock Window is an intricately carved wooden window that symbolizes the artistic excellence of Newari craftsmanship in Bhaktapur."]
+	  },
+	  {
+		"intent": "ask_about_preservation",
+		"examples": [
+		  "What efforts are being made to preserve Bhaktapur Durbar Square?"
+		],
+		"responses": ["Restoration projects, funded by both local and international organizations, are ongoing to repair the structures damaged by time and disasters."]
+	  },
+	  {
+		"intent": "ask_about_earthquake_impact",
+		"examples": [
+		  "How did the 2015 earthquake impact Bhaktapur Durbar Square?"
+		],
+		"responses": ["The 2015 earthquake caused significant damage to several structures in Bhaktapur Durbar Square, including temples, shrines, and monuments."]
+	  },
+	  {
+		"intent": "ask_about_pottery_square",
+		"examples": [
+		  "What is Pottery Square famous for?"
+		],
+		"responses": ["Pottery Square is renowned for its traditional pottery-making, where artisans create various clay products that are sold to locals and tourists."]
+	  },
+	  {
+		"intent": "ask_about_lions_gate",
+		"examples": [
+		  "What is the significance of the Lion's Gate?"
+		],
+		"responses": ["The Lion's Gate is a historical entrance to Bhaktapur Durbar Square, known for its detailed sculptures of lions that protect the entrance."]
+	  },
+	  {
+		"intent": "ask_about_newari_culture",
+		"examples": [
+		  "How is Newari culture preserved in Bhaktapur?"
+		],
+		"responses": ["Newari culture is preserved in Bhaktapur through the maintenance of historical buildings, traditional crafts, and cultural practices."]
+	  },
+	  {
+		"intent": "ask_about_local_government_involvement",
+		"examples": [
+		  "What role does the local government play in the preservation of Bhaktapur Durbar Square?"
+		],
+		"responses": ["The local government plays a key role by funding preservation projects, implementing policies for heritage conservation, and managing tourist activities."]
+	  },
+	  {
+		"intent": "ask_about_siddhi_laxmi_temple",
+		"examples": [
+		  "What is the history behind the Siddhi Laxmi Temple?"
+		],
+		"responses": ["The Siddhi Laxmi Temple dates back to the Malla period and is an important site for religious worship dedicated to the goddess Laxmi."]
+	  },
+	  {
+		"intent": "ask_about_taleju_bhawani_temple",
+		"examples": [
+		  "What is the significance of the Taleju Bhawani Temple?"
+		],
+		"responses": ["The Taleju Bhawani Temple is dedicated to the goddess Taleju, a protector deity worshipped by the Malla kings, and is an important religious site."]
+	  },
+	  {
+		"intent": "ask_about_preservation_challenges",
+		"examples": [
+		  "What challenges are faced in the preservation of Bhaktapur Durbar Square?"
+		],
+		"responses": ["Challenges include damage from natural disasters, such as earthquakes, and the need for continuous maintenance to preserve its historical integrity."]
+	  },
+	  {
+		"intent": "ask_about_identity_and_heritage",
+		"examples": [
+		  "How does Bhaktapur Durbar Square contribute to Nepal's identity?"
+		],
+		"responses": ["Bhaktapur Durbar Square contributes to Nepal's identity by preserving its rich cultural heritage, architecture, and religious significance."]
+	  },
+	  {
+		"intent": "ask_about_traditional_and_modern_integration",
+		"examples": [
+		  "How does Bhaktapur Durbar Square integrate traditional and modern elements?"
+		],
+		"responses": ["Bhaktapur Durbar Square blends traditional architecture with modern infrastructure to accommodate contemporary needs while preserving its historic charm."]
+	  },
+	  {
+		"intent": "ask_about_local_artisans_contribution",
+		"examples": [
+		  "How do local artisans contribute to Bhaktapur Durbar Square?"
+		],
+		"responses": ["Local artisans contribute by practicing traditional crafts such as wood carving, pottery, and metalwork, which help maintain the cultural heritage of Bhaktapur."]
+	  },
+	  {
+		"intent": "ask_about_artistic_heritage",
+		"examples": [
+		  "What artistic heritage is reflected in Bhaktapur Durbar Square?"
+		],
+		"responses": ["The stone carvings, wooden windows, and pagoda-style roofs in Bhaktapur Durbar Square reflect a rich artistic heritage passed down by Newari artisans."]
+	  },
+	  {
+		"intent": "ask_about_economy_through_tourism",
+		"examples": [
+		  "How does Bhaktapur Durbar Square support the local economy?"
+		],
+		"responses": ["Bhaktapur Durbar Square supports the local economy by attracting tourists who contribute to the economy through entrance fees, local crafts, and guided tours."]
+	  },
+	  {
+		"intent": "ask_about_cultural_exchange",
+		"examples": [
+		  "How does Bhaktapur Durbar Square promote cultural exchange?"
+		],
+		"responses": ["Bhaktapur Durbar Square promotes cultural exchange through its festivals, events, and educational programs that showcase Nepal's rich cultural heritage."]
+	  },
+	  {
+		"intent": "ask_about_water_spouts",
+		"examples": [
+		  "What is the significance of the water spouts (Hiti) in Bhaktapur Durbar Square?"
+		],
+		"responses": ["The water spouts in Bhaktapur Durbar Square were part of an ancient water supply system used for both daily activities and religious rituals."]
+	  },
+	  {
+		"intent": "ask_about_urban_landscape_integration",
+		"examples": [
+		  "How does Bhaktapur Durbar Square integrate with the local urban landscape?"
+		],
+		"responses": ["Bhaktapur Durbar Square serves as the heart of the local urban landscape, integrating historical sites with the modern city while maintaining cultural heritage."]
+	  },
+		  {
+			"intent": "ask_about_location",
+			"examples": ["Where is Kathmandu Durbar Square?", "Can you tell me the location of Kathmandu Durbar Square?"],
+			"responses": ["Kathmandu Durbar Square is located in the heart of Kathmandu, Nepal."]
+		  },
+		  {
+			"intent": "ask_about_history",
+			"examples": ["Tell me the history of Kathmandu Durbar Square", "When was Kathmandu Durbar Square built?"],
+			"responses": ["Kathmandu Durbar Square, also known as Hanuman Dhoka Durbar Square, was the royal palace of the Malla kings and served as the political and cultural center of Kathmandu during the medieval period."]
+		  },
+		  {
+			"intent": "ask_about_architecture",
+			"examples": ["What is the architectural style of Kathmandu Durbar Square?", "Can you describe the architecture of Kathmandu Durbar Square?"],
+			"responses": ["Kathmandu Durbar Square features traditional Newar architecture, with intricate wood carvings, pagoda-style roofs, and ornate temples and palaces."]
+		  },
+		  {
+			"intent": "ask_about_heritage",
+			"examples": ["When was Kathmandu Durbar Square designated a UNESCO World Heritage Site?", "What makes Kathmandu Durbar Square a UNESCO World Heritage Site?"],
+			"responses": ["Kathmandu Durbar Square was designated a UNESCO World Heritage Site in 1979 due to its historical, architectural, and cultural significance."]
+		  },
+		  {
+			"intent": "ask_about_famous_buildings",
+			"examples": ["What are the famous buildings in Kathmandu Durbar Square?", "Can you tell me about the famous buildings in Kathmandu Durbar Square?"],
+			"responses": ["Famous buildings in Kathmandu Durbar Square include the Hanuman Dhoka Palace, the Taleju Temple, the Kasthamandap, and the Kumari Ghar (the residence of the Living Goddess)."]
+		  },
+		  {
+			"intent": "ask_about_political_significance",
+			"examples": ["Why is Kathmandu Durbar Square politically significant?", "What role did Kathmandu Durbar Square play in Nepal's politics?"],
+			"responses": ["Kathmandu Durbar Square was the seat of the Malla kings and later the Shah dynasty. It was the center of political power and the location for important ceremonies and events."]
+		  },
+		  {
+			"intent": "ask_about_festivals",
+			"examples": ["What festivals are celebrated at Kathmandu Durbar Square?", "Are there any special festivals in Kathmandu Durbar Square?"],
+			"responses": ["Kathmandu Durbar Square is a hub for various cultural and religious festivals such as Indra Jatra, which features traditional dances, chariot processions, and celebrations of the Living Goddess."]
+		  },
+		  {
+			"intent": "ask_about_temple_significance",
+			"examples": ["What is the significance of the Taleju Temple?", "Can you tell me more about the Taleju Temple in Kathmandu Durbar Square?"],
+			"responses": ["The Taleju Temple is an important Hindu temple dedicated to the goddess Taleju, and it is one of the most significant structures in Kathmandu Durbar Square, built during the Malla period."]
+		  },
+		  {
+			"intent": "ask_about_earthquake_impact",
+			"examples": ["How did the 2015 earthquake impact Kathmandu Durbar Square?", "What damage did the 2015 earthquake cause to Kathmandu Durbar Square?"],
+			"responses": ["The 2015 earthquake caused significant damage to several monuments and temples in Kathmandu Durbar Square, including the collapse of the Kasthamandap and damage to other historical structures."]
+		  },
+		  {
+			"intent": "ask_about_preservation_efforts",
+			"examples": ["What efforts are being made to preserve Kathmandu Durbar Square?", "How is Kathmandu Durbar Square being preserved?"],
+			"responses": ["Kathmandu Durbar Square has been undergoing restoration efforts, funded by both the Nepalese government and international organizations, to repair the damage from the 2015 earthquake and preserve its cultural heritage."]
+		  },
+		  {
+			"intent": "ask_about_entry_fee",
+			"examples": ["What is the entry fee for Kathmandu Durbar Square?", "How much does it cost to visit Kathmandu Durbar Square?"],
+			"responses": ["The entry fee to Kathmandu Durbar Square for foreign nationals is NPR 1000. Nepali citizens can visit for free."]
+		  },
+		  {
+			"intent": "ask_about_opening_hours",
+			"examples": ["What are the opening hours of Kathmandu Durbar Square?", "When is Kathmandu Durbar Square open?"],
+			"responses": ["Kathmandu Durbar Square is open every day from 10:00 AM to 5:00 PM."]
+		  },
+		  {
+			"intent": "ask_about_visitor_guides",
+			"examples": ["Are there any guides available at Kathmandu Durbar Square?", "Can I hire a guide for Kathmandu Durbar Square?"],
+			"responses": ["Yes, you can hire a licensed guide at Kathmandu Durbar Square for a more informative experience."]
+		  },
+		  {
+			"intent": "ask_about_transportation",
+			"examples": ["How can I get to Kathmandu Durbar Square?", "What is the best way to travel to Kathmandu Durbar Square?"],
+			"responses": ["Kathmandu Durbar Square is located in the center of Kathmandu and is easily accessible by taxis, buses, and on foot. It is near other popular tourist attractions, making it convenient to visit while exploring the city."]
+		  },
+		  {
+			"intent": "ask_about_surrounding_attractions",
+			"examples": ["What are the other attractions near Kathmandu Durbar Square?", "What else can I see around Kathmandu Durbar Square?"],
+			"responses": ["Nearby attractions include the Swayambhunath Stupa (Monkey Temple), Boudhanath Stupa, Pashupatinath Temple, and the Garden of Dreams."]
+		  },
+		  {
+			"intent": "ask_about_food_nearby",
+			"examples": ["Are there any good restaurants near Kathmandu Durbar Square?", "Where can I eat near Kathmandu Durbar Square?"],
+			"responses": ["There are many restaurants and cafes around Kathmandu Durbar Square, offering a variety of local and international cuisines. Popular options include The Old Durbar Restaurant, Newa Momo, and The Garden of Dreams Cafe."]
+		  },
+		  {
+			"intent": "ask_about_shopping_nearby",
+			"examples": ["Is there any shopping near Kathmandu Durbar Square?", "What can I buy near Kathmandu Durbar Square?"],
+			"responses": ["You can find a variety of shops selling handicrafts, souvenirs, traditional Nepali clothing, and art around Kathmandu Durbar Square. The local markets and shops are perfect for picking up souvenirs."]
+		  },
+		  {
+			"intent": "ask_about_location",
+			"examples": ["Where is Boudhanath Stupa?", "Can you tell me the location of Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa is located in the northeastern part of Kathmandu, Nepal."]
+		  },
+		  {
+			"intent": "ask_about_history",
+			"examples": ["What is the history of Boudhanath Stupa?", "Tell me the history of Boudhanath Stupa."],
+			"responses": ["Boudhanath Stupa dates back to the 14th century and is one of the largest stupas in Nepal. It is believed to have been built to enshrine the relics of the Buddha."]
+		  },
+		  {
+			"intent": "ask_about_architecture",
+			"examples": ["What is the architecture of Boudhanath Stupa like?", "Can you describe the architecture of Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa is a massive mandala, designed to represent the universe. Its structure consists of a large dome with a square base, and its main feature is the all-seeing eyes of the Buddha."]
+		  },
+		  {
+			"intent": "ask_about_religion",
+			"examples": ["Is Boudhanath Stupa important in Buddhism?", "What is the religious significance of Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa is one of the holiest Buddhist sites in Nepal. It is a center of Tibetan Buddhism, and many Tibetans come here for pilgrimage and rituals."]
+		  },
+		  {
+			"intent": "ask_about_unesco_status",
+			"examples": ["Is Boudhanath Stupa a UNESCO World Heritage Site?", "When was Boudhanath Stupa listed as a UNESCO World Heritage Site?"],
+			"responses": ["Yes, Boudhanath Stupa was designated a UNESCO World Heritage Site in 1979 due to its cultural and religious significance."]
+		  },
+		  {
+			"intent": "ask_about_pilgrimage",
+			"examples": ["Why do people visit Boudhanath Stupa?", "Is Boudhanath Stupa a pilgrimage site?"],
+			"responses": ["Boudhanath Stupa is an important pilgrimage site for Tibetan Buddhists. Devotees come to pray, make offerings, and perform circumambulations around the stupa."]
+		  },
+		  {
+			"intent": "ask_about_tourist_activities",
+			"examples": ["What can I do at Boudhanath Stupa?", "What activities are available for tourists at Boudhanath Stupa?"],
+			"responses": ["Visitors can walk around the stupa, participate in circumambulation, observe rituals, visit the nearby monasteries, and shop for Tibetan handicrafts and religious items."]
+		  },
+		  {
+			"intent": "ask_about_opening_hours",
+			"examples": ["What are the opening hours of Boudhanath Stupa?", "When is Boudhanath Stupa open?"],
+			"responses": ["Boudhanath Stupa is open every day, typically from 6:00 AM to 7:00 PM."]
+		  },
+		  {
+			"intent": "ask_about_entry_fee",
+			"examples": ["Is there an entry fee for Boudhanath Stupa?", "How much is the entry fee for Boudhanath Stupa?"],
+			"responses": ["Yes, the entry fee for foreign nationals is NPR 400, while Nepali citizens can visit for free."]
+		  },
+		  {
+			"intent": "ask_about_surrounding_area",
+			"examples": ["What is there to see around Boudhanath Stupa?", "What are the attractions near Boudhanath Stupa?"],
+			"responses": ["There are many monasteries, stupas, and Tibetan shops around Boudhanath Stupa. Visitors can also explore the nearby Buddhist temples and local markets."]
+		  },
+		  {
+			"intent": "ask_about_monasteries",
+			"examples": ["What are the famous monasteries near Boudhanath Stupa?", "Can you tell me about the monasteries near Boudhanath Stupa?"],
+			"responses": ["Some of the well-known monasteries near Boudhanath Stupa include the Shechen Monastery, the Kagyu Monastery, and the Tibetan Buddhist Monastery."]
+		  },
+		  {
+			"intent": "ask_about_cultural_significance",
+			"examples": ["What is the cultural significance of Boudhanath Stupa?", "Why is Boudhanath Stupa culturally important?"],
+			"responses": ["Boudhanath Stupa is a cultural hub for Tibetan Buddhism. It serves as a center for cultural exchange, religious practices, and Tibetan identity in Nepal."]
+		  },
+		  {
+			"intent": "ask_about_special_events",
+			"examples": ["What festivals are celebrated at Boudhanath Stupa?", "Are there any special events at Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa is a focal point for Tibetan Buddhist festivals, including Losar (Tibetan New Year), Buddha Jayanti, and the Monlam Prayer Festival."]
+		  },
+		  {
+			"intent": "ask_about_tibetans",
+			"examples": ["Why are there so many Tibetans at Boudhanath Stupa?", "What role do Tibetans play at Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa is a prominent site for Tibetans in Nepal. It has a strong Tibetan community and is a spiritual and cultural hub for Tibetan refugees in Nepal."]
+		  },
+		  {
+			"intent": "ask_about_architectural_style",
+			"examples": ["What is the architectural style of Boudhanath Stupa?", "Can you describe the architectural style of Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa follows a traditional Tibetan Buddhist architectural style, featuring a massive mandala, a large central dome, and the all-seeing eyes of the Buddha at the top."]
+		  },
+		  {
+			"intent": "ask_about_eye_of_buddha",
+			"examples": ["What do the eyes of Buddha represent on Boudhanath Stupa?", "Why are there eyes on Boudhanath Stupa?"],
+			"responses": ["The eyes of Buddha represent the all-seeing nature of the Buddha, symbolizing wisdom, and they are a key feature of the stupa's design."]
+		  },
+		  {
+			"intent": "ask_about_surrounding_shops",
+			"examples": ["Are there any shops around Boudhanath Stupa?", "What can I buy near Boudhanath Stupa?"],
+			"responses": ["Yes, there are many shops around Boudhanath Stupa selling Tibetan handicrafts, prayer flags, jewelry, and religious items such as prayer wheels and malas."]
+		  },
+		  {
+			"intent": "ask_about_famous_items",
+			"examples": ["What are the famous items sold near Boudhanath Stupa?", "Can I buy Tibetan handicrafts at Boudhanath Stupa?"],
+			"responses": ["Popular items include prayer wheels, thangka paintings, Tibetan jewelry, prayer flags, and traditional Tibetan clothing."]
+		  },
+		  {
+			"intent": "ask_about_transportation",
+			"examples": ["How can I get to Boudhanath Stupa?", "What is the best way to reach Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa is easily accessible by taxi, rickshaw, or public transportation. It's about a 15-minute drive from the center of Kathmandu."]
+		  },
+		  {
+			"intent": "ask_about_best_time_to_visit",
+			"examples": ["When is the best time to visit Boudhanath Stupa?", "What is the best time of day to visit Boudhanath Stupa?"],
+			"responses": ["The best time to visit Boudhanath Stupa is early in the morning for a peaceful atmosphere or in the late afternoon when the sunset offers a beautiful view."]
+		  },
+		  {
+			"intent": "ask_about_circumambulation",
+			"examples": ["What is circumambulation at Boudhanath Stupa?", "Why do people walk around Boudhanath Stupa?"],
+			"responses": ["Circumambulation is a spiritual practice where pilgrims walk around the stupa in a clockwise direction, chanting mantras and making offerings for blessings."]
+		  },
+		  {
+			"intent": "ask_about_meditation",
+			"examples": ["Can I meditate at Boudhanath Stupa?", "Is Boudhanath Stupa a good place for meditation?"],
+			"responses": ["Yes, Boudhanath Stupa is an excellent place for meditation. The serene environment and spiritual atmosphere make it ideal for quiet reflection and mindfulness."]
+		  },
+		  {
+			"intent": "ask_about_pilgrims",
+			"examples": ["How many pilgrims visit Boudhanath Stupa annually?", "Are there many pilgrims at Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa attracts thousands of pilgrims every year, particularly during major Buddhist festivals such as Losar and Buddha Jayanti."]
+		  },
+		  {
+			"intent": "ask_about_significance_in_buddhism",
+			"examples": ["Why is Boudhanath Stupa so significant in Buddhism?", "What makes Boudhanath Stupa important in Buddhism?"],
+			"responses": ["Boudhanath Stupa is one of the most important Buddhist sites in Nepal. It is believed to hold the relics of the Buddha and is a center of Tibetan Buddhist culture."]
+		  },
+		  {
+			"intent": "ask_about_nearby_hotels",
+			"examples": ["Are there hotels near Boudhanath Stupa?", "Can you recommend any hotels near Boudhanath Stupa?"],
+			"responses": ["Yes, there are several hotels and guesthouses near Boudhanath Stupa, including Hotel Shambala, The Boudha Stupa Resort, and The Stupa View Guesthouse."]
+		  },
+		  {
+			"intent": "ask_about_shopping_for_souvenirs",
+			"examples": ["Where can I buy souvenirs near Boudhanath Stupa?", "Can I find souvenirs near Boudhanath Stupa?"],
+			"responses": ["You can buy a variety of souvenirs near Boudhanath Stupa, including Tibetan jewelry, prayer beads, handwoven carpets, and locally made religious items."]
+		  },
+		  {
+			"intent": "ask_about_nearby_restaurants",
+			"examples": ["Are there any restaurants near Boudhanath Stupa?", "What are some good places to eat near Boudhanath Stupa?"],
+			"responses": ["There are many restaurants and cafes around Boudhanath Stupa offering Tibetan, Nepalese, and international cuisine. Popular options include The Tibetan Kitchen, Stupa View Restaurant, and Boudhanath Cafe."]
+		  },
+		  {
+			"intent": "ask_about_the_stupa_size",
+			"examples": ["How big is Boudhanath Stupa?", "What is the size of Boudhanath Stupa?"],
+			"responses": ["Boudhanath Stupa has a diameter of about 36 meters (118 feet) and stands approximately 40 meters (131 feet) tall."]
+		  },
+		  {
+			"intent": "ask_about_the_developments_after_earthquake",
+			"examples": ["What damage did Boudhanath Stupa suffer during the 2015 earthquake?", "Was Boudhanath Stupa affected by the 2015 earthquake?"],
+			"responses": ["Boudhanath Stupa was damaged in the 2015 earthquake, with cracks appearing in the stupa's structure. However, it was largely restored and reopened to the public."]
+		  },
+		  {
+			"intent": "ask_about_nearby_attractions",
+			"examples": ["What are the other attractions near Boudhanath Stupa?", "What else can I visit near Boudhanath Stupa?"],
+			"responses": ["Nearby attractions include the Pashupatinath Temple, the Swayambhunath Stupa (Monkey Temple), and the Boudhanath Tibetan Refugee Camp."]
+		  }
+		]
+	  }
+	  
+	  
+  

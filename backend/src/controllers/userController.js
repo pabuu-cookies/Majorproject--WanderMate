@@ -4,7 +4,12 @@ class userController {
   async registerUser(req, res, next) {
     const { name, email, password, role } = req.body;
     try {
-      const results = await UserService.registerUser(name, email, password, role);
+      const results = await UserService.registerUser(
+        name,
+        email,
+        password,
+        role
+      );
       console.log(results);
 
       res.locals.responseData = results;

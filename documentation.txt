@@ -57,16 +57,10 @@ API'S
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYml0cmFAZXhhbXBsZS5jb20iLCJ1c2VySWQiOiI2NzQxZWE5MjQ4ODNkYThjNjk5OWU5N2IiLCJpYXQiOjE3MzM0NjMxMjUsImV4cCI6MTczMzQ2NjcyNX0.f_1xZazhcl-Y1I4hnLaxlq3yKSFj__1Dzuf5Q1XICAM"
 }
 
--POST: http://localhost:5500/chatbot/query/         
- body:(raw/json): {                                 
-        "message":"hello"
-}
-[
-    {
-        "recipient_id": "default",
-        "text": "Hello, how can I help you?"
-    }
-]
+-POST: http://localhost:3000/chat/query/         
+ body:(text): hello
+result: Hello! How can I assist you today?
+
 --post: http://localhost:5500/todo/  Authorization--bearer token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYml0cmFAZXhhbXBsZS5jb20iLCJ1c2VySWQiOiI2NzQxZWE5MjQ4ODNkYThjNjk5OWU5N2IiLCJpYXQiOjE3MzM0NjMxMjUsImV4cCI6MTczMzQ2NjcyNX0.f_1xZazhcl-Y1I4hnLaxlq3yKSFj__1Dzuf5Q1XICAM
 {
     "task":"row row row row the boat"
@@ -157,4 +151,21 @@ API'S
         "Explore the Hanuman Dhoka Palace Museum to view artifacts from Nepal’s monarchy."
     ]
 }
+
+--post: http://localhost:5500/chatbot/translate    authentication token : 
+body
+    {
+    "translatefrom":"en", 
+    "text":"Hello, how are you", 
+    "translateTo": "ne"
+}
+result: {
+    "translatedText": [
+        {
+            "original": "Hello, how are you",
+            "translation": "नमस्कार, तिमीलाई कस्तो छ?"
+        }
+    ]
+}
+
 

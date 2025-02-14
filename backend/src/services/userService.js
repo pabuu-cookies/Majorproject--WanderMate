@@ -6,7 +6,7 @@ require("dotenv").config();
 const SECRET_KEY = process.env.SECRET_KEY;
 
 class UserService {
-  async registerUser(name, email, password) {
+  async registerUser(name, email, password, role) {
     try {
       console.log(email, name, password);
       const user = await User.findOne({ email });
@@ -18,6 +18,7 @@ class UserService {
       const newUser = new User({
         name,
         email,
+        role,
         password: hashedPassword,
       });
       await newUser.save();

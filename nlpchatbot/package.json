@@ -17,6 +17,7 @@
   "description": "An NLP.js-powered chatbot project.",
   "dependencies": {
     "@nlpjs/basic": "^4.23.1",
+    "express": "^4.21.2",
     "node-nlp": "^4.27.0"
   }
 }

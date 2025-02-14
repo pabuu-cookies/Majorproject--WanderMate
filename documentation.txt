@@ -22,6 +22,28 @@ command: mongosh
 test> command: use wandermate
 
 API'S
+<<<<<<< HEAD
+-POST: http://localhost:5000/chatbot/query/          body:(raw/json): {
+                                                                        "message":"hello"
+                                                                        }
+
+inside bot folder
+nlp.js 
+install dependencies  npm install express body-parser cors node-nlp
+npm install @nlpjs/nlp @nlpjs/lang-en-min 
+node server.js
+Training complete!
+Server is running on http://localhost:3000
+lsof -i :3000 [kill -9 pid]
+in postman 
+new-> http-> post -> http://localhost:3000/chat
+body->raw->text
+then write ques on body and send
+
+
+
+
+=======
 -http://localhost:5500/user/login/
 {
     "email":"pabitra@example.com",
@@ -138,4 +160,5 @@ API'S
         "Explore the Hanuman Dhoka Palace Museum to view artifacts from Nepal’s monarchy."
     ]
 }
+>>>>>>> 06b85022f5aec5b87c926a23f12e87a74d989f78
 

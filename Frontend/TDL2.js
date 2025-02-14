@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
 import api from "./api";
+
 const ToDoListScreen2 = () => {
   const [tasks, setTasks] = useState([]);
   const [userTasks, setUserTasks] = useState([]);
@@ -63,7 +64,7 @@ const ToDoListScreen2 = () => {
       }
     }
   };
-  const addTaskToUserList = (task) => {
+  const addTaskToUserList = async (task) => {
     if (task) {
       setUserTasks((prevTasks) => [
         ...prevTasks,
@@ -72,6 +73,20 @@ const ToDoListScreen2 = () => {
 
       // Remove task from recommended list
       setTasks((prevTasks) => prevTasks.filter((t) => t !== task));
+
+      if (authToken) {
+        try {
+          const response = await api.post(
+            `${API_endpoint}`,
+            { task: task },
+            { headers: { Authorization: `Bearer ${authToken}` } }
+          );
+          setUserTasks([...userTasks, response.data]);
+          setNewTask("");
+        } catch (error) {
+          console.error("Error adding task", error);
+        }
+      }
     }
   };
 
@@ -102,16 +117,28 @@ const ToDoListScreen2 = () => {
   const deleteTask = async (taskId) => {
     try {
       console.log(`Attempting to delete task with ID: ${taskId}`);
-
-      const response = await axios.delete(
-        `https://your-api.com/tasks/${taskId}`
-      );
+      console.log(API_endpoint);
+      const response = await api.delete(`${API_endpoint}/${taskId}`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`, // Send the token in the header
+        },
+      });
+      // const response = await axios.delete(
+      //   `http://192.168.1.65:5500/todo/${taskId}`, // Replace with your actual URL
+      //   { message },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${authToken}`, // Send the token in the header
+      //       "Content-Type": "text/plain",
+      //     },
+      //     responseType: "text",
+      //   }
+      // );
 
       console.log("Delete API response:", response?.data);
       return response?.data;
     } catch (error) {
-      console.error("API Delete Error:", error.response?.data || error.message);
-      throw error;
+      console.error("API Delete Error:", error.message);
     }
   };
 

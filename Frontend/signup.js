@@ -7,6 +7,7 @@ import {
   Pressable,
   Image,
   View,
+  Alert,
 } from "react-native";
 import axios from "axios";
 import api from "./api";
@@ -17,47 +18,40 @@ export default function SignUpScreen({ navigation }) {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("tourist"); // Default role is 'tourist'
 
   const API_endpoint = "user/register/";
 
   const handleSignUp = async () => {
     try {
-      try {
-        const response = await api.post(
-          API_endpoint,
-          {
-            name,
-            email: username,
-            password,
+      const response = await api.post(
+        API_endpoint,
+        {
+          name,
+          email: username,
+          password,
+          role,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        const data = response.data; // Axios stores the response data here
-        console.log(data);
-      } catch (error) {
-        console.error(
-          "Error during the API call:",
-          error.response?.data || error.message
-        );
-      }
-
-      if (response.ok) {
-        if (data.success) {
-          navigation.navigate("Home");
-        } else {
-          Alert.alert("Error", data.message || "Registration failed.");
         }
+      );
+
+      const data = response.data;
+      console.log(data);
+
+      if (data.success) {
+        navigation.navigate("Home");
       } else {
-        Alert.alert("Error", "Something went wrong. Please try again.");
-        console.error("Error response:", data); // Log server error details
+        Alert.alert("Error", data.message || "Registration failed.");
       }
     } catch (error) {
-      console.error("Error during signup:", error);
+      console.error(
+        "Error during signup:",
+        error.response?.data || error.message
+      );
       Alert.alert("Error", "Something went wrong. Please try again.");
     }
   };
@@ -95,6 +89,30 @@ export default function SignUpScreen({ navigation }) {
         />
       </View>
 
+      <View style={styles.radioContainer}>
+        <Pressable
+          onPress={() => setRole("tourist")}
+          style={styles.radioButton}
+        >
+          <View
+            style={[
+              styles.radioCircle,
+              role === "tourist" && styles.radioSelected,
+            ]}
+          />
+          <Text style={styles.radioText}>Tourist</Text>
+        </Pressable>
+        <Pressable onPress={() => setRole("guide")} style={styles.radioButton}>
+          <View
+            style={[
+              styles.radioCircle,
+              role === "guide" && styles.radioSelected,
+            ]}
+          />
+          <Text style={styles.radioText}>Guide</Text>
+        </Pressable>
+      </View>
+
       <View style={styles.buttonView}>
         <Pressable style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>SIGN UP</Text>
@@ -118,7 +136,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
     textAlign: "center",
-    paddingVertical: 40,
+    paddingVertical: 20,
     color: "green",
   },
   inputView: {
@@ -133,6 +151,32 @@ const styles = StyleSheet.create({
     borderColor: "green",
     borderWidth: 1,
     borderRadius: 7,
+  },
+  radioContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 20,
+    marginVertical: 20,
+  },
+  radioButton: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  radioCircle: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "green",
+    marginRight: 10,
+  },
+  radioSelected: {
+    backgroundColor: "green",
+  },
+  radioText: {
+    fontSize: 18,
+    color: "black",
   },
   button: {
     backgroundColor: "green",

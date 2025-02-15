@@ -168,4 +168,226 @@ result: {
     ]
 }
 
+create chat: --post http://localhost:5500/chat --auth header
+body(json) --{
+  "messages": [
+    {
+      "id": 1708052946000, 
+      "text": "Hello, how are you?", 
+      "createdAt": "2024-02-15T12:30:00.000Z",
+      "user": { "_id": 1, "name": "You" }
+    },
+    {
+      "id": 1708052952000, 
+      "text": "I'm doing great! How can I help?", 
+      "createdAt": "2024-02-15T12:30:05.000Z",
+      "user": { "_id": 2, "name": "Bot" }
+    }
+  ]
+}
+result
+{
+    "_id": "67b026802ba042173aabae7f",
+    "userId": "67ab20faccc2d8f67d689f71",
+    "messages": [
+        {
+            "id": "1708052946000",
+            "text": "Hello, how are you?",
+            "createdAt": "2024-02-15T12:30:00.000Z",
+            "user": {
+                "_id": "1",
+                "name": "You"
+            },
+            "_id": "67b026802ba042173aabae80"
+        },
+        {
+            "id": "1708052952000",
+            "text": "I'm doing great! How can I help?",
+            "createdAt": "2024-02-15T12:30:05.000Z",
+            "user": {
+                "_id": "2",
+                "name": "Bot"
+            },
+            "_id": "67b026802ba042173aabae81"
+        }
+    ],
+    "createdAt": "2025-02-15T05:30:41.003Z",
+    "updatedAt": "2025-02-15T05:30:41.003Z",
+    "__v": 0
+}
+
+update the chat:-- patch : http://localhost:5500/chat/67b026802ba042173aabae7f --auth header
+body(json): {
+  "messages": [
+    {
+      "id": 1708052946000, 
+      "text": "next update for chat", 
+      "createdAt": "2024-02-15T12:30:00.000Z",
+      "user": { "_id": 1, "name": "You" }
+    },
+    {
+      "id": 1708052952000, 
+      "text": "next updated chat response", 
+      "createdAt": "2024-02-15T12:30:05.000Z",
+      "user": { "_id": 2, "name": "Bot" }
+    }
+  ]
+}
+reuslt:
+{
+    "_id": "67b026802ba042173aabae7f",
+    "userId": "67ab20faccc2d8f67d689f71",
+    "messages": [
+        {
+            "user": {
+                "_id": "1",
+                "name": "You"
+            },
+            "id": "1708052946000",
+            "text": "Hello, how are you?",
+            "createdAt": "2024-02-15T12:30:00.000Z",
+            "_id": "67b026802ba042173aabae80"
+        },
+        {
+            "user": {
+                "_id": "2",
+                "name": "Bot"
+            },
+            "id": "1708052952000",
+            "text": "I'm doing great! How can I help?",
+            "createdAt": "2024-02-15T12:30:05.000Z",
+            "_id": "67b026802ba042173aabae81"
+        },
+        {
+            "id": "1708052946000",
+            "text": "next update for chat",
+            "createdAt": "2024-02-15T12:30:00.000Z",
+            "user": {
+                "_id": "1",
+                "name": "You"
+            },
+            "_id": "67b027ce289c648830bde77c"
+        },
+        {
+            "id": "1708052952000",
+            "text": "next updated chat response",
+            "createdAt": "2024-02-15T12:30:05.000Z",
+            "user": {
+                "_id": "2",
+                "name": "Bot"
+            },
+            "_id": "67b027ce289c648830bde77d"
+        }
+    ],
+    "createdAt": "2025-02-15T05:30:41.003Z",
+    "updatedAt": "2025-02-15T05:36:14.369Z",
+    "__v": 1
+}
+
+get all chat of the user: --get http://localhost:5500/chat       auth header
+result: [
+    {
+        "_id": "67b026802ba042173aabae7f",
+        "userId": "67ab20faccc2d8f67d689f71",
+        "messages": [
+            {
+                "user": {
+                    "_id": "1",
+                    "name": "You"
+                },
+                "id": "1708052946000",
+                "text": "Hello, how are you?",
+                "createdAt": "2024-02-15T12:30:00.000Z",
+                "_id": "67b026802ba042173aabae80"
+            },
+            {
+                "user": {
+                    "_id": "2",
+                    "name": "Bot"
+                },
+                "id": "1708052952000",
+                "text": "I'm doing great! How can I help?",
+                "createdAt": "2024-02-15T12:30:05.000Z",
+                "_id": "67b026802ba042173aabae81"
+            },
+            {
+                "user": {
+                    "_id": "1",
+                    "name": "You"
+                },
+                "id": "1708052946000",
+                "text": "next update for chat",
+                "createdAt": "2024-02-15T12:30:00.000Z",
+                "_id": "67b027ce289c648830bde77c"
+            },
+            {
+                "user": {
+                    "_id": "2",
+                    "name": "Bot"
+                },
+                "id": "1708052952000",
+                "text": "next updated chat response",
+                "createdAt": "2024-02-15T12:30:05.000Z",
+                "_id": "67b027ce289c648830bde77d"
+            }
+        ],
+        "createdAt": "2025-02-15T05:30:41.003Z",
+        "updatedAt": "2025-02-15T05:36:14.369Z",
+        "__v": 1
+    }
+]
+
+get latest chat: use if necessary: get  http://localhost:5500/chat/latest     auth header
+{
+    "_id": "67b026802ba042173aabae7f",
+    "userId": "67ab20faccc2d8f67d689f71",
+    "messages": [
+        {
+            "user": {
+                "_id": "1",
+                "name": "You"
+            },
+            "id": "1708052946000",
+            "text": "Hello, how are you?",
+            "createdAt": "2024-02-15T12:30:00.000Z",
+            "_id": "67b026802ba042173aabae80"
+        },
+        {
+            "user": {
+                "_id": "2",
+                "name": "Bot"
+            },
+            "id": "1708052952000",
+            "text": "I'm doing great! How can I help?",
+            "createdAt": "2024-02-15T12:30:05.000Z",
+            "_id": "67b026802ba042173aabae81"
+        },
+        {
+            "user": {
+                "_id": "1",
+                "name": "You"
+            },
+            "id": "1708052946000",
+            "text": "next update for chat",
+            "createdAt": "2024-02-15T12:30:00.000Z",
+            "_id": "67b027ce289c648830bde77c"
+        },
+        {
+            "user": {
+                "_id": "2",
+                "name": "Bot"
+            },
+            "id": "1708052952000",
+            "text": "next updated chat response",
+            "createdAt": "2024-02-15T12:30:05.000Z",
+            "_id": "67b027ce289c648830bde77d"
+        }
+    ],
+    "createdAt": "2025-02-15T05:30:41.003Z",
+    "updatedAt": "2025-02-15T05:36:14.369Z",
+    "__v": 1
+}
+
+delete a chat: delete: http://localhost:5500/chat/67b026802ba042173aabae7f     auth header
+
 

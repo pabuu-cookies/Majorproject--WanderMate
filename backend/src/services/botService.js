@@ -1,20 +1,6 @@
-const axios = require("axios");
-require("dotenv").config();
 const translator = require("open-google-translator");
-const rasa_url = process.env.RASA_URL;
 
 class rasaService {
-  async sendMessage(message) {
-    try {
-      console.log(process.env.RASA_URL);
-      const results = await axios.post(rasa_url, { message });
-      return results.data;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
-
   async getSuggestions(location) {
     try {
       // Actionable tasks for specific locations in Nepal

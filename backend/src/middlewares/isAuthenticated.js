@@ -14,6 +14,7 @@ function authenticateToken(req, res, next) {
 
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
       if (err) {
+        console.log(err);
         return res
           .status(HttpMessage.FORBIDDEN.statusCode)
           .json({ message: HttpMessage.FORBIDDEN.message });

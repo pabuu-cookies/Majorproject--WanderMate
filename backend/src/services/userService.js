@@ -44,7 +44,7 @@ class UserService {
       const token = jwt.sign(
         { email: user.email, userId: user._id, role: user.role },
         SECRET_KEY,
-        { expiresIn: "1h" }
+        { expiresIn: "1d" }
       );
       return { user, token };
     } catch (error) {

@@ -390,4 +390,187 @@ get latest chat: use if necessary: get  http://localhost:5500/chat/latest     au
 
 delete a chat: delete: http://localhost:5500/chat/67b026802ba042173aabae7f     auth header
 
+accomodation: --post : http://localhost:5500/accomodation/    auth header
+body(json): {
+    "place":"Pashupatināth"   //space diyera input lekhda hunxa 
+}
+result: //result aauna chaii ali time nai lagxa hai, like yo wala case laii it took 1 min 23 sec.
+[
+    {
+        "name": "Hotel Crystal Pashupati\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.7\n8.7\nFabulous\n59 real reviews",
+        "reviewCount": "59 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/crystal-pashupati.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Shiva Shankar Hotel\nOpens in new window",
+        "address": "Pashupatināth",
+        "reviewScore": "Scored 7.4\n7.4\nGood\n224 real reviews",
+        "reviewCount": "224 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/shiva-shankar.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Nirakar\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.3\n8.3\nVery good\n26 real reviews",
+        "reviewCount": "26 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/nirakar.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Tapas\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.2\n8.2\nVery good\n12 real reviews",
+        "reviewCount": "12 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/tapas.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Kailash Kuti Inn\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.2\n8.2\nVery good\n116 real reviews",
+        "reviewCount": "116 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/kailash-kuti-inn.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "The Dwarika's Hotel\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 9.6\n9.6\nExceptional\n284 real reviews",
+        "reviewCount": "284 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/dwarika-s-kathmandu-village.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=6&hapos=6&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "OYO 400 Palagya Hotel Pvt Ltd\nOpens in new window",
+        "address": "Pashupatināth",
+        "reviewScore": "Scored 1.0\n1.0\nReview score\n1 real review",
+        "reviewCount": "1 real review",
+        "hotelLink": "https://www.booking.com/hotel/np/oyo-400-palagya-pvt-ltd.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=7&hapos=7&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "OYO 789 Hotel Shivam Plaza\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 5.1\n5.1\nReview score\n141 real reviews",
+        "reviewCount": "141 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/shivam-plaza.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=8&hapos=8&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "OYO 137 Hotel Pranisha Inn\nOpens in new window",
+        "address": "Pashupatināth",
+        "reviewScore": "Scored 6.4\n6.4\nReview score\n9 real reviews",
+        "reviewCount": "9 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/oyo-137-pranisha-inn.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=9&hapos=9&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Best Western Plus Kathmandu\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 10\n10\nExceptional\n1 real review",
+        "reviewCount": "1 real review",
+        "hotelLink": "https://www.booking.com/hotel/np/best-western-plus-kathmandu-kathmandu5.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Shraddha Palace\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 7.0\n7.0\nGood\n16 real reviews",
+        "reviewCount": "16 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/shraddha-palace-kathmandu.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Pashupati Darshan Hotel\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 6.2\n6.2\nReview score\n80 real reviews",
+        "reviewCount": "80 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/pashupati-darshan.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=12&hapos=12&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Grand View\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.0\n8.0\nVery good\n50 real reviews",
+        "reviewCount": "50 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/grand-view.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=13&hapos=13&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Pashupati Boutique Hotel & Spa\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 7.4\n7.4\nGood\n53 real reviews",
+        "reviewCount": "53 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/pashupati-boutique-spa.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=14&hapos=14&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Siraha dhanusa guest house\nOpens in new window",
+        "address": "Pashupatināth",
+        "reviewScore": "Scored 1.0\n1.0\nReview score\n2 real reviews",
+        "reviewCount": "2 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/siraha-dhanusa-guest-house.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=15&hapos=15&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Nilakantha Pvt. Ltd\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 7.5\n7.5\nGood\n60 real reviews",
+        "reviewCount": "60 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/nilakantha-pvt-ltd.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=16&hapos=16&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Om Bramha Hotel\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.6\n8.6\nFabulous\n104 real reviews",
+        "reviewCount": "104 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/om-bramha.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=17&hapos=17&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Everest Holiday Inn\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 7.6\n7.6\nGood\n345 real reviews",
+        "reviewCount": "345 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/everest-holiday-inn.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=18&hapos=18&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Nextdoor Kathmandu\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 9.4\n9.4\nSuperb\n9 real reviews",
+        "reviewCount": "9 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/nextdoor-kathmandu.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=19&hapos=19&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Dipjyoti\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.1\n8.1\nVery good\n31 real reviews",
+        "reviewCount": "31 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/dipjyoti.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=20&hapos=20&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Airport Holiday\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.4\n8.4\nVery good\n5 real reviews",
+        "reviewCount": "5 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/airport-holiday.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=21&hapos=21&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Everest Regency\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 6.5\n6.5\nReview score\n4 real reviews",
+        "reviewCount": "4 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/everest-regency-kathmandu2.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=22&hapos=22&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Pashupati View Hotel\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 6.3\n6.3\nReview score\n35 real reviews",
+        "reviewCount": "35 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/pashupati-view-kathmandu1.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=23&hapos=23&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Kathmandu Height Boutique Hotel\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 7.5\n7.5\nGood\n23 real reviews",
+        "reviewCount": "23 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/kathmandu-height-boutique-kathmandu1.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=24&hapos=24&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    },
+    {
+        "name": "Hotel Resunga Arjun\nOpens in new window",
+        "address": "Kathmandu",
+        "reviewScore": "Scored 8.0\n8.0\nVery good\n10 real reviews",
+        "reviewCount": "10 real reviews",
+        "hotelLink": "https://www.booking.com/hotel/np/resunga-arjun.en-gb.html?aid=304142&label=gen173nr-1FCAQoggJCE3NlYXJjaF9wYXN1cGF0aW5hdGhICVgEaKsBiAEBmAEJuAEXyAEM2AEB6AEB-AEDiAIBqAIDuAKcjcG9BsACAdICJDQ2ZmRmNzYxLWE4NjYtNGVhNi1iYjA0LTRmMjRlOThlNzQxMtgCBeACAQ&ucfs=1&arphpl=1&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=25&hapos=25&sr_order=popularity&srpvid=28e436ce11270195&srepoch=1739605675&from=searchresults"
+    }
+]
+
 

@@ -29,12 +29,15 @@ export default function HomePage({ navigation }) {
         >
           <Text style={styles.buttonText}>Chatbot</Text>
         </Pressable>
-        <Pressable style={styles.button} onPress={() => handlePress("Review")}>
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Review")}
+        >
           <Text style={styles.buttonText}>Review</Text>
         </Pressable>
         <Pressable
           style={styles.button}
-          onPress={() => handlePress("Accommodation")}
+          onPress={() => navigation.navigate("Accommodation")}
         >
           <Text style={styles.buttonText}>Accommodation</Text>
         </Pressable>

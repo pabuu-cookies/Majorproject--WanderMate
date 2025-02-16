@@ -7,6 +7,8 @@ import ChatScreen from "./chat";
 import ToDoListScreen2 from "./TDL2";
 import MapCall from "./map";
 import HireGuide from "./HireGuide";
+import AccommodationScreen from "./Accommodation";
+import ReviewsComponent from "./review";
 
 const Stack = createStackNavigator();
 
@@ -20,6 +22,8 @@ function AppNavigator() {
       <Stack.Screen name="ToDoList" component={ToDoListScreen2} />
       <Stack.Screen name="Maps" component={MapCall} />
       <Stack.Screen name="Guide" component={HireGuide} />
+      <Stack.Screen name="Accommodation" component={AccommodationScreen} />
+      <Stack.Screen name="Review" component={ReviewsComponent} />
     </Stack.Navigator>
   );
 }

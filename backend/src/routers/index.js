@@ -6,11 +6,13 @@ const userRouter = require("./userRouter");
 const todoRouter = require("./todoRouter");
 const accommodationRouter = require("./accomodation");
 const chatRouter = require("./chatRouter");
+const reviewRouter = require("./reviewRouter");
 
 router.use("/chat", chatRouter);
 router.use("/chatbot", chatbotRouter);
 router.use("/user", userRouter);
 router.use("/todo", todoRouter);
 router.use("/accomodation", accommodationRouter);
+router.use("/review", reviewRouter);
 
 module.exports = router;

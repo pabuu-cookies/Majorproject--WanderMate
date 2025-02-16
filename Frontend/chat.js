@@ -9,6 +9,7 @@ import {
   BackHandler,
 } from "react-native";
 import axios from "axios";
+import api from "./api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 
@@ -20,81 +21,20 @@ const ChatScreen = () => {
   const navigation = useNavigation();
   const [chatId, setChatId] = useState(null);
 
+  API_endpoint = "/chat";
+
   useEffect(() => {
-    const saveChatId = async (id) => {
-      try {
-        await AsyncStorage.setItem("chatId", id);
-      } catch (error) {
-        console.error("Error saving chatId:", error);
-      }
-    };
-
-    const loadChatId = async () => {
-      try {
-        const storedChatId = await AsyncStorage.getItem("chatId");
-        if (storedChatId) setChatId(storedChatId);
-      } catch (error) {
-        console.error("Error loading chatId:", error);
-      }
-    };
-
-    // const fetchSavedMessages = async () => {
-    //   try {
-    //     const token = await AsyncStorage.getItem("authToken");
-    //     if (!token) return;
-
-    //     const response = await axios.get("http://192.168.1.147:5500/latest", {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     });
-
-    //     console.log("Fetched Chat Response:", response.data);
-
-    //     if (!Array.isArray(response.data) || response.data.length === 0) {
-    //       console.error(
-    //         "Invalid chat data format or empty data:",
-    //         response.data
-    //       );
-    //       return;
-    //     }
-
-    //     const latestChat = response.data[response.data.length - 1];
-    //     if (!latestChat.messages || !Array.isArray(latestChat.messages)) {
-    //       console.error("Invalid messages format in chat object");
-    //       return;
-    //     }
-
-    //     const formattedMessages = latestChat.messages.map((msg) => ({
-    //       _id: msg._id,
-    //       text: msg.text,
-    //       createdAt: new Date(msg.createdAt),
-    //       user: msg.user,
-    //     }));
-
-    //     setMessages(formattedMessages);
-    //   } catch (error) {
-    //     console.error(
-    //       "Error fetching latest chat:",
-    //       error.response?.data || error.message
-    //     );
-    //   }
-    // };
     const fetchChat = async () => {
       try {
         const token = await AsyncStorage.getItem("authToken");
         if (!token) return;
 
-        const response = await axios.get("http://192.168.1.64:5500/chat", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const storedMessages = await AsyncStorage.getItem("messages");
 
-        if (response.data.length > 0) {
-          const latestChat = response.data[response.data.length - 1];
-          setChatId(latestChat._id); // Set the chat ID from backend
-          setMessages(latestChat.messages); // Load previous messages
+        if (storedMessages) {
+          setMessages(JSON.parse(storedMessages)); // Parse the stored messages
+        } else {
+          setMessages([]); // Ensure messages is always an array
         }
       } catch (error) {
         console.error("Error fetching chat:", error);
@@ -105,114 +45,64 @@ const ChatScreen = () => {
       try {
         const token = await AsyncStorage.getItem("authToken");
         if (token) {
+          console.log("got token", token);
           setAuthToken(token);
         }
       } catch (error) {
         console.error("Error retrieving auth token:", error);
       }
     };
-
-    // fetchSavedMessages();
     fetchChat();
     fetchToken();
-    const backAction = () => {
-      saveChatToBackend(chatId);
-      return true;
-    };
-    BackHandler.addEventListener("hardwareBackPress", backAction);
-
-    return () => {
-      BackHandler.removeEventListener("hardwareBackPress", backAction);
-    };
   }, []);
 
   // Function to send the message to the chatbot API
   const sendMessageToAPI = async (message) => {
-    console.log("object", authToken);
-    if (authToken) {
-      try {
-        const response = await axios.post(
-          "http://192.168.1.64:3000/chat",
-          { message },
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-              "Content-Type": "text/plain",
-            },
-            responseType: "text",
-          }
-        );
-        console.log("response", response.data);
-        const botMessage = {
-          _id: Math.random(), // Generate a random ID for the bot's message
-          text: response.data || "Sorry, I didn’t get that.", // Default response
-          createdAt: new Date(),
-          user: {
-            _id: 2, // Assuming 2 is the bot's user ID
-            name: "Bot",
+    if (!authToken) return;
+
+    try {
+      const response = await axios.post(
+        "http://192.168.1.64:3000/chat",
+        { message },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "text/plain",
           },
-        };
-
-        setMessages((previousMessages) => [...previousMessages, botMessage]);
-      } catch (error) {
-        console.error("Error sending message to API:", error);
-      }
-    }
-  };
-  const saveChatToBackend = async () => {
-    if (!authToken || messages.length === 0) return;
-
-    try {
-      if (!chatId) {
-        // If no chatId, create a new chat
-        const response = await axios.post(
-          "http://192.168.1.64:5500/chat",
-          { messages },
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        console.log("New Chat Created:", response.data);
-        setChatId(response.data._id); // Store new chatId
-      } else {
-        // Update the existing chat
-        await axios.patch(
-          `http://192.168.1.64:5500/chat/${chatId}`,
-          { messages },
-          {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        console.log("Chat Updated");
-      }
-    } catch (error) {
-      console.error(
-        "Error sending message:",
-        error.response ? error.response.data : error.message
+          responseType: "text",
+        }
       );
-    }
-  };
 
-  const storeMessagesToAsyncStorage = async (messages) => {
-    try {
-      await AsyncStorage.setItem("chatMessages", JSON.stringify(messages));
-      console.log("store bhayo" + messages);
+      const botMessage = {
+        _id: Math.random().toString(), // Ensure a valid ID
+        text: response.data || "Sorry, I didn’t get that.",
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: "Bot",
+        },
+      };
+
+      setMessages((prevMessages) => {
+        const newMessages = [...prevMessages, botMessage];
+
+        // Store entire updated messages array
+        AsyncStorage.setItem("messages", JSON.stringify(newMessages)).catch(
+          (error) => console.error("Error saving messages:", error)
+        );
+
+        return newMessages;
+      });
     } catch (error) {
-      console.error("Error saving messages to AsyncStorage", error);
+      console.error("Error sending message to API:", error);
     }
   };
 
   // Handle send button press
-  const onSendMessage = () => {
+  const onSendMessage = async () => {
     if (inputText.trim()) {
       const userMessage = {
-        _id: Math.random(),
+        _id: Date.now(), // Ensures unique ID
         text: inputText,
         createdAt: new Date(),
         user: {
@@ -220,13 +110,20 @@ const ChatScreen = () => {
           name: "You",
         },
       };
-      console.log(userMessage);
 
       setMessages((previousMessages) => {
         const newMessages = [...previousMessages, userMessage];
-        storeMessagesToAsyncStorage(newMessages);
+
+        // Store updated messages in AsyncStorage
+        AsyncStorage.setItem("messages", JSON.stringify(newMessages)).catch(
+          (error) => {
+            console.error("Error saving messages to AsyncStorage:", error);
+          }
+        );
+
         return newMessages;
       });
+
       sendMessageToAPI(inputText);
       setInputText("");
     }
@@ -258,7 +155,9 @@ const ChatScreen = () => {
         ref={flatListRef}
         data={messages}
         renderItem={renderItem}
-        keyExtractor={(item) => item._id.toString()}
+        keyExtractor={(item, index) =>
+          item && item._id ? item._id.toString() : index.toString()
+        }
         onContentSizeChange={onContentSizeChange}
       />
 

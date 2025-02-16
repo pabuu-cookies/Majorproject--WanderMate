@@ -1,3 +1,4 @@
+const Fuse = require("fuse.js");
 const Review = require("../models/reviewModel");
 const HttpMessage = require("../middlewares/HttpMessage");
 
@@ -11,9 +12,7 @@ class ReviewService {
     user,
   }) {
     try {
-      console.log(place, reviewText, user);
       if (!place && reviewText && user) {
-        console.log("place, reviewText and user are required!");
         throw HttpMessage.BAD_REQUEST;
       }
       const newReview = new Review({
@@ -46,10 +45,17 @@ class ReviewService {
 
   async getReviewsByPlace(place) {
     try {
-      const reviews = await Review.find({
-        place: { $regex: new RegExp(`^${place}$`, "i") }, // Case-insensitive search
-      }).populate("user", "name email");
-      return reviews;
+      const reviews = await Review.find().populate("user", "name email");
+      const fuse = new Fuse(reviews, {
+        includeScore: true,
+        threshold: 0.3,
+        keys: ["place"],
+      });
+
+      const result = fuse.search(place);
+      const matchedReviews = result.map((resultItem) => resultItem.item);
+
+      return matchedReviews;
     } catch (error) {
       throw error;
     }
@@ -72,7 +78,6 @@ class ReviewService {
       }
 
       if (updatedReview.user.toString() !== userId) {
-        console.log("User unauthorized to update this chat:", userId);
         throw HttpMessage.FORBIDDEN;
       }
       const update = await Review.findByIdAndUpdate(reviewId, updateData, {
@@ -91,11 +96,10 @@ class ReviewService {
         throw HttpMessage.NOT_FOUND;
       }
       if (deletedReview.user.toString() !== userId) {
-        console.log("User unauthorized to update this chat:", userId);
         throw HttpMessage.FORBIDDEN;
       }
       await Review.findByIdAndDelete(reviewId);
-      return "deleted review sucessfully!";
+      return "deleted review successfully!";
     } catch (error) {
       throw error;
     }

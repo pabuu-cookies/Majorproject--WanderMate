@@ -573,4 +573,104 @@ result: //result aauna chaii ali time nai lagxa hai, like yo wala case laii it t
     }
 ]
 
+review create: --post http://localhost:5500/review/ --auth token 
+body(json):{
+    "place":"pasupatinath",
+    "rating":5,
+    "visitDate":"2024-10-12",
+    "visitType":"solo",
+    "reviewText":"very serene and peaceful!!"
+}
+result:
+{
+    "place": "pasupatinath",
+    "rating": 5,
+    "visitDate": "2024-10-12T00:00:00.000Z",
+    "visitType": "solo",
+    "reviewText": "very serene and peaceful!!",
+    "user": "67ab20faccc2d8f67d689f71",
+    "_id": "67b196396590cf9e25ec5978",
+    "createdAt": "2025-02-16T07:39:37.058Z",
+    "updatedAt": "2025-02-16T07:39:37.058Z",
+    "__v": 0
+}
+
+edit review: --patch: http://localhost:5500/review/{reviewId}     -authtoken 
+body(json){
+    "reviewText": "real spooky!!"
+}
+result:
+{
+    "_id": "67b196396590cf9e25ec5978",
+    "place": "pasupatinath",
+    "rating": 5,
+    "visitDate": "2024-10-12T00:00:00.000Z",
+    "visitType": "solo",
+    "reviewText": "real spooky!!",
+    "user": "67ab20faccc2d8f67d689f71",
+    "createdAt": "2025-02-16T07:39:37.058Z",
+    "updatedAt": "2025-02-16T07:49:26.495Z",
+    "__v": 0
+}
+
+get all reviw: get: http://localhost:5500/review/all   --authtoken 
+result:
+[
+    {
+        "_id": "67b196396590cf9e25ec5978",
+        "place": "pasupatinath",
+        "rating": 5,
+        "visitDate": "2024-10-12T00:00:00.000Z",
+        "visitType": "solo",
+        "reviewText": "very serene and peaceful!!",
+        "user": {
+            "_id": "67ab20faccc2d8f67d689f71",
+            "name": "pabitra",
+            "email": "pabitra@example.com"
+        },
+        "createdAt": "2025-02-16T07:39:37.058Z",
+        "updatedAt": "2025-02-16T07:39:37.058Z",
+        "__v": 0
+    },
+    {
+        "_id": "67b1968c6590cf9e25ec597a",
+        "place": "katymandu durbar square",
+        "rating": 5,
+        "visitDate": "2024-10-12T00:00:00.000Z",
+        "visitType": "couple",
+        "reviewText": "fun!!",
+        "user": {
+            "_id": "67ab20faccc2d8f67d689f71",
+            "name": "pabitra",
+            "email": "pabitra@example.com"
+        },
+        "createdAt": "2025-02-16T07:41:00.780Z",
+        "updatedAt": "2025-02-16T07:41:00.780Z",
+        "__v": 0
+    }
+]
+
+get review by place : get: http://localhost:5500/review/place/?place=pasupatinath    --auth token 
+result:
+[
+    {
+        "_id": "67b196396590cf9e25ec5978",
+        "place": "pasupatinath",
+        "rating": 5,
+        "visitDate": "2024-10-12T00:00:00.000Z",
+        "visitType": "solo",
+        "reviewText": "very serene and peaceful!!",
+        "user": {
+            "_id": "67ab20faccc2d8f67d689f71",
+            "name": "pabitra",
+            "email": "pabitra@example.com"
+        },
+        "createdAt": "2025-02-16T07:39:37.058Z",
+        "updatedAt": "2025-02-16T07:39:37.058Z",
+        "__v": 0
+    }
+]
+
+delete review: delete: http://localhost:5500/review/{reviewId} --auth token 
+result: "deleted review sucessfully!"
 

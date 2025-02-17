@@ -11,6 +11,7 @@ GO TO nlpchatbot FOLDER: command: npm install
 nlp.js 
 install dependencies  npm install express body-parser cors node-nlp
 npm install @nlpjs/nlp @nlpjs/lang-en-min 
+npm install fuse.js
 node server.js
 Training complete!
 Server is running on http://localhost:3000

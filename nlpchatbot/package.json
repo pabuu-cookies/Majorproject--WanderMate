@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js",
-    "train": "node bot.js",
+    "start": "node server.js",
+    "train": "node server.js",
     "test": "echo \"No test defined yet.\""
   },
   "keywords": [
@@ -19,10 +19,12 @@
     "@nlpjs/basic": "^4.23.1",
     "@nlpjs/lang-en-min": "^5.0.0-alpha.5",
     "@nlpjs/nlp": "^5.0.0-alpha.5",
+    "axios": "^1.8.1",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "fuse.js": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
     "node-nlp": "^3.10.2"
   }
 }

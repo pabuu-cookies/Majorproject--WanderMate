@@ -62,12 +62,12 @@ const ChatScreen = () => {
 
     try {
       const response = await axios.post(
-        "http://192.168.1.64:3000/chat",
+        "http://192.168.251.62:3000/chat",
         { message },
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
-            "Content-Type": "text/plain",
+            "Content-Type": "application/json",
           },
           responseType: "text",
         }

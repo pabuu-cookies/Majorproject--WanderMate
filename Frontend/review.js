@@ -124,9 +124,26 @@ const ReviewsComponent = () => {
           )}
         </View>
       }
+      // ListFooterComponent={
+      //   <View>
+      //     {isPlaceSearched && (
+      //       <View style={styles.section}>
+      //         <Text style={styles.sectionTitle}>Reviews for {placeName}</Text>
+      //         <FlatList
+      //           data={reviews}
+      //           keyExtractor={(item) => item.id.toString()}
+      //           renderItem={({ item }) => <ReviewItem item={item} />}
+      //           ListEmptyComponent={
+      //             <Text>No reviews yet. Be the first to review!</Text>
+      //           }
+      //           scrollEnabled={false}
+      //         />
+      //       </View>
+      //     )}
+
       ListFooterComponent={
         <View>
-          {isPlaceSearched && (
+          {isPlaceSearched && placeName.toLowerCase() === "pashupatinath" && (
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Reviews for {placeName}</Text>
               <FlatList

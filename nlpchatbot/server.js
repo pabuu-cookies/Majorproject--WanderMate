@@ -4,6 +4,7 @@ const { NlpManager } = require('node-nlp');
 const Fuse = require('fuse.js');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const axios = require('axios'); // For ChatGPT API
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Environment variables
 const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || 'your_openai_api_key';
 const NLP_SCORE_THRESHOLD = 0.6;
 const FUZZY_MATCH_THRESHOLD = 0.4;
 
@@ -53,24 +55,57 @@ try {
 const fuseOptions = { includeScore: true, threshold: FUZZY_MATCH_THRESHOLD, keys: ['examples'] };
 const fuse = new Fuse(trainingData.intents, fuseOptions);
 
-// Store session context in memory (instead of Redis)
+// Store session context in memory
 const sessionMemory = {}; // Object to store user sessions
 
 // JWT Authentication Middleware
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers.authorization;
+    console.log('Authorization Header:', authHeader);
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        console.log('❌ Unauthorized: No valid token');
         return res.status(401).json({ error: 'Unauthorized: No valid token' });
     }
 
-    jwt.verify(authHeader.split(' ')[1], JWT_SECRET, (err, decoded) => {
-        if (err) return res.status(403).json({ error: 'Forbidden: Invalid token' });
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+        if (err) {
+            console.log(`❌ JWT Error: ${err.message}`);
+            return res.status(403).json({ error: 'Forbidden: Invalid token' });
+        }
         req.user = decoded;
         next();
     });
 };
 
-// Train the NLP model and start the server
+// OpenAI API Function
+async function callChatGPT(userInput) {
+    const API_URL = 'https://api.openai.com/v1/chat/completions';
+
+    try {
+        console.log("input to chatgpt..", userInput);
+        const response = await axios.post(API_URL, {
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: userInput }],
+            max_tokens: 100
+        }, {
+            headers: {
+                'Authorization': `Bearer ${OPENAI_API_KEY}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        return response.data.choices[0].message.content;
+    } catch (error) {
+       
+        console.error("❌ Error calling ChatGPT API:", error.message);
+        return "I'm having trouble understanding you right now. Please try again later.";
+    }
+}
+
+// Train NLP model and start server
 (async () => {
     if (fs.existsSync('./model.nlp')) {
         await manager.load('./model.nlp');
@@ -114,15 +149,13 @@ const authenticateToken = (req, res, next) => {
             let session = sessionMemory[userId];
             let intentToUse = null;
 
-            // Check if the user is asking a follow-up question
+            // Check for follow-up questions
             const lastIntent = session.context.lastIntent;
 
             if (lastIntent) {
-                // Find the previous intent in training data
                 const previousIntent = trainingData.intents.find(i => i.intent === lastIntent);
                 
                 if (previousIntent && previousIntent.follow_up_questions) {
-                    // Check if the user’s question matches any follow-up examples
                     const followUp = previousIntent.follow_up_questions.find(f => 
                         f.examples.some(e => userMessage.toLowerCase().includes(e.toLowerCase()))
                     );
@@ -133,10 +166,9 @@ const authenticateToken = (req, res, next) => {
                 }
             }
 
-            // If no follow-up intent is detected, perform normal NLP processing
+            // NLP processing if no follow-up detected
             if (!intentToUse) {
                 const nlpResponse = await manager.process('en', userMessage);
-
                 if (nlpResponse.intent && nlpResponse.score > NLP_SCORE_THRESHOLD) {
                     intentToUse = nlpResponse.intent;
                 } else {
@@ -144,16 +176,25 @@ const authenticateToken = (req, res, next) => {
                 }
             }
 
-            // Retrieve the intent's response
+            // Retrieve intent's response
             const intent = trainingData.intents.find(i => i.intent === intentToUse);
-            let response = "Sorry, I didn't understand that. Can you rephrase?";
 
-            if (intent) {
-                response = intent.responses[Math.floor(Math.random() * intent.responses.length)];
-                session.context.lastIntent = intentToUse; // Update last intent
+            if (!intent) {
+                console.log("⚠ No matching intent found. Falling back to ChatGPT.");
+                const chatGPTResponse = await callChatGPT(userMessage);
+                return res.json({ reply: chatGPTResponse });
+            }
+
+            let response = intent.responses[Math.floor(Math.random() * intent.responses.length)];
+
+            // If fallback intent, call ChatGPT
+            if (intent.intent === "fallback") {
+                console.log("🤖 No intent match. Calling ChatGPT...");
+                response = await callChatGPT(userMessage);
             }
 
             // Update session history
+            session.context.lastIntent = intentToUse;
             session.history.push({ userMessage, response });
             session.lastActivity = Date.now();
 

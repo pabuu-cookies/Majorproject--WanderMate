@@ -88,26 +88,6 @@
             "domain": "default",
             "intent": "fallback"
           },
-          "do,i,not,understand": {
-            "domain": "default",
-            "intent": "fallback"
-          },
-          "about,are,talk,what,you": {
-            "domain": "default",
-            "intent": "fallback"
-          },
-          "can,explain,that,you": {
-            "domain": "default",
-            "intent": "fallback"
-          },
-          "am,confus,i": {
-            "domain": "default",
-            "intent": "fallback"
-          },
-          "doe,mean,that,what": {
-            "domain": "default",
-            "intent": "fallback"
-          },
           "are,how,you": {
             "domain": "default",
             "intent": "ask_how_are_you"
@@ -320,30 +300,6 @@
             "domain": "default",
             "intent": "kathmandu_durbar_square"
           },
-          "durbar,is,kathmandu,squar,what": {
-            "domain": "default",
-            "intent": "kathmandu_durbar_square"
-          },
-          "durbar,is,kathmandu,locat,squar,where": {
-            "domain": "default",
-            "intent": "kathmandu_durbar_square"
-          },
-          "durbar,import,is,kathmandu,squar,whi": {
-            "domain": "default",
-            "intent": "kathmandu_durbar_square"
-          },
-          "durvar,kathmandu,squar": {
-            "domain": "default",
-            "intent": "kathmandu_durbar_square"
-          },
-          "durbar,ktm,squar": {
-            "domain": "default",
-            "intent": "kathmandu_durbar_square"
-          },
-          "basantapur": {
-            "domain": "default",
-            "intent": "kathmandu_durbar_square"
-          },
           "about,me,pashupatinath,tell": {
             "domain": "default",
             "intent": "about_pashupatinath"
@@ -357,7 +313,6 @@
             "intent": "about_pashupatinath"
           },
           "pashupatinath": {
-          "pashupatinath": {
             "domain": "default",
             "intent": "about_pashupatinath"
           },
@@ -370,58 +325,36 @@
             "intent": "about_boudhanath"
           },
           "boudhanath": {
-          "boudhanath": {
             "domain": "default",
             "intent": "about_boudhanath"
           },
           "boudha": {
-          "boudha": {
             "domain": "default",
             "intent": "about_boudhanath"
           },
-          "bouddha": {
           "bouddha": {
             "domain": "default",
             "intent": "about_boudhanath"
           },
           "about,me,swayambhunath,tell": {
             "domain": "default",
-            "intent": "about_swayambhunath"
+            "intent": "swayambhunath"
           },
           "is,swayambhunath,what": {
             "domain": "default",
-            "intent": "about_swayambhunath"
+            "intent": "swayambhunath"
           },
           "swayambhunath": {
-          "swayambhunath": {
             "domain": "default",
-            "intent": "about_swayambhunath"
+            "intent": "swayambhunath"
           },
           "swayambhu": {
-          "swayambhu": {
             "domain": "default",
-            "intent": "about_swayambhunath"
+            "intent": "swayambhunath"
           },
           "monkey,templ": {
-          "monkey,templ": {
             "domain": "default",
-            "intent": "about_swayambhunath"
-          },
-          "durbar,is,patan,squar,what": {
-            "domain": "default",
-            "intent": "patan_durbar_square"
-          },
-          "durbar,is,locat,patan,squar,where": {
-            "domain": "default",
-            "intent": "patan_durbar_square"
-          },
-          "durbar,import,is,patan,squar,whi": {
-            "domain": "default",
-            "intent": "patan_durbar_square"
-          },
-          "durbar,patan,squar": {
-            "domain": "default",
-            "intent": "patan_durbar_square"
+            "intent": "swayambhunath"
           },
           "durbar,is,patan,squar,what": {
             "domain": "default",
@@ -443,7 +376,6 @@
         "intentDict": {
           "greeting": "default",
           "fallback": "default",
-          "fallback": "default",
           "ask_how_are_you": "default",
           "ask_name": "default",
           "ask_capabilities": "default",
@@ -459,12 +391,9 @@
           "hiking_spots_kathmandu": "default",
           "about_bhaktapur": "default",
           "kathmandu_durbar_square": "default",
-          "kathmandu_durbar_square": "default",
           "about_pashupatinath": "default",
           "about_boudhanath": "default",
-          "about_swayambhunath": "default",
-          "patan_durbar_square": "default"
-          "about_swayambhunath": "default",
+          "swayambhunath": "default",
           "patan_durbar_square": "default"
         },
         "useStemDict": true,
@@ -534,51 +463,6 @@
                   "what",
                   "is",
                   "up"
-                ]
-              },
-              {
-                "intent": "fallback",
-                "tokens": [
-                  "i",
-                  "do",
-                  "not",
-                  "understand"
-                ]
-              },
-              {
-                "intent": "fallback",
-                "tokens": [
-                  "what",
-                  "are",
-                  "you",
-                  "talk",
-                  "about"
-                ]
-              },
-              {
-                "intent": "fallback",
-                "tokens": [
-                  "can",
-                  "you",
-                  "explain",
-                  "that"
-                ]
-              },
-              {
-                "intent": "fallback",
-                "tokens": [
-                  "i",
-                  "am",
-                  "confus"
-                ]
-              },
-              {
-                "intent": "fallback",
-                "tokens": [
-                  "what",
-                  "doe",
-                  "that",
-                  "mean"
                 ]
               },
               {
@@ -1145,60 +1029,6 @@
                 ]
               },
               {
-                "intent": "kathmandu_durbar_square",
-                "tokens": [
-                  "what",
-                  "is",
-                  "kathmandu",
-                  "durbar",
-                  "squar"
-                ]
-              },
-              {
-                "intent": "kathmandu_durbar_square",
-                "tokens": [
-                  "where",
-                  "is",
-                  "kathmandu",
-                  "durbar",
-                  "squar",
-                  "locat"
-                ]
-              },
-              {
-                "intent": "kathmandu_durbar_square",
-                "tokens": [
-                  "whi",
-                  "is",
-                  "kathmandu",
-                  "durbar",
-                  "squar",
-                  "import"
-                ]
-              },
-              {
-                "intent": "kathmandu_durbar_square",
-                "tokens": [
-                  "kathmandu",
-                  "durvar",
-                  "squar"
-                ]
-              },
-              {
-                "intent": "kathmandu_durbar_square",
-                "tokens": [
-                  "ktm",
-                  "durbar",
-                  "squar"
-                ]
-              },
-              {
-                "intent": "kathmandu_durbar_square",
-                "tokens": [
-                  "basantapur"
-                ]
-              },
-              {
                 "intent": "about_pashupatinath",
                 "tokens": [
                   "tell",
@@ -1259,18 +1089,16 @@
                 "intent": "about_boudhanath",
                 "tokens": [
                   "boudha"
-                  "boudha"
                 ]
               },
               {
                 "intent": "about_boudhanath",
                 "tokens": [
                   "bouddha"
-                  "bouddha"
                 ]
               },
               {
-                "intent": "about_swayambhunath",
+                "intent": "swayambhunath",
                 "tokens": [
                   "tell",
                   "me",
@@ -1279,7 +1107,7 @@
                 ]
               },
               {
-                "intent": "about_swayambhunath",
+                "intent": "swayambhunath",
                 "tokens": [
                   "what",
                   "is",
@@ -1287,63 +1115,20 @@
                 ]
               },
               {
-                "intent": "about_swayambhunath",
+                "intent": "swayambhunath",
                 "tokens": [
                   "swayambhunath"
                 ]
               },
               {
-                "intent": "about_swayambhunath",
+                "intent": "swayambhunath",
                 "tokens": [
                   "swayambhu"
-                  "swayambhu"
                 ]
               },
               {
-                "intent": "about_swayambhunath",
+                "intent": "swayambhunath",
                 "tokens": [
-                  "monkey",
-                  "templ"
-                ]
-              },
-              {
-                "intent": "patan_durbar_square",
-                "tokens": [
-                  "what",
-                  "is",
-                  "patan",
-                  "durbar",
-                  "squar"
-                ]
-              },
-              {
-                "intent": "patan_durbar_square",
-                "tokens": [
-                  "where",
-                  "is",
-                  "patan",
-                  "durbar",
-                  "squar",
-                  "locat"
-                ]
-              },
-              {
-                "intent": "patan_durbar_square",
-                "tokens": [
-                  "whi",
-                  "is",
-                  "patan",
-                  "durbar",
-                  "squar",
-                  "import"
-                ]
-              },
-              {
-                "intent": "patan_durbar_square",
-                "tokens": [
-                  "patan",
-                  "durbar",
-                  "squar"
                   "monkey",
                   "templ"
                 ]
@@ -1399,8 +1184,6 @@
               "even": 1,
               "what": 26,
               "is": 21,
-              "what": 26,
-              "is": 21,
               "up": 1,
               "i": 5,
               "do": 3,
@@ -1440,7 +1223,6 @@
               "known": 2,
               "for": 2,
               "the": 13,
-              "the": 13,
               "histori": 2,
               "of": 2,
               "when": 1,
@@ -1448,7 +1230,6 @@
               "found": 1,
               "climat": 1,
               "like": 2,
-              "in": 12,
               "in": 12,
               "weather": 1,
               "best": 3,
@@ -1458,7 +1239,6 @@
               "cultur": 3,
               "tradit": 1,
               "top": 1,
-              "attract": 2,
               "attract": 2,
               "should": 2,
               "place": 1,
@@ -1471,34 +1251,14 @@
               "unesco": 2,
               "which": 1,
               "locat": 3,
-              "locat": 3,
               "hike": 3,
               "spot": 1,
               "near": 2,
-              "where": 3,
               "where": 3,
               "around": 1,
               "suggest": 1,
               "destin": 1,
               "bhaktapur": 5,
-              "key": 1,
-              "describ": 1,
-              "durbar": 8,
-              "squar": 9,
-              "whi": 2,
-              "import": 2,
-              "durvar": 1,
-              "ktm": 1,
-              "basantapur": 1,
-              "pashupatinath": 4,
-              "boudhanath": 3,
-              "boudha": 1,
-              "bouddha": 1,
-              "swayambhunath": 3,
-              "swayambhu": 1,
-              "monkey": 1,
-              "templ": 1,
-              "patan": 4
               "key": 1,
               "describ": 1,
               "durbar": 8,
@@ -1560,22 +1320,8 @@
                     "do": {},
                     "not": {},
                     "understand": {},
-                    "i": {},
-                    "do": {},
-                    "not": {},
-                    "understand": {},
                     "are": {},
                     "you": {},
-                    "talk": {},
-                    "about": {},
-                    "can": {},
-                    "explain": {},
-                    "that": {},
-                    "am": {},
-                    "confus": {},
-                    "doe": {},
-                    "mean": {},
-                    "how": {},
                     "talk": {},
                     "about": {},
                     "can": {},
@@ -1653,22 +1399,8 @@
                     "durvar": {},
                     "ktm": {},
                     "basantapur": {},
-                    "durbar": {},
-                    "squar": {},
-                    "whi": {},
-                    "import": {},
-                    "durvar": {},
-                    "ktm": {},
-                    "basantapur": {},
                     "pashupatinath": {},
                     "boudhanath": {},
-                    "boudha": {},
-                    "bouddha": {},
-                    "swayambhunath": {},
-                    "swayambhu": {},
-                    "monkey": {},
-                    "templ": {},
-                    "patan": {}
                     "boudha": {},
                     "bouddha": {},
                     "swayambhunath": {},
@@ -2672,16 +2404,7 @@
                     },
                     "world_heritage_sites_kathmandu": {
                       "bias": -0.794069396,
-                      "bias": -0.794069396,
                       "weights": {
-                        "what": -0.879810452,
-                        "is": -0.117905609,
-                        "i": -0.313588232,
-                        "do": -0.084630482,
-                        "are": 1.250449538,
-                        "you": -0.396500975,
-                        "talk": -0.071373388,
-                        "about": -0.619433224,
                         "what": -0.879810452,
                         "is": -0.117905609,
                         "i": -0.313588232,
@@ -2730,58 +2453,9 @@
                         "spot": -0.448802918,
                         "near": -0.66886425,
                         "where": -0.724594831,
-                        "how": -0.205756068,
-                        "tell": -0.358006805,
-                        "me": -0.548059821,
-                        "who": -0.093282335,
-                        "kathmandu": 0.584091961,
-                        "give": -0.190053016,
-                        "some": -0.410114378,
-                        "inform": -0.190053016,
-                        "known": -0.087811984,
-                        "for": -0.087811984,
-                        "the": -0.526635647,
-                        "histori": -0.095996603,
-                        "of": -0.095996603,
-                        "when": -0.097744562,
-                        "was": -0.097744562,
-                        "found": -0.097744562,
-                        "climat": -0.318300784,
-                        "like": -0.318300784,
-                        "in": 1.414260745,
-                        "weather": -0.3228347,
-                        "best": -0.448802918,
-                        "visit": -0.006332409,
-                        "cultur": -0.546386898,
-                        "tradit": -0.503265202,
-                        "top": -0.364509344,
-                        "attract": -0.683613777,
-                        "should": -0.008592061,
-                        "cuisin": -0.005676006,
-                        "eat": -0.002259649,
-                        "world": 3.348978043,
-                        "heritag": 3.348978043,
-                        "site": 4.753666878,
-                        "unesco": 2.90181303,
-                        "which": 1.404689074,
-                        "locat": 0.985090911,
-                        "hike": -0.973860383,
-                        "spot": -0.448802918,
-                        "near": -0.66886425,
-                        "where": -0.724594831,
                         "around": -0.304996133,
                         "suggest": -0.220061377,
                         "destin": -0.220061377,
-                        "bhaktapur": -1.190749526,
-                        "key": -0.319104373,
-                        "durbar": -0.880014539,
-                        "squar": -0.967242718,
-                        "whi": -0.136291534,
-                        "import": -0.136291534,
-                        "durvar": -0.087228142,
-                        "pashupatinath": -0.248040363,
-                        "boudhanath": -0.197840363,
-                        "swayambhunath": -0.139099628
                         "bhaktapur": -1.190749526,
                         "key": -0.319104373,
                         "durbar": -0.880014539,
@@ -3199,7 +2873,7 @@
                         "patan": -0.849791408
                       }
                     },
-                    "about_swayambhunath": {
+                    "swayambhunath": {
                       "bias": 1.16571065,
                       "weights": {
                         "hi": -1.218817711,
@@ -3413,26 +3087,6 @@
       [
         "en",
         "What's up"
-      ],
-      [
-        "en",
-        "I don't understand"
-      ],
-      [
-        "en",
-        "What are you talking about?"
-      ],
-      [
-        "en",
-        "Can you explain that?"
-      ],
-      [
-        "en",
-        "I'm confused"
-      ],
-      [
-        "en",
-        "What does that mean?"
       ],
       [
         "en",
@@ -3693,16 +3347,13 @@
       [
         "en",
         "Boudhanath"
-        "Boudhanath"
       ],
       [
         "en",
         "boudha"
-        "boudha"
       ],
       [
         "en",
-        "bouddha"
         "bouddha"
       ],
       [
@@ -3716,32 +3367,13 @@
       [
         "en",
         "Swayambhunath"
-        "Swayambhunath"
       ],
       [
         "en",
         "swayambhu"
-        "swayambhu"
       ],
       [
         "en",
-        "monkey temple"
-      ],
-      [
-        "en",
-        "What is Patan Durbar Square?"
-      ],
-      [
-        "en",
-        "Where is Patan Durbar Square located?"
-      ],
-      [
-        "en",
-        "Why is Patan Durbar Square important?"
-      ],
-      [
-        "en",
-        "Patan Durbar Square"
         "monkey temple"
       ],
       [
@@ -3789,17 +3421,6 @@
       "greeting": [
         {
           "response": "Hello! How can I assist you today?"
-        }
-      ],
-      "fallback": [
-        {
-          "response": "I'm sorry, I didn't understand that. Can you rephrase?"
-        },
-        {
-          "response": "Could you please clarify?"
-        },
-        {
-          "response": "I'm not sure I follow. Can you provide more details?"
         }
       ],
       "fallback": [
@@ -3876,7 +3497,6 @@
       "hiking_spots_kathmandu": [
         {
           "response": "Kathmandu offers access to stunning hiking trails. Popular hiking spots near the city include: \n1. **Nagarkot** – Known for sunrise views over the Himalayas. \n2. **Shivapuri National Park** – A serene forested area with trails leading to Shivapuri Peak. \n3. **Phulchowki** – The highest hill around the valley, offering beautiful views and diverse flora. \n4. **Chandragiri Hills** – Accessible by both cable car and hiking, with breathtaking views of the Kathmandu Valley and surrounding peaks. \nThese spots are ideal for nature lovers and adventurers."
-          "response": "Kathmandu offers access to stunning hiking trails. Popular hiking spots near the city include: \n1. **Nagarkot** – Known for sunrise views over the Himalayas. \n2. **Shivapuri National Park** – A serene forested area with trails leading to Shivapuri Peak. \n3. **Phulchowki** – The highest hill around the valley, offering beautiful views and diverse flora. \n4. **Chandragiri Hills** – Accessible by both cable car and hiking, with breathtaking views of the Kathmandu Valley and surrounding peaks. \nThese spots are ideal for nature lovers and adventurers."
         }
       ],
       "about_bhaktapur": [
@@ -3889,31 +3509,19 @@
           "response": "Kathmandu Durbar Square (Basantapur) is a historic site in the heart of Kathmandu, known for its palaces, temples, and courtyards. It is located in central Kathmandu, near the Thamel area. It was the royal palace of the Malla kings and later the Shah dynasty, serving as the center of administration and culture."
         }
       ],
-      "kathmandu_durbar_square": [
-        {
-          "response": "Kathmandu Durbar Square (Basantapur) is a historic site in the heart of Kathmandu, known for its palaces, temples, and courtyards. It is located in central Kathmandu, near the Thamel area. It was the royal palace of the Malla kings and later the Shah dynasty, serving as the center of administration and culture."
-        }
-      ],
       "about_pashupatinath": [
         {
-          "response": "The Pashupatinath Temple (Nepali: पशुपतिनाथ मन्दिर) is a Hindu temple dedicated to Pashupati, a form of Shiva. It is located in Kathmandu, Nepal, on the bank of the Bagmati River. The temple was classified as a World Heritage Site in 1979. This 'extensive Hindu temple precinct' is a 'sprawling collection of temples, ashrams, images and inscriptions raised over the centuries along the banks of the sacred Bagmati river', and is one of seven monument groups in UNESCO's designation of Kathmandu Valley."
           "response": "The Pashupatinath Temple (Nepali: पशुपतिनाथ मन्दिर) is a Hindu temple dedicated to Pashupati, a form of Shiva. It is located in Kathmandu, Nepal, on the bank of the Bagmati River. The temple was classified as a World Heritage Site in 1979. This 'extensive Hindu temple precinct' is a 'sprawling collection of temples, ashrams, images and inscriptions raised over the centuries along the banks of the sacred Bagmati river', and is one of seven monument groups in UNESCO's designation of Kathmandu Valley."
         }
       ],
       "about_boudhanath": [
         {
           "response": "Boudhanath Stupa is one of the largest stupas in the world and a UNESCO World Heritage Site. It is a significant pilgrimage site for Tibetan Buddhists.It is a stupa and major spiritual landmark seen as the embodiment of the enlightened mind of all the Buddhas [who follow the Buddhism religion]."
-          "response": "Boudhanath Stupa is one of the largest stupas in the world and a UNESCO World Heritage Site. It is a significant pilgrimage site for Tibetan Buddhists.It is a stupa and major spiritual landmark seen as the embodiment of the enlightened mind of all the Buddhas [who follow the Buddhism religion]."
         }
       ],
-      "about_swayambhunath": [
+      "swayambhunath": [
         {
           "response": "Swayambhunath, also known as the Monkey Temple, is an ancient religious complex atop a hill in the Kathmandu Valley. It is a UNESCO World Heritage Site and a sacred site for both Buddhists and Hindus."
-        }
-      ],
-      "patan_durbar_square": [
-        {
-          "response": "Patan Durbar Square is a historic site in the heart of Patan, known for its temples, palaces, and courtyards."
         }
       ],
       "patan_durbar_square": [

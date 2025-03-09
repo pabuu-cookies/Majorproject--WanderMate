@@ -71,6 +71,18 @@
             ]
         },
         {
+            "intent": "festivals_in_nepal",
+            "examples": [
+                "What are the major festivals in Nepal?", "festivals", "festival", "festival in nepal",
+                "Tell me about Nepalese festivals",
+                "List some famous festivals celebrated in Nepal",
+                "Which festivals are celebrated in Nepal?"
+            ],
+            "responses": [ "Dashain : The biggest Hindu festival in Nepal, celebrating the victory of good over evil. It lasts for 15 days and involves family gatherings, worship, and receiving blessings.\n  Tihar : Also known as the festival of lights, it is a five-day celebration that honors crows, dogs, cows, and brothers. Houses are decorated with oil lamps and rangoli. \n Holi: The festival of colors, celebrated with water balloons and colored powders, marking the arrival of spring. \n Teej: A festival for women, where they fast and pray for the well-being of their husbands or future spouses, dancing and singing traditional songs. \n Indra Jatra: A traditional festival in Kathmandu honoring Lord Indra, the god of rain, with chariot processions and masked dances. \n Buddha Jayanti: The birth anniversary of Gautama Buddha, celebrated by Buddhists across Nepal with prayers and rituals at monasteries.\n Maha Shivaratri : A Hindu festival dedicated to Lord Shiva, celebrated with night-long vigils, offerings, and visits to temples like Pashupatinath.\n Gai Jatra: A festival of humor and remembrance where families who lost loved ones during the year parade with decorated cows in Kathmandu.\n Maghe Sankranti: A harvest festival marking the transition of the sun into Capricorn, celebrated with traditional foods like sesame sweets and yams."
+        ]
+    },
+           
+        {
             "intent": "farewell",
             "examples": [
                 "Bye",
@@ -85,7 +97,7 @@
         },
         {
             "intent": "ask_about_nearby_restaurants",
-            "examples":[ "restaurants", "restaurant", "wheere to eat?", "cafes", "lunch", "dinner", "breakfast"
+            "examples":[ "restaurants", "restaurant", "where to eat?", "cafes", "lunch", "dinner", "breakfast", "eat"
 ],
        "responses":[
         "There are a lot of restaurants in Kathmandu, Bhaktapur and Patan to try local nepali cuisine and international cuisine as well. You can use the map feature provided by our app to search nearby restaurants and cafes. It's better to go to local restaurants for better food experience."
@@ -112,7 +124,7 @@
                         "what else"
                     ],
                     "responses": [
-                        "Kathmandu is one of the oldest continuously inhabited places in the world, founded in the 2nd century AD. The valley was historically called the Nepal Mandala (the name for the cosmic elements of water Dha mandala in Newari, and cosmos), and has been the home of the Newar people, a cosmopolitan urban civilization in the Himalayan foothills.[citation needed] The city was the royal capital of the Kingdom of Nepal and hosts palaces, mansions and gardens built by the Nepali aristocracy. It has been home to the headquarters of the South Asian Association for Regional Cooperation (SAARC) since 1985.[7] Today, it is the seat of government of the Federal Democratic Republic of Nepal, established in 2008, and is part of Bagmati Province. Kathmandu is and has been for many years the centre of Nepal's history, art, culture, and economy. It has a multi-ethnic population within a Hindu majority. Religious and cultural festivities form a major part of the lives of people residing in Kathmandu. Tourism is an important part of the economy in the city. In 2013, Kathmandu was ranked third among the top ten upcoming travel destinations in the world by TripAdvisor, and ranked first in Asia. The city is considered the gateway to the Nepal Himalayas and is home to several World Heritage Sites: the Durbar Square, Swayambhu Mahachaitya, Bouddha and Pashupatinath.[9] Kathmandu valley is growing at 4 per cent per year according to the World Bank in 2010,[10] making it one of the fastest-growing metropolitan areas in South Asia, and the first region in Nepal to face the unprecedented challenges of rapid urbanization and modernization at a metropolitan scale. It is the largest metropolitan area located in the Himalayas."
+                        "Kathmandu is one of the oldest continuously inhabited places in the world, founded in the 2nd century AD. The valley was historically called the Nepal Mandala (the name for the cosmic elements of water Dha mandala in Newari, and cosmos), and has been the home of the Newar people, a cosmopolitan urban civilization in the Himalayan foothills.[citation needed] The city was the royal capital of the Kingdom of Nepal and hosts palaces, mansions and gardens built by the Nepali aristocracy. It has been home to the headquarters of the South Asian Association for Regional Cooperation (SAARC) since 1985. Today, it is the seat of government of the Federal Democratic Republic of Nepal, established in 2008, and is part of Bagmati Province. Kathmandu is and has been for many years the centre of Nepal's history, art, culture, and economy. It has a multi-ethnic population within a Hindu majority. Religious and cultural festivities form a major part of the lives of people residing in Kathmandu. Tourism is an important part of the economy in the city. In 2013, Kathmandu was ranked third among the top ten upcoming travel destinations in the world by TripAdvisor, and ranked first in Asia. The city is considered the gateway to the Nepal Himalayas and is home to several World Heritage Sites: the Durbar Square, Swayambhu Mahachaitya, Bouddha and Pashupatinath.[9] Kathmandu valley is growing at 4 per cent per year according to the World Bank in 2010,[10] making it one of the fastest-growing metropolitan areas in South Asia, and the first region in Nepal to face the unprecedented challenges of rapid urbanization and modernization at a metropolitan scale. It is the largest metropolitan area located in the Himalayas."
                     ]
                 },
                 {
@@ -160,7 +172,7 @@
                         "attractions"
                     ],
                     "responses": [
-                        "Kathmandu is home to many must-see attractions like Swayambhunath Stupa (Monkey Temple), Pashupatinath Temple, Boudhanath Stupa, and Durbar Square."
+                        "Kathmandu is home to many must-see attractions like Swayambhunath Stupa (Monkey Temple), Pashupatinath Temple, Boudhanath Stupa, and Durbar Square. Thamel Market is a major tourist destination in Kathmandu too."
                     ]
                 },
                 {
@@ -186,7 +198,7 @@
                 "What are the World Heritage Sites in Kathmandu?",
                 "Tell me about Kathmandu's UNESCO World Heritage Sites",
                 "Which UNESCO sites are located in Kathmandu?",
-                "world heritage site"
+                "world heritage site", "cultural sites"
             ],
             "responses": [
                 "Kathmandu is home to several UNESCO World Heritage Sites, including:\n\n1. **Kathmandu Durbar Square**: A historic royal palace complex located in the heart of Kathmandu. It includes the **Hanuman Dhoka Palace**, **Kumari Ghar** (the residence of the living goddess), and **Kasthamandap** (a wooden pavilion). The square is culturally significant, serving as the political and cultural heart of the city for centuries.\n\n2. **Swayambhunath Stupa (Monkey Temple)**: A sacred Buddhist site with panoramic views of the city. It features a large stupa with the eyes of Buddha and is surrounded by shrines, statues, and numerous monkeys. The site is a spiritual retreat and a significant landmark for both Buddhists and Hindus.\n\n3. **Boudhanath Stupa**: One of the largest Buddhist stupas in the world, located in the northeastern part of Kathmandu. It has a large white dome and gold spire, surrounded by monasteries, prayer wheels, and Tibetan shops. It is an important center for Tibetan Buddhism and a major pilgrimage site.\n\n4. **Pashupatinath Temple**: A revered Hindu temple complex dedicated to Lord Shiva, located on the banks of the Bagmati River. It includes cremation ghats and is considered one of the holiest Hindu sites. The main temple, a pagoda-style structure, houses the sacred Pashupatinath idol.\n\n5. **Bhaktapur Durbar Square**: Located in Bhaktapur, just outside Kathmandu, this square features medieval architecture and historical buildings, including the **Vatsala Temple**, **55-Window Palace**, and the **Bhairab Nath Temple**. It showcases the cultural richness of the Malla period.\n\n6. **Patan Durbar Square**: Situated in the city of Patan, this square is famous for its intricate temples, including the **Mahabouddha Temple** and the **Golden Temple**. The square reflects the artistry of the Malla kings and is known for its fine stonework and carvings.\n\n7. **Changu Narayan Temple**: Located in Bhaktapur, this Hindu temple dedicated to Lord Vishnu is believed to be the oldest Hindu temple still in use. It features ancient inscriptions, a pagoda-style architecture, and beautifully crafted woodwork, making it a significant site for historical and religious studies.\n\nEach of these sites holds great cultural, religious, and historical importance. They showcase the rich heritage of Nepal and are visited by people from around the world for both spiritual purposes and historical exploration."
@@ -197,16 +209,16 @@
             "examples": [
                 "What are the best hiking spots near Kathmandu?",
                 "Where can I hike around Kathmandu?",
-                "Suggest some hiking destinations near Kathmandu"
+                "Suggest some hiking destinations near Kathmandu", "adventurous spots", "hiking spots"
             ],
             "responses": [
-                "Kathmandu offers access to stunning hiking trails. Popular hiking spots near the city include: \n1. **Nagarkot** – Known for sunrise views over the Himalayas. \n2. **Shivapuri National Park** – A serene forested area with trails leading to Shivapuri Peak. \n3. **Phulchowki** – The highest hill around the valley, offering beautiful views and diverse flora. \n4. **Chandragiri Hills** – Accessible by both cable car and hiking, with breathtaking views of the Kathmandu Valley and surrounding peaks. \nThese spots are ideal for nature lovers and adventurers."
+                "Kathmandu offers access to stunning hiking trails. Popular hiking spots near the city include: \n1. Champadevi, Hiking to Swayambhu, shivpuri national park, canyoning in sundarijal, paragliding in godavari"
             ]
         },
         {
             "intent": "introduce_bhaktapur",
             "examples": [
-                "Tell me about Bhaktapur",
+                "Tell me about Bhaktapur", "baktapur",
                 "What is Bhaktapur?",
                 "Give me some information about Bhaktapur",
                 "What are the key attractions in Bhaktapur?",
@@ -667,7 +679,7 @@
                         "When was Pashupatinath built?"
                     ],
                     "responses": [
-                        "Pashupatinath Temple dates back to the 5th century and is one of the oldest Hindu temples in Nepal. It was designated a UNESCO World Heritage Site in 1979.Pashupatinath Temple is the oldest Hindu temple in Kathmandu. The temple is considered to be pre-Vedic in its origin and according to Nepal Mahatmaya and Himvatkhanda of Skanda Purana, the deity here gained great fame as Pashupati. As per Shiva Purana, the linga of Pashupatinath that lies in Nepal has the capacity to fulfill all desires, and the story of Pashupatinath is narrated along with the greatness of Kedareshwara (Kedarnath) in the 9th chapter of 'Koti-Rudra Samhita' which describes the journey of Pandavas in the search of Shiva. After Pandavas perform much penance, Shiva who had hidden himself underground in the form of a bull, reappears with his head in Pashupatinath, hump in Kedarnath, face in Rudranath, arms in Tungnath and navel in Madhyamaheshwar. One legend says that Shiva and Parvati took the form of antelopes in the forest on the Bagmati river's east bank. The gods later caught up with him and grabbed him by one of his horns, forcing him to resume his divine form. The broken horn was worshipped as a linga, but over time it was buried and lost. Centuries later a herdsman found one of his cows showering the earth with milk, and after digging at the site, he discovered the divine linga of Pashupatinath. Pashupatinath Temple's existence is recorded as early as 400 CE.[17] The ornamented pagoda houses the linga of Shiva. According to Gopalraj Aalok Vhat, the temple was built by Prachanda Deva, a Licchavi king. Another chronicle states that Pashupatinath Temple was in the form of Linga shaped Devalaya before Supuspa Deva constructed a five-storey temple of Pashupatinath in this place. As time passed, the temple needed to be repaired and renovated. It is known that this temple was reconstructed by a medieval king named Shivadeva (1099–1126 CE). It was renovated by Ananta Malla adding a roof to it.[18][19] Further temples have been erected around the two-storied temple, including the Vaishnava temple complex with a Rama temple from the 14th century and the Guhyeshwari Temple mentioned in an 11th-century manuscript, overtime. The current form of the temple was renovated in 1692 CE after the previous structures were affected by termites and earthquakes."
+                        "Pashupatinath Temple dates back to the 5th century and is one of the oldest Hindu temples in Nepal. It was designated a UNESCO World Heritage Site in 1979.Pashupatinath Temple is the oldest Hindu temple in Kathmandu. The temple is considered to be pre-Vedic in its origin and according to Nepal Mahatmaya and Himvatkhanda of Skanda Purana, the deity here gained great fame as Pashupati. As per Shiva Purana, the linga of Pashupatinath that lies in Nepal has the capacity to fulfill all desires, and the story of Pashupatinath is narrated along with the greatness of Kedareshwara (Kedarnath) in the 9th chapter of 'Koti-Rudra Samhita' which describes the journey of Pandavas in the search of Shiva. After Pandavas perform much penance, Shiva who had hidden himself underground in the form of a bull, reappears with his head in Pashupatinath, hump in Kedarnath, face in Rudranath, arms in Tungnath and navel in Madhyamaheshwar. One legend says that Shiva and Parvati took the form of antelopes in the forest on the Bagmati river's east bank. The gods later caught up with him and grabbed him by one of his horns, forcing him to resume his divine form. The broken horn was worshipped as a linga, but over time it was buried and lost. Centuries later a herdsman found one of his cows showering the earth with milk, and after digging at the site, he discovered the divine linga of Pashupatinath. Pashupatinath Temple's existence is recorded as early as 400 CE. The ornamented pagoda houses the linga of Shiva. According to Gopalraj Aalok Vhat, the temple was built by Prachanda Deva, a Licchavi king. Another chronicle states that Pashupatinath Temple was in the form of Linga shaped Devalaya before Supuspa Deva constructed a five-storey temple of Pashupatinath in this place. As time passed, the temple needed to be repaired and renovated. It is known that this temple was reconstructed by a medieval king named Shivadeva (1099–1126 CE). It was renovated by Ananta Malla adding a roof to it. Further temples have been erected around the two-storied temple, including the Vaishnava temple complex with a Rama temple from the 14th century and the Guhyeshwari Temple mentioned in an 11th-century manuscript, overtime. The current form of the temple was renovated in 1692 CE after the previous structures were affected by termites and earthquakes."
                     ]
                 },
                 {
@@ -973,7 +985,7 @@
                         "history of patan durbar square"
                     ],
                     "responses": [
-                        "Patan Durbar Square's establishment dates back to the Malla period, with the development of the square continuing over several centuries.The history of Durbar Square is not clear. Although the Malla Kings of Lalitpur are credited with the establishment of the royal square, it is known that the site is an ancient crossroad. The Pradhanas, who settled around the site before the Mallas, have connections with the Durbar Square.Some chronicles hint that the Thakuri dynasty built a palace and made reforms to the locality, but there is little evidence of this. Scholars are certain that Patan was a prosperous city since ancient times.[6] There is also a evidence that the Patan was founded during the 3rd Century BC by the Kirat dynasty and was later expanded in the sixth century.The Malla Kings made important changes to the square. Most of the current architecture is from the 1600s, constructed during the reign of King Siddhi Narsingh Malla and his son Srinivasa Sukriti. Some of the notable Malla Kings who improved the square include Purandarasimha,Sivasimha Malla and Yoganarendra Malla."
+                        "Patan Durbar Square's establishment dates back to the Malla period, with the development of the square continuing over several centuries.The history of Durbar Square is not clear. Although the Malla Kings of Lalitpur are credited with the establishment of the royal square, it is known that the site is an ancient crossroad. The Pradhanas, who settled around the site before the Mallas, have connections with the Durbar Square.Some chronicles hint that the Thakuri dynasty built a palace and made reforms to the locality, but there is little evidence of this. Scholars are certain that Patan was a prosperous city since ancient times. There is also a evidence that the Patan was founded during the 3rd Century BC by the Kirat dynasty and was later expanded in the sixth century.The Malla Kings made important changes to the square. Most of the current architecture is from the 1600s, constructed during the reign of King Siddhi Narsingh Malla and his son Srinivasa Sukriti. Some of the notable Malla Kings who improved the square include Purandarasimha,Sivasimha Malla and Yoganarendra Malla."
                     ]
                 },
                 {
@@ -1091,7 +1103,7 @@
         "intent": "krishna.mandir",
         "examples":["krishna mandir", "tell me about krishna mandir"
     ], 
-    "responses": ["Krishna Mandir is one of the most important temple in Patan Durbar Square. A three-storied structure, it was built in the local variety of Shikhara style called Granthakuta.[11] The stone carvings along the beam above the first and second-floor pillar are most notable. The first-floor pillar carvings narrate the events of the Mahabharata, while on the second floor there are visual carvings from Ramayana.The temple was built in 1667 by King Siddhi Narsingh Malla.[13] It is said that one night the King saw Lord Krishna and his consort Srimati Radha standing in front of the royal palace. He ordered a temple to be built on the same spot.[14] There are 21 golden pinnacles in the temple. Below the pinnacles are three stories. The first floor holds the main shrine of Lord Krishna with shrines of Radha and Rukmini at each side. The second floor is dedicated to Lord Shiva and the third to Lokeshwor (Avalokiteshvara).The square is crowded with thousands of Hindu Pilgrims and devotees during Krishnastami."]
+    "responses": ["Krishna Mandir is one of the most important temple in Patan Durbar Square. A three-storied structure, it was built in the local variety of Shikhara style called Granthakuta. The stone carvings along the beam above the first and second-floor pillar are most notable. The first-floor pillar carvings narrate the events of the Mahabharata, while on the second floor there are visual carvings from Ramayana.The temple was built in 1667 by King Siddhi Narsingh Malla. It is said that one night the King saw Lord Krishna and his consort Srimati Radha standing in front of the royal palace. He ordered a temple to be built on the same spot. There are 21 golden pinnacles in the temple. Below the pinnacles are three stories. The first floor holds the main shrine of Lord Krishna with shrines of Radha and Rukmini at each side. The second floor is dedicated to Lord Shiva and the third to Lokeshwor (Avalokiteshvara).The square is crowded with thousands of Hindu Pilgrims and devotees during Krishnastami."]
     }, 
     {"intent": "patan.temples",
     "examples": ["temples in patan", "patan temples", "temple", "temples", "bhimsen temple", "vishwanath temple"
@@ -1839,6 +1851,17 @@
                 ],
                 "responses": [
                   "The hike to Champadevi takes around 3 to 4 hours to complete, depending on your pace, and covers a distance of about 6-7 kilometers. The trail begins from the Godawari area and ascends steadily through dense forests filled with a variety of plant species, birds, and wildlife. As you approach the summit, you'll enjoy breathtaking views of the Kathmandu Valley, Phulchoki Hill, and the mountains on the horizon. At the top, there is a small temple dedicated to Goddess Champadevi, making it a spiritual as well as scenic journey. The area around the summit is serene and offers a perfect place for meditation or a quiet break."
+                ]
+              },
+              {
+                "intent": "ask_about_guides_for_hiking_in_champadevi",
+                "examples": [
+                  "Do I need a guide to hike in champadevi?",
+                  "Are there guides available for hiking in champadevi",
+                  "Can I hire a guide for hiking in champadevi?"
+                ],
+                "responses": [
+                  "While hiking in Champadevi is generally safe and well-marked, hiring a guide can enhance your experience, especially if you are unfamiliar with the area or want more insights about the local flora, fauna, and culture. Guides are available in Kathmandu, and they can offer additional services such as transportation to the trailheads. A guide can also ensure your safety, help you navigate the trails, and provide local knowledge about the park’s history and ecology."
                 ]
               },
               {

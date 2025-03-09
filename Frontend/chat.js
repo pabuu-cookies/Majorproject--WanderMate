@@ -6,12 +6,14 @@ import {
   TextInput,
   Button,
   StyleSheet,
-  BackHandler,
+  Alert,
+  TouchableOpacity,
 } from "react-native";
-import { Alert } from "react-native";
 import axios from "axios";
+import api from "./api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons"; // Icon for translation
 
 const ChatScreen = () => {
   const [messages, setMessages] = useState([]);
@@ -29,9 +31,9 @@ const ChatScreen = () => {
         const storedMessages = await AsyncStorage.getItem("messages");
 
         if (storedMessages) {
-          setMessages(JSON.parse(storedMessages)); // Parse the stored messages
+          setMessages(JSON.parse(storedMessages));
         } else {
-          setMessages([]); // Ensure messages is always an array
+          setMessages([]);
         }
       } catch (error) {
         console.error("Error fetching chat:", error);
@@ -42,7 +44,6 @@ const ChatScreen = () => {
       try {
         const token = await AsyncStorage.getItem("authToken");
         if (token) {
-          console.log("got token", token);
           setAuthToken(token);
         }
       } catch (error) {
@@ -53,13 +54,12 @@ const ChatScreen = () => {
     fetchToken();
   }, []);
 
-  // Function to send the message to the chatbot API
   const sendMessageToAPI = async (message) => {
     if (!authToken) return;
 
     try {
       const response = await axios.post(
-        "http://192.168.1.64:3000/chat",
+        "http://192.168.1.73:3000/chat",
         { message },
         {
           headers: {
@@ -69,60 +69,23 @@ const ChatScreen = () => {
         }
       );
 
-      console.log("API Response:", response.data); // Debugging step
       if (!response.data || !response.data.reply) {
-        console.error("Missing reply in API response");
         return;
       }
 
       const botMessage = {
-        text: response.data.reply || "Sorry, I didn’t get that.",
+        text: response.data.reply,
         createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: "Bot",
-        },
+        user: { _id: 2, name: "Bot" },
       };
 
       setMessages((prevMessages) => {
         const newMessages = [...prevMessages, botMessage];
-        AsyncStorage.setItem("messages", JSON.stringify(newMessages)).catch(
-          (error) => console.error("Error saving messages:", error)
-        );
+        AsyncStorage.setItem("messages", JSON.stringify(newMessages));
         return newMessages;
       });
     } catch (error) {
       console.error("Error sending message to API:", error);
-    }
-  };
-
-  // Handle send button press
-  const onSendMessage = async () => {
-    if (inputText.trim()) {
-      const userMessage = {
-        text: inputText,
-        createdAt: new Date(),
-        user: {
-          _id: 1, // User ID
-          name: "You",
-        },
-      };
-
-      setMessages((previousMessages) => {
-        const newMessages = [...previousMessages, userMessage];
-
-        // Store updated messages in AsyncStorage
-        AsyncStorage.setItem("messages", JSON.stringify(newMessages)).catch(
-          (error) => {
-            console.error("Error saving messages to AsyncStorage:", error);
-          }
-        );
-
-        return newMessages;
-      });
-
-      sendMessageToAPI(inputText);
-      setInputText("");
     }
   };
 
@@ -152,40 +115,94 @@ const ChatScreen = () => {
     );
   };
 
-  // Function to render each message
-  const renderItem = ({ item, index }) => {
-    return (
-      <View
-        style={[
-          styles.messageContainer,
-          item.user._id === 1 ? styles.userMessage : styles.botMessage,
-        ]}
-      >
-        <Text style={styles.messageText}>{item.text}</Text>
-      </View>
-    );
-  };
-
   const onContentSizeChange = () => {
     if (flatListRef.current) {
       flatListRef.current.scrollToEnd({ animated: true });
     }
   };
 
+  const API_endpoint = "/chatbot/translate/";
+
+  const translateMessage = async (text) => {
+    if (!authToken) return;
+    try {
+      const response = await api.post(
+        API_endpoint,
+        {
+          translatefrom: "en",
+          text: text,
+          translateTo: "ne",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data && response.data.translatedText) {
+        const translatedText =
+          response.data.translatedText[0]?.translation ||
+          "Translation unavailable";
+        Alert.alert("Translated Text", translatedText);
+      }
+    } catch (error) {
+      console.error("Error translating message:", error);
+    }
+  };
+
+  const onSendMessage = async () => {
+    if (inputText.trim()) {
+      const userMessage = {
+        text: inputText,
+        createdAt: new Date(),
+        user: { _id: 1, name: "You" },
+      };
+
+      setMessages((prevMessages) => {
+        const newMessages = [...prevMessages, userMessage];
+        AsyncStorage.setItem("messages", JSON.stringify(newMessages));
+        return newMessages;
+      });
+
+      sendMessageToAPI(inputText);
+      setInputText("");
+    }
+  };
+
+  const renderItem = ({ item }) => (
+    <View
+      style={[
+        styles.messageContainer,
+        item.user._id === 1 ? styles.userMessage : styles.botMessage,
+      ]}
+    >
+      <View style={styles.messageRow}>
+        <Text style={styles.messageText}>{item.text}</Text>
+        {item.user._id === 2 && (
+          <TouchableOpacity onPress={() => translateMessage(item.text)}>
+            <Ionicons
+              name="language"
+              size={20}
+              color="#fff"
+              style={{ padding: 10 }}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
-      {/* Chat messages */}
       <FlatList
         ref={flatListRef}
         data={messages}
         renderItem={renderItem}
-        keyExtractor={(item, index) => {
-          const createdAt = new Date(item.createdAt); // Ensure createdAt is a Date object
-          return `${createdAt.getTime()}-${index}`; // Use getTime() safely
-        }}
+        keyExtractor={(item, index) => `${item.createdAt}-${index}`}
         onContentSizeChange={onContentSizeChange}
       />
-
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
@@ -212,6 +229,8 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
     borderRadius: 10,
     marginHorizontal: 15,
+    flexDirection: "row",
+    alignItems: "center",
   },
   userMessage: {
     backgroundColor: "green",
@@ -221,9 +240,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#0a5b61",
     alignSelf: "flex-start",
   },
+  messageRow: {
+    flexDirection: "column",
+    alignItems: "center",
+    flexWrap: "wrap", // Allows text and icon to stay on the same row
+  },
   messageText: {
     color: "#fff",
     fontSize: 16,
+    flexShrink: 1, // Ensures text doesn't push out the icon
   },
   inputContainer: {
     flexDirection: "row",

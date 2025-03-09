@@ -9,7 +9,6 @@ import {
   View,
   Alert,
 } from "react-native";
-import axios from "axios";
 import api from "./api";
 
 const logo = require("./assets/logo.png");
@@ -18,7 +17,7 @@ export default function SignUpScreen({ navigation }) {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("tourist"); // Default role is 'tourist'
+  const [role, setRole] = useState("user");
 
   const API_endpoint = "user/register/";
 
@@ -90,10 +89,7 @@ export default function SignUpScreen({ navigation }) {
       </View>
 
       <View style={styles.radioContainer}>
-        <Pressable
-          onPress={() => setRole("tourist")}
-          style={styles.radioButton}
-        >
+        <Pressable onPress={() => setRole("user")} style={styles.radioButton}>
           <View
             style={[
               styles.radioCircle,

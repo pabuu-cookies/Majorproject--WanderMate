@@ -2,8 +2,13 @@ DOWNLOAD THE PYTHON VERSION FROM HERE FOR RESPECTIVE OS: REMEMEBER TO INCLUDEI I
 https://www.python.org/downloads/release/python-3810/
 
 GO TO FRONTEND FOLDER: command: i -g expo-cli
-                        npm install 
+                        npx expo install OR npm install (whichever doesnt give error lmao)
                         to run: npx expo start (scan the qr using 'expo go' app on your phone) 
+
+                        in cmd: ipconfig       (to find ipv4 address of the network)
+                        in api.js :  baseURL: "http://{ipv4 address}:5500"
+                        in chat.js : line 61 :  const response = await axios.post(
+                                                "http://{ipv4 address}:3000/chat",
 
 GO TO nlpchatbot FOLDER: command: npm install
                             npm start
@@ -675,3 +680,8 @@ result:
 delete review: delete: http://localhost:5500/review/{reviewId} --auth token 
 result: "deleted review sucessfully!"
 
+
+guide profile response :   profile details: {"bio": "This is bio", 
+"bookedDates": ["2025-03-04", "2025-03-05", "2025-03-06"], 
+"gender": [Function anonymous], 
+"profilePicture": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fproject-89a2bb1a-c551-4385-a69a-01b7af4da10a/ImagePicker/b0c039b9-a319-4e68-9ae1-a55bb613ffd5.jpeg"} 

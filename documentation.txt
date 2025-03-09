@@ -681,7 +681,10 @@ delete review: delete: http://localhost:5500/review/{reviewId} --auth token
 result: "deleted review sucessfully!"
 
 
-guide profile response :   profile details: {"bio": "This is bio", 
-"bookedDates": ["2025-03-04", "2025-03-05", "2025-03-06"], 
-"gender": [Function anonymous], 
-"profilePicture": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fproject-89a2bb1a-c551-4385-a69a-01b7af4da10a/ImagePicker/b0c039b9-a319-4e68-9ae1-a55bb613ffd5.jpeg"} 
+guide profile response :   profile details: 
+{
+    "bio": "Heyyyyyyyyyy", 
+    "bookedDates": ["2025-03-05", "2025-03-06", "2025-03-07"], 
+    "gender": "female", "
+    profilePicture": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fproject-89a2bb1a-c551-4385-a69a-01b7af4da10a/ImagePicker/27013a7c-5eec-49ad-a214-28d03a39b145.jpeg"
+}  

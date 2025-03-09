@@ -8,6 +8,7 @@ import {
   FlatList,
   StyleSheet,
   Pressable,
+  ScrollView,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -29,7 +30,7 @@ const ProfileScreen = () => {
   });
   const [open, setOpen] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
-  const [tempBookedDates, setTempBookedDates] = useState({}); // Temporary state for selected dates
+  const [tempBookedDates, setTempBookedDates] = useState({});
 
   const handleImagePick = async () => {
     console.log("Launching image library...");
@@ -43,10 +44,10 @@ const ProfileScreen = () => {
 
     // Launch the image library
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images, // Only allow images
-      allowsEditing: true, // Allow cropping or editing
-      aspect: [1, 1], // Aspect ratio for cropping
-      quality: 1, // Image quality (0 to 1)
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
     });
 
     console.log("Image picker result:", result);
@@ -69,18 +70,17 @@ const ProfileScreen = () => {
   };
 
   const handleConfirmDates = () => {
-    // Update the profile's bookedDates with the selected dates
     const selectedDates = Object.keys(tempBookedDates);
     setProfile((prev) => ({
       ...prev,
       bookedDates: selectedDates,
     }));
-    setShowCalendar(false); // Close the calendar
+    setShowCalendar(false);
   };
 
   const handleCancelDates = () => {
-    setTempBookedDates({}); // Clear temporary selected dates
-    setShowCalendar(false); // Close the calendar
+    setTempBookedDates({});
+    setShowCalendar(false);
   };
 
   const handleSubmit = async () => {
@@ -97,28 +97,19 @@ const ProfileScreen = () => {
     <View style={{ flex: 1, flexDirection: "row" }}>
       {/* Side Navigation */}
       <View style={styles.sideNav}>
-        <Pressable
-          // style={styles.button}
-          onPress={() => navigation.navigate("Profile")}
-        >
+        <Pressable onPress={() => navigation.navigate("Profile")}>
           <FontAwesome name="user" size={24} color="black" />
         </Pressable>
-        <Pressable
-          // style={styles.button}
-          onPress={() => navigation.navigate("GuideMsg")}
-        >
+        <Pressable onPress={() => navigation.navigate("GuideMsg")}>
           <Feather name="message-circle" size={25} color="black" />
         </Pressable>
-        <Pressable
-          // style={styles.button}
-          onPress={() => navigation.navigate("GuideReq")}
-        >
+        <Pressable onPress={() => navigation.navigate("GuideReq")}>
           <Ionicons name="notifications" size={24} color="black" />
         </Pressable>
       </View>
 
-      {/* Main Content */}
-      <View style={{ flex: 1, padding: 20 }}>
+      {/* Main Content with ScrollView */}
+      <ScrollView style={{ flex: 1, padding: 20 }}>
         <TouchableOpacity onPress={handleImagePick}>
           <Image
             source={
@@ -130,7 +121,9 @@ const ProfileScreen = () => {
           />
         </TouchableOpacity>
 
-        <Text>Bio:</Text>
+        <Text style={{ fontWeight: "bold", marginTop: 20, fontSize: 20 }}>
+          Description:
+        </Text>
         <TextInput
           value={profile.bio}
           onChangeText={(text) =>
@@ -139,7 +132,9 @@ const ProfileScreen = () => {
           style={{ borderBottomWidth: 1, marginBottom: 10 }}
         />
 
-        <Text>Gender:</Text>
+        <Text style={{ fontWeight: "bold", marginTop: 20, fontSize: 20 }}>
+          Gender:
+        </Text>
         <DropDownPicker
           open={open}
           value={profile.gender}
@@ -148,13 +143,20 @@ const ProfileScreen = () => {
             { label: "Female", value: "female" },
           ]}
           setOpen={setOpen}
-          setValue={(val) => setProfile((prev) => ({ ...prev, gender: val }))}
+          setValue={(callback) => {
+            const newValue = callback(profile.gender);
+            setProfile((prev) => ({ ...prev, gender: newValue }));
+          }}
           placeholder="Select Gender"
         />
 
-        <Text>Booked Days:</Text>
+        <Text style={{ fontWeight: "bold", marginTop: 20, fontSize: 20 }}>
+          Booked Days:
+        </Text>
         <TouchableOpacity onPress={() => setShowCalendar(true)}>
-          <Text>Select Dates</Text>
+          <Text style={{ fontWeight: "bold", marginTop: 10, fontSize: 15 }}>
+            Select Dates
+          </Text>
         </TouchableOpacity>
         {showCalendar && (
           <View>
@@ -182,6 +184,7 @@ const ProfileScreen = () => {
           data={profile.bookedDates}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => <Text>{item}</Text>}
+          scrollEnabled={false}
         />
 
         <TouchableOpacity
@@ -192,7 +195,7 @@ const ProfileScreen = () => {
             Update Profile
           </Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </View>
   );
 };

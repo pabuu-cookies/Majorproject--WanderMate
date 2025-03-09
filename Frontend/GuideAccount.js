@@ -99,7 +99,7 @@ const ProfileScreen = () => {
       <View style={styles.sideNav}>
         <Pressable
           // style={styles.button}
-          onPress={() => navigation.navigate("Profile")} //change thissssssssssssssssssssss
+          onPress={() => navigation.navigate("Profile")}
         >
           <FontAwesome name="user" size={24} color="black" />
         </Pressable>

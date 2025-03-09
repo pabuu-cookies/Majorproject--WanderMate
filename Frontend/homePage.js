@@ -31,7 +31,7 @@ export default function HomePage({ navigation }) {
         </Pressable>
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate("Review")}
+          onPress={() => navigation.navigate("Profile")} //change thisssssssssssssssssssssssssssssssssss
         >
           <Text style={styles.buttonText}>Review</Text>
         </Pressable>

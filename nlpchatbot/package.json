@@ -25,6 +25,7 @@
     "express": "^4.21.2",
     "fuse.js": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.11.0",
     "node-nlp": "^3.10.2"
   }
 }

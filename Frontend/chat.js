@@ -8,8 +8,8 @@ import {
   StyleSheet,
   BackHandler,
 } from "react-native";
+import { Alert } from "react-native";
 import axios from "axios";
-import api from "./api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,9 +19,6 @@ const ChatScreen = () => {
   const [authToken, setAuthToken] = useState(null);
   const flatListRef = useRef(null);
   const navigation = useNavigation();
-  const [chatId, setChatId] = useState(null);
-
-  API_endpoint = "/chat";
 
   useEffect(() => {
     const fetchChat = async () => {
@@ -62,20 +59,24 @@ const ChatScreen = () => {
 
     try {
       const response = await axios.post(
-        "http://192.168.251.62:3000/chat",
+        "http://192.168.1.64:3000/chat",
         { message },
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
           },
-          responseType: "text",
         }
       );
 
+      console.log("API Response:", response.data); // Debugging step
+      if (!response.data || !response.data.reply) {
+        console.error("Missing reply in API response");
+        return;
+      }
+
       const botMessage = {
-        _id: Math.random().toString(), // Ensure a valid ID
-        text: response.data || "Sorry, I didn’t get that.",
+        text: response.data.reply || "Sorry, I didn’t get that.",
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -85,12 +86,9 @@ const ChatScreen = () => {
 
       setMessages((prevMessages) => {
         const newMessages = [...prevMessages, botMessage];
-
-        // Store entire updated messages array
         AsyncStorage.setItem("messages", JSON.stringify(newMessages)).catch(
           (error) => console.error("Error saving messages:", error)
         );
-
         return newMessages;
       });
     } catch (error) {
@@ -102,7 +100,6 @@ const ChatScreen = () => {
   const onSendMessage = async () => {
     if (inputText.trim()) {
       const userMessage = {
-        _id: Date.now(), // Ensures unique ID
         text: inputText,
         createdAt: new Date(),
         user: {
@@ -129,8 +126,34 @@ const ChatScreen = () => {
     }
   };
 
+  const clearChatHistory = async () => {
+    Alert.alert(
+      "Clear Chat",
+      "Are you sure you want to delete all chat history?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              await AsyncStorage.removeItem("messages"); // Delete stored messages
+              setMessages([]); // Clear UI messages
+              console.log("Chat history cleared!");
+            } catch (error) {
+              console.error("Error clearing chat history:", error);
+            }
+          },
+        },
+      ]
+    );
+  };
+
   // Function to render each message
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, index }) => {
     return (
       <View
         style={[
@@ -142,6 +165,7 @@ const ChatScreen = () => {
       </View>
     );
   };
+
   const onContentSizeChange = () => {
     if (flatListRef.current) {
       flatListRef.current.scrollToEnd({ animated: true });
@@ -155,9 +179,10 @@ const ChatScreen = () => {
         ref={flatListRef}
         data={messages}
         renderItem={renderItem}
-        keyExtractor={(item, index) =>
-          item && item._id ? item._id.toString() : index.toString()
-        }
+        keyExtractor={(item, index) => {
+          const createdAt = new Date(item.createdAt); // Ensure createdAt is a Date object
+          return `${createdAt.getTime()}-${index}`; // Use getTime() safely
+        }}
         onContentSizeChange={onContentSizeChange}
       />
 
@@ -170,6 +195,7 @@ const ChatScreen = () => {
         />
         <Button color={"green"} title="Send" onPress={onSendMessage} />
       </View>
+      <Button color="red" title="Clear Chat" onPress={clearChatHistory} />
     </View>
   );
 };

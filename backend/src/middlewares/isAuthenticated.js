@@ -20,6 +20,7 @@ function authenticateToken(req, res, next) {
           .json({ message: HttpMessage.FORBIDDEN.message });
       }
       req.userId = decoded.userId;
+      req.role = decoded.role;
       next();
     });
   } catch (error) {

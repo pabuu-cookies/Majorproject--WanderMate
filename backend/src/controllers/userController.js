@@ -91,6 +91,24 @@ class userController {
     }
   }
 
+  async updateGuideStatus(req, res, next) {
+    const { status } = req.body;
+    const userId = req.userId;
+
+    try {
+      const updatedProfile = await UserService.updateGuideStatus(
+        userId,
+        status
+      );
+
+      res.locals.responseData = updatedProfile;
+      next();
+    } catch (error) {
+      res.locals.responseData = { error: error.message };
+      next();
+    }
+  }
+
   async hireGuide(req, res, next) {
     const userId = req.userId;
     const guideId = req.params.guideId;

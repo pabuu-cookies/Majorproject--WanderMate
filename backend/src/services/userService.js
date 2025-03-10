@@ -83,6 +83,30 @@ class UserService {
     }
   }
 
+  async updateGuideStatus(userId, status) {
+    try {
+      const user = await User.findById(userId);
+      if (!user) {
+        throw HttpMessage.NOT_FOUND;
+      }
+
+      // Update user status
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        { $set: { status } }, // Corrected syntax
+        { new: true }
+      );
+
+      if (status === "available") {
+        await HireRequest.deleteMany({ guide: userId }); // Corrected syntax
+      }
+
+      return updatedUser;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getAllGuides() {
     const guides = await User.find({ role: "guide" });
     return guides;
@@ -101,6 +125,16 @@ class UserService {
       if (!user || !guide) {
         console.log("Either user or guide is not found");
         throw HttpMessage.NOT_FOUND;
+      }
+
+      const existingHire = await HireRequest.findOne({
+        client: userId,
+        status: "accepted",
+      });
+
+      if (existingHire) {
+        console.log("User already has an accepted hire request.");
+        throw HttpMessage.ALREADY_PRESENT; // Custom error message
       }
       const message = `${user.name} has requested to hire you.`;
 

@@ -1065,3 +1065,22 @@ response:{
   "profileImage": "1741572574926-download.jpg"
 }
 
+UPDATE THE GUIDE StatuS ONLY 
+patch: http://localhost:5500/user/guide/status
+AUTH TOKEN necessary, ONLY GUIDE CAN TRIGGER THIS, ALSO THIS IS THE ONE THAT DELETES ALL THE HIRE request, (if the status is available), OF THAT GUIDE, AT THAT TIME.
+enum: ["pending", "hired", "available"]
+body(json):{
+  "status":"available"
+}
+response:
+{
+  "_id": "67cedf019f2f4902a2ff64e2",
+  "name": "guide",
+  "email": "pkuummm@gmail.com",
+  "role": "guide",
+  "password": "$2b$10$80jZqR82ZLrhdLQe/bCGXOIqdN62vIZRwPwqIQ1hUYpWoM9IG8hZO",
+  "availableDates": [],
+  "status": "available",
+  "languages": [],
+  "__v": 0
+}

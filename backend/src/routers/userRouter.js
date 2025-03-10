@@ -29,6 +29,14 @@ router.post(
   handleResponse
 );
 
+router.patch(
+  "/guide/status",
+  isAuthenticated,
+  isAuthorized("guide"),
+  userController.updateGuideStatus,
+  handleResponse
+);
+
 router.get(
   "/guides",
   isAuthenticated,

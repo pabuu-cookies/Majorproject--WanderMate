@@ -688,3 +688,44 @@ guide profile response :   profile details:
     "gender": "female", "
     profilePicture": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fproject-89a2bb1a-c551-4385-a69a-01b7af4da10a/ImagePicker/27013a7c-5eec-49ad-a214-28d03a39b145.jpeg"
 }  
+
+post: http://localhost:5500/user/profile/update 
+        Authorization: Bearer <your-jwt-token>
+Content-Type: multipart/form-data
+body:
+    profileImage: (image file)
+    name: "John Doe"
+    email: "john@example.com"
+    description: "Experienced tour guide in Paris."
+    availableDates: ["2025-03-15", "2025-03-16"]
+    status: "available"
+    languages: ["English", "French"]
+    experience: 5
+    socialLinks[website]: "http://johndoe.com"
+    socialLinks[instagram]: "http://instagram.com/johndoe"
+    socialLinks[facebook]: "http://facebook.com/johndoe"
+
+get: http://localhost:5500/user/guides
+Authorization: Bearer <your-jwt-token>
+Content-Type: multipart/form-data
+response:
+[
+    {
+        "_id": "67ce420cbf967a3ef10f5c77",
+        "name": "pabuu",
+        "email": "pkuu@gmail.com",
+        "role": "guide",
+        "password": "$2b$10$tlj6YNT3G6pa95h1ECcdx.1SbTlthMklV8fEkKXA/A8kV6NuRJIdS",
+        "availableDates": [
+            "2002-03012",
+            "2022-13-04"
+        ],
+        "status": "available",
+        "languages": [],
+        "certifications": [],
+        "specialties": [],
+        "__v": 0,
+        "description": "i m dope guide",
+        "profileImage": "1741573428545-download.jpg"
+    },{..}
+]

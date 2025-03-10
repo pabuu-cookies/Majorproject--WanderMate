@@ -6,14 +6,19 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ["user", "guide"], default: "user" },
   password: { type: String, required: true },
 
+  // New fields based on demoGuides
   profileImage: { type: String },
-  bio: { type: String },
+  description: { type: String },
+  availableDates: { type: [String] },
+  status: {
+    type: String,
+    enum: ["pending", "hired", "available"],
+    default: "available",
+  },
+
   languages: { type: [String] },
   experience: { type: Number, min: 0 },
-  certifications: { type: [String] },
-  specialties: { type: [String] },
-  location: { type: String },
-  availability: { type: Boolean, default: true },
+
   socialLinks: {
     website: { type: String },
     instagram: { type: String },

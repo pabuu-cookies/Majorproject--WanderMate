@@ -5,15 +5,27 @@ const handleResponse = require("../middlewares/handleResponse");
 const isAuthorized = require("../middlewares/isAuthorized");
 const isAuthenticated = require("../middlewares/isAuthenticated");
 const upload = require("../utils/multer");
+const parseJsonFields = require("../middlewares/parseJson");
+const appendFile = require("../middlewares/appendFile");
 
 router.post("/register", userController.registerUser, handleResponse);
 router.post("/login", userController.loginUser, handleResponse);
+
 router.post(
-  "/guide-info",
-  upload.fields(""),
+  "/profile/update",
   isAuthenticated,
   isAuthorized("guide"),
-  userController.updateuserInfo,
+  upload.single("profileImage"),
+  appendFile([{ fileField: "profileImage", bodyField: "profileImage" }]),
+  parseJsonFields(["availableDates", "languages"]),
+  userController.updateGuideProfile,
+  handleResponse
+);
+
+router.get(
+  "/guides",
+  isAuthenticated,
+  userController.getAllGuides,
   handleResponse
 );
 

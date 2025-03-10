@@ -1,11 +1,7 @@
-const { httpMessages } = require("../middlewares");
+const { httpMessages } = require("../middlewares/HttpMessage");
 
 const isAuthorized = (requiredRole) => {
   return (req, res, next) => {
-    if (!req.email) {
-      return next(httpMessages.UNAUTHORIZED());
-    }
-
     if (req.role !== requiredRole) {
       return next(
         httpMessages.FORBIDDEN(`Access to this resource by ${req.role}`)
@@ -15,4 +11,4 @@ const isAuthorized = (requiredRole) => {
   };
 };
 
-module.exports = { isAuthorized };
+module.exports = isAuthorized;

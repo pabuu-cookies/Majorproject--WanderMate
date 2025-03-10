@@ -1067,7 +1067,7 @@ response:{
 
 UPDATE THE GUIDE StatuS ONLY 
 patch: http://localhost:5500/user/guide/status
-AUTH TOKEN necessary, ONLY GUIDE CAN TRIGGER THIS, ALSO THIS IS THE ONE THAT DELETES ALL THE HIRE request, (if the status is available), OF THAT GUIDE, AT THAT TIME.
+AUTH TOKEN necessary,
 enum: ["pending", "hired", "available"]
 body(json):{
   "status":"available"

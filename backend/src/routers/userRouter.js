@@ -24,7 +24,7 @@ router.post(
   isAuthorized("guide"),
   upload.single("profileImage"),
   appendFile([{ fileField: "profileImage", bodyField: "profileImage" }]),
-  parseJsonFields(["availableDates", "languages"]),
+  parseJsonFields(["availableDates", "languages", "socialLinks"]),
   userController.updateGuideProfile,
   handleResponse
 );

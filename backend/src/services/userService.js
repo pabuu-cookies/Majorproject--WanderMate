@@ -1,7 +1,9 @@
 const User = require("../models/userModel");
+const HireRequest = require("../models/hireRequest");
 const HttpMessage = require("../middlewares/HttpMessage");
 const bcrypt = require("bcrypt");
 const TokenUtils = require("../utils/token");
+const NotificationService = require("./notificationService");
 
 class UserService {
   async registerUser(name, email, password, role) {
@@ -81,6 +83,73 @@ class UserService {
   async getAllGuides() {
     const guides = await User.find({ role: "guide" });
     return guides;
+  }
+
+  async hireGuide(userId, guideId) {
+    try {
+      const user = await User.findById(userId);
+      const guide = await User.findById(guideId);
+
+      if (!user || !guide) {
+        console.log("Either user or guide is not found");
+        throw HttpMessage.NOT_FOUND;
+      }
+      const message = `${user.name} has requested to hire you.`;
+
+      const notificationData = {
+        userId: guideId, // The guide should receive the notification
+        message,
+        type: "info",
+      };
+      const hireRequest = new HireRequest({
+        client: userId, // User who is requesting the hire
+        guide: guideId, // Guide who is being hired
+        status: "pending", // Default status as pending
+        hireDate: new Date(), // Set the current date as hire date (you can change this logic)
+      });
+
+      // Save the hire request
+      await hireRequest.save();
+      // Call the createNotification service
+      await NotificationService.createNotification(notificationData);
+
+      console.log("Notification sent to guide:", guideId);
+      return {
+        success: true,
+        message: "Guide hire request and notification sent.",
+      };
+    } catch (error) {
+      console.error("Error hiring guide:", error);
+      throw HttpMessage.INTERNAL_SERVER_ERROR;
+    }
+  }
+
+  async acceptGuideRequest(userId, guideId) {
+    try {
+      const user = await User.findById(userId);
+      const guide = await User.findById(guideId);
+
+      if (!user || !guide) {
+        console.log("Either user or guide is not found");
+        throw HttpMessage.NOT_FOUND;
+      }
+      const message = `${guide.name} has accepted Your Request to guide.`;
+
+      const notificationData = {
+        userId: userId, // The guide should receive the notification
+        message,
+        type: "info",
+      };
+
+      // Call the createNotification service
+      await NotificationService.createNotification(notificationData);
+
+      console.log("Notification sent to guide:", guideId);
+      return { success: true, message: "Guide hired and notification sent." };
+    } catch (error) {
+      console.error("Error hiring guide:", error);
+      throw HttpMessage.INTERNAL_SERVER_ERROR;
+    }
   }
 }
 

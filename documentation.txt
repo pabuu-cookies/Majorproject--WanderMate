@@ -729,3 +729,304 @@ response:
         "profileImage": "1741573428545-download.jpg"
     },{..}
 ]
+
+GET ALL guides
+GET: http://localhost:5500/user/guides  
+Authorization HEADERS; REQUIRED
+RESPONSE:
+[
+  {
+    "_id": "67ce420cbf967a3ef10f5c77",
+    "name": "pabuu",
+    "email": "pkuu@gmail.com",
+    "role": "guide",
+    "password": "$2b$10$tlj6YNT3G6pa95h1ECcdx.1SbTlthMklV8fEkKXA/A8kV6NuRJIdS",
+    "availableDates": [
+      "2002-03012",
+      "2022-13-04"
+    ],
+    "status": "hired",
+    "languages": [],
+    "certifications": [],
+    "specialties": [],
+    "__v": 0,
+    "description": "i m dope guide",
+    "profileImage": "1741573428545-download.jpg"
+  }
+]
+
+HIRE A GUIDE: 
+POST : http://localhost:5500/user/hire/{67ce420cbf967a3ef10f5c77}-this is guide ko id
+Authorization header REQUIRED;
+also can only be triggered by user not guides
+response:
+{
+  "success": true,
+  "message": "Guide hired and notification sent."
+}
+
+get all request of the user
+get: http://localhost:5500/hire-requests/user
+authentication header: REQUIRED,can only be called by user 
+response :[
+  {
+    "_id": "67ce8c993a5229c00723911e",
+    "guide": {
+      "_id": "67ce420cbf967a3ef10f5c77",
+      "name": "pabuu",
+      "email": "pkuu@gmail.com",
+      "role": "guide",
+      "password": "$2b$10$tlj6YNT3G6pa95h1ECcdx.1SbTlthMklV8fEkKXA/A8kV6NuRJIdS",
+      "availableDates": [
+        "2002-03012",
+        "2022-13-04"
+      ],
+      "status": "hired",
+      "languages": [],
+      "certifications": [],
+      "specialties": [],
+      "__v": 0,
+      "description": "i m dope guide",
+      "profileImage": "1741573428545-download.jpg"
+    },
+    "client": "67ab20faccc2d8f67d689f71",
+    "status": "accepted",
+    "hireDate": "2025-03-10T06:54:17.122Z",
+    "createdAt": "2025-03-10T06:54:17.125Z",
+    "__v": 0
+  },
+  {
+    "_id": "67ce978fbc7c34c72b3e0ec3",
+    "guide": {
+      "_id": "67ce420cbf967a3ef10f5c77",
+      "name": "pabuu",
+      "email": "pkuu@gmail.com",
+      "role": "guide",
+      "password": "$2b$10$tlj6YNT3G6pa95h1ECcdx.1SbTlthMklV8fEkKXA/A8kV6NuRJIdS",
+      "availableDates": [
+        "2002-03012",
+        "2022-13-04"
+      ],
+      "status": "hired",
+      "languages": [],
+      "certifications": [],
+      "specialties": [],
+      "__v": 0,
+      "description": "i m dope guide",
+      "profileImage": "1741573428545-download.jpg"
+    },
+    "client": "67ab20faccc2d8f67d689f71",
+    "status": "pending",
+    "hireDate": "2025-03-10T07:41:03.715Z",
+    "createdAt": "2025-03-10T07:41:03.719Z",
+    "__v": 0
+  },
+  {
+    "_id": "67cea23d686c1607d403f734",
+    "guide": {
+      "_id": "67ce420cbf967a3ef10f5c77",
+      "name": "pabuu",
+      "email": "pkuu@gmail.com",
+      "role": "guide",
+      "password": "$2b$10$tlj6YNT3G6pa95h1ECcdx.1SbTlthMklV8fEkKXA/A8kV6NuRJIdS",
+      "availableDates": [
+        "2002-03012",
+        "2022-13-04"
+      ],
+      "status": "hired",
+      "languages": [],
+      "certifications": [],
+      "specialties": [],
+      "__v": 0,
+      "description": "i m dope guide",
+      "profileImage": "1741573428545-download.jpg"
+    },
+    "client": "67ab20faccc2d8f67d689f71",
+    "status": "pending",
+    "hireDate": "2025-03-10T08:26:37.941Z",
+    "createdAt": "2025-03-10T08:26:37.943Z",
+    "__v": 0
+  }
+]
+
+get all request for the guide
+get: http://localhost:5500/hire-requests/guide
+authentication token : REQUIRED
+can only be triggered by the guide user
+response: [
+  {
+    "_id": "67ce8c993a5229c00723911e",
+    "guide": "67ce420cbf967a3ef10f5c77",
+    "client": {
+      "role": "user",
+      "availableDates": [],
+      "status": "available",
+      "languages": [],
+      "_id": "67ab20faccc2d8f67d689f71",
+      "name": "pabitra",
+      "email": "pabitra@example.com",
+      "password": "$2b$10$mH4QefcmRmppEm1N.6tqJen5F.1VFXYiCqoL2NPd8XOMl/h.IHmDO",
+      "__v": 0
+    },
+    "status": "accepted",
+    "hireDate": "2025-03-10T06:54:17.122Z",
+    "createdAt": "2025-03-10T06:54:17.125Z",
+    "__v": 0
+  },
+  {
+    "_id": "67ce978fbc7c34c72b3e0ec3",
+    "guide": "67ce420cbf967a3ef10f5c77",
+    "client": {
+      "role": "user",
+      "availableDates": [],
+      "status": "available",
+      "languages": [],
+      "_id": "67ab20faccc2d8f67d689f71",
+      "name": "pabitra",
+      "email": "pabitra@example.com",
+      "password": "$2b$10$mH4QefcmRmppEm1N.6tqJen5F.1VFXYiCqoL2NPd8XOMl/h.IHmDO",
+      "__v": 0
+    },
+    "status": "pending",
+    "hireDate": "2025-03-10T07:41:03.715Z",
+    "createdAt": "2025-03-10T07:41:03.719Z",
+    "__v": 0
+  },
+  {
+    "_id": "67cea23d686c1607d403f734",
+    "guide": "67ce420cbf967a3ef10f5c77",
+    "client": {
+      "role": "user",
+      "availableDates": [],
+      "status": "available",
+      "languages": [],
+      "_id": "67ab20faccc2d8f67d689f71",
+      "name": "pabitra",
+      "email": "pabitra@example.com",
+      "password": "$2b$10$mH4QefcmRmppEm1N.6tqJen5F.1VFXYiCqoL2NPd8XOMl/h.IHmDO",
+      "__v": 0
+    },
+    "status": "pending",
+    "hireDate": "2025-03-10T08:26:37.941Z",
+    "createdAt": "2025-03-10T08:26:37.943Z",
+    "__v": 0
+  }
+]
+
+accept or decline the requests / if accepted: sends notification to user and then updates teh status of guide to hired / if cancelled only notifes user about the declination
+patch: http://localhost:5500/hire-requests/{67ce8c993a5229c00723911e}-cthis is hirerequest id   MATHI GET ALL REQUEST FOR GUIDE GAREKO REPONSE MA ID XA TYO USE GARNEY 
+body(json){
+  "status":"accepted"
+}
+accepted status data ; ["pending", "accepted", "cancelled", "completed"]
+RESPONSE:
+{
+  "_id": "67ce8c993a5229c00723911e",
+  "guide": "67ce420cbf967a3ef10f5c77",
+  "client": "67ab20faccc2d8f67d689f71",
+  "status": "accepted",
+  "hireDate": "2025-03-10T06:54:17.122Z",
+  "createdAt": "2025-03-10T06:54:17.125Z",
+  "__v": 0
+}
+
+get all the notification of the user
+get: http://localhost:5500/notification/
+authtoken : required //we extract userId from here and return their notification only.
+response : [
+  {
+    "_id": "67cea462686c1607d403f73f",
+    "userId": "67ce420cbf967a3ef10f5c77",
+    "message": " your status has been updated to hired.",
+    "type": "info",
+    "read": false,
+    "createdAt": "2025-03-10T08:35:46.478Z",
+    "updatedAt": "2025-03-10T08:35:46.478Z",
+    "__v": 0
+  },
+  {
+    "_id": "67cea23e686c1607d403f736",
+    "userId": "67ce420cbf967a3ef10f5c77",
+    "message": "pabitra has requested to hire you.",
+    "type": "info",
+    "read": false,
+    "createdAt": "2025-03-10T08:26:38.164Z",
+    "updatedAt": "2025-03-10T08:26:38.164Z",
+    "__v": 0
+  },
+  {
+    "_id": "67ce9f97686c1607d403f72c",
+    "userId": "67ce420cbf967a3ef10f5c77",
+    "message": " your status has been updated to hired.",
+    "type": "info",
+    "read": false,
+    "createdAt": "2025-03-10T08:15:19.620Z",
+    "updatedAt": "2025-03-10T08:15:19.620Z",
+    "__v": 0
+  },
+  {
+    "_id": "67ce9c25159f086707955b24",
+    "userId": "67ce420cbf967a3ef10f5c77",
+    "message": " your status has been updated to hired.",
+    "type": "info",
+    "read": false,
+    "createdAt": "2025-03-10T08:00:37.786Z",
+    "updatedAt": "2025-03-10T08:00:37.786Z",
+    "__v": 0
+  },
+  {
+    "_id": "67ce978fbc7c34c72b3e0ec5",
+    "userId": "67ce420cbf967a3ef10f5c77",
+    "message": "pabitra has requested to hire you.",
+    "type": "info",
+    "read": false,
+    "createdAt": "2025-03-10T07:41:03.790Z",
+    "updatedAt": "2025-03-10T07:41:03.790Z",
+    "__v": 0
+  },
+  {
+    "_id": "67ce8c993a5229c007239120",
+    "userId": "67ce420cbf967a3ef10f5c77",
+    "message": "pabitra has requested to hire you.",
+    "type": "info",
+    "read": false,
+    "createdAt": "2025-03-10T06:54:17.277Z",
+    "updatedAt": "2025-03-10T06:54:17.277Z",
+    "__v": 0
+  }
+]
+
+mark all notification read {in our context i dont know if it will beused since marking does not have any other work, but we could change the display of the notification based on their status, since even though their status is read they will be their in the get notification list}
+put: http://localhost:5500/notification//markAll/read
+AUTHTOKEN : REQUIRED //bacsed on authtoken , notification of the user will be all marked read.
+response: {
+  "acknowledged": true,
+  "modifiedCount": 6,
+  "upsertedId": null,
+  "upsertedCount": 0,
+  "matchedCount": 6
+}
+
+DELETE ONE NOTIFICATION OF THE user
+DELETE; http://localhost:5500/notification/clear/{67cea23e686c1607d403f736}-this is notification ID
+Authorization token; required
+response:{
+  "_id": "67cea23e686c1607d403f736",
+  "userId": "67ce420cbf967a3ef10f5c77",
+  "message": "pabitra has requested to hire you.",
+  "type": "info",
+  "read": true,
+  "createdAt": "2025-03-10T08:26:38.164Z",
+  "updatedAt": "2025-03-10T08:45:52.467Z",
+  "__v": 0
+}
+
+delete All the notification of the user
+delete:http://localhost:5500/notification/clearAll
+AUTHTOKEN: REQUIRED;
+response:{
+  "message": "All notifications cleared"
+}
+
+
+

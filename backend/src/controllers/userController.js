@@ -64,6 +64,20 @@ class userController {
       next();
     }
   }
+
+  async hireGuide(req, res, next) {
+    const userId = req.userId;
+    const guideId = req.params.guideId;
+    try {
+      const hireGuide = await UserService.hireGuide(userId, guideId);
+
+      res.locals.responseData = hireGuide;
+      next();
+    } catch (error) {
+      res.locals.responseData = { error: error.message };
+      next();
+    }
+  }
 }
 
 module.exports = new userController();

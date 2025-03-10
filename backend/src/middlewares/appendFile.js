@@ -8,10 +8,12 @@ const appendFile = (fieldMappings) => {
   return async (req, res, next) => {
     const file = req.file;
 
-    for (const { fileField, bodyField } of fieldMappings) {
-      console.log("files", file);
-      console.log("bodyfield", bodyField);
-      req.body[bodyField] = file.filename;
+    if (file) {
+      for (const { fileField, bodyField } of fieldMappings) {
+        console.log("files", file);
+        console.log("bodyfield", bodyField);
+        req.body[bodyField] = file.filename;
+      }
     }
 
     next(); // Continue the flow after processing all fields

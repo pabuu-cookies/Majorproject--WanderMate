@@ -29,4 +29,12 @@ router.get(
   handleResponse
 );
 
+router.get(
+  "/hire/:guideId",
+  isAuthenticated,
+  isAuthorized("user"),
+  userController.hireGuide,
+  handleResponse
+);
+
 module.exports = router;

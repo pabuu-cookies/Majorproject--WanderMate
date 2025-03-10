@@ -24,7 +24,6 @@ router.get(
 router.patch(
   "/:hireRequestId",
   isAuthenticated,
-  isAuthorized("guide"),
   hireRequestController.updateHireRequestStatus,
   handleResponse
 );

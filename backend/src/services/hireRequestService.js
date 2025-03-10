@@ -34,37 +34,64 @@ class HireRequestService {
     }
 
     try {
-      // Find the hire request by ID and update the status
+      // Find the hire request by ID
+      const hireRequest = await HireRequest.findById(hireRequestId);
+      if (!hireRequest) {
+        throw HttpMessage.NOT_FOUND;
+      }
+
+      // Check if the client already has an accepted hire request
+      const existingAcceptedRequest = await HireRequest.findOne({
+        client: hireRequest.client,
+        status: "accepted",
+      });
+
+      if (status === "accepted" && existingAcceptedRequest) {
+        // Notify the guide that the client already has a hired guide
+        await NotificationService.createNotification({
+          userId: hireRequest.guide,
+          message: "The client has already hired another guide.",
+          type: "warning",
+        });
+
+        throw HttpMessage.ALREADY_HAS_GUIDE;
+      }
+
+      // Update the hire request status
       const updatedRequest = await HireRequest.findByIdAndUpdate(
         hireRequestId,
         { status },
         { new: true }
       );
 
-      // If no hire request was found
       if (!updatedRequest) {
         throw HttpMessage.NOT_FOUND;
       }
-      console.log("this is the updatedRequesrt", updatedRequest);
+
+      console.log("Updated hire request:", updatedRequest);
+
+      // If status is accepted, update the guide's profile
       if (status === "accepted") {
-        await UserService.updateGuideProfile(updatedRequest.guide, {
-          status: "hired",
+        // Delete all other hire requests for the client that are NOT accepted
+        await HireRequest.deleteMany({
+          client: updatedRequest.client,
+          status: { $ne: "accepted" },
         });
-        const guideNotification = {
-          userId: updatedRequest.guide,
-          message: ` your status has been updated to hired.`,
-          type: "info",
-        };
-        await NotificationService.createNotification(guideNotification);
       }
 
-      const message = `Your hire request has been ${status}.`;
-      const notificationData = {
+      // Notify the client
+      await NotificationService.createNotification({
         userId: updatedRequest.client,
-        message,
+        message: `Your hire request has been ${status}.`,
         type: "info",
-      };
-      await NotificationService.createNotification(notificationData);
+      });
+
+      await NotificationService.createNotification({
+        userId: updatedRequest.guide,
+        message: `The hire request has been ${status}.`,
+        type: "info",
+      });
+
       return updatedRequest;
     } catch (error) {
       console.error("Error updating hire request status:", error);

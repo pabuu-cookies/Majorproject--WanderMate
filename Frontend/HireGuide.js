@@ -43,11 +43,11 @@ const demoHiredGuide = {
 const API_endpoint = "/hire/guide/"; // MILAYERA CHANGE GARNU PARXA
 
 const HireGuide = () => {
-  const [guides, setGuides] = useState(demoGuides);
+  const [guides, setGuides] = useState(demoGuides); //replace demo guides with fetched guidess
   const [selectedGuide, setSelectedGuide] = useState(null);
   const [selectedDates, setSelectedDates] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
-  const [hiredGuide, setHiredGuide] = useState(demoHiredGuide);
+  const [hiredGuide, setHiredGuide] = useState(demoHiredGuide); //replace demo gudes with hired guides
 
   //   useEffect(() => {
   //     fetch("https://your-backend-api.com/guides")

@@ -21,12 +21,15 @@
     "@nlpjs/nlp": "^5.0.0-alpha.5",
     "axios": "^1.8.1",
     "body-parser": "^1.20.3",
+    "cheerio": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "fs": "^0.0.1-security",
     "fuse.js": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.11.0",
-    "node-nlp": "^3.10.2"
+    "node-nlp": "^5.0.0-alpha.5"
   }
 }

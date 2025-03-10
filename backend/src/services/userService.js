@@ -4,6 +4,9 @@ const HttpMessage = require("../middlewares/HttpMessage");
 const bcrypt = require("bcrypt");
 const TokenUtils = require("../utils/token");
 const NotificationService = require("./notificationService");
+const { uploadPath } = require("../utils/filePath");
+const fs = require("fs");
+const path = require("path");
 
 class UserService {
   async registerUser(name, email, password, role) {
@@ -155,6 +158,26 @@ class UserService {
       console.error("Error hiring guide:", error);
       throw HttpMessage.INTERNAL_SERVER_ERROR;
     }
+  }
+
+  async deleteUserById(userId) {
+    const user = await User.findById(userId);
+    if (!user) {
+      throw HttpMessage.NOT_FOUND;
+    }
+    if (user.profileImage) {
+      const filePath = path.join(uploadPath, user.profileImage);
+
+      try {
+        if (fs.existsSync(filePath)) {
+          fs.unlinkSync(filePath);
+        }
+      } catch (err) {
+        console.error(`Error deleting file: ${filePath}`, err);
+      }
+    }
+    await User.findByIdAndDelete(userId);
+    return user;
   }
 }
 

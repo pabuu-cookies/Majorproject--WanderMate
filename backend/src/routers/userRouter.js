@@ -11,6 +11,12 @@ const appendFile = require("../middlewares/appendFile");
 router.post("/register", userController.registerUser, handleResponse);
 router.post("/login", userController.loginUser, handleResponse);
 router.get("/", isAuthenticated, userController.getUserById, handleResponse);
+router.delete(
+  "/",
+  isAuthenticated,
+  userController.deleteUserById,
+  handleResponse
+);
 
 router.post(
   "/profile/update",

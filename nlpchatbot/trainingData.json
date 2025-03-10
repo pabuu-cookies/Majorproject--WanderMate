@@ -16,15 +16,15 @@
             ]
         },
         {
-            "intent": "fallback",
+            "intent": "how_to_reach",
             "examples": [
-                "I don't understand",
-                "What are you talking about?",
-                "Can you explain that?",
-                "I'm confused",
-                "What does that mean?"
+             "how to reach?",
+             "how to go?",
+             "how can i reach?"
             ],
-            "responses": []
+            "responses": [
+                "You can use public vehicles, cabs, online ride sharing apps. Use navigation provided by our app"
+            ]
         },
         {
             "intent": "ask_how_are_you",
@@ -48,6 +48,17 @@
             ]
         },
         {
+            "intent": "general guidelines",
+            "examples": [
+                "General guidelines",
+                "guidelines", "guidelines to vistit world heritage sites",
+                "any tips", "tourist guidelines"
+            ],
+            "responses": [
+               "Respect local customs and avoid intrusive photography in religious or cultural settings.\n Always check for signage that might indicate restrictions on photography.\n Be mindful when photographing devotees or local people and ask for permission."
+            ]
+        },
+        {
             "intent": "ask_capabilities",
             "examples": [
                 "What can you do?",
@@ -55,7 +66,7 @@
                 "Can you help me?"
             ],
             "responses": [
-                "I can help answer your questions or provide information on various topics."
+                "I can help answer your questions and give you local info."
             ]
         },
         {
@@ -71,9 +82,33 @@
             ]
         },
         {
+            "intent": "nepali.phrases",
+            "examples": [
+               "nepali phrases",
+               "local phrases",
+               "local language",
+               "phrase", "nepali"
+            ],
+            "responses": [
+               "Namaste : Hello/Greetings",
+               "Tapai lai kasto cha?: How are you",
+               "Malai ramro cha: I'm fine",
+               "Dhanyavad: Thank you",
+               "Maaf garnus: Excuse me/Sorry",
+               "Kati bajyo?: What time is it?",
+               "Tapai ko nam k ho? :What is your name?",
+               "Mero nam (yourname) ho: My name is (yourname)",
+               "Subhakamana: Good luck/ Best wishes"
+            ]
+        },
+        {
             "intent": "festivals_in_nepal",
             "examples": [
-                "What are the major festivals in Nepal?", "festivals", "festival", "festival in nepal",
+                "What are the major festivals in Nepal?", 
+                "festivals", 
+                "festival",
+                 "festival in nepal",
+                 "festivals in nepal",
                 "Tell me about Nepalese festivals",
                 "List some famous festivals celebrated in Nepal",
                 "Which festivals are celebrated in Nepal?"
@@ -97,7 +132,7 @@
         },
         {
             "intent": "ask_about_nearby_restaurants",
-            "examples":[ "restaurants", "restaurant", "where to eat?", "cafes", "lunch", "dinner", "breakfast", "eat"
+            "examples":[ "restaurants", "restaurant", "where to eat?", "cafes", "lunch", "dinner", "breakfast", "eat", "food"
 ],
        "responses":[
         "There are a lot of restaurants in Kathmandu, Bhaktapur and Patan to try local nepali cuisine and international cuisine as well. You can use the map feature provided by our app to search nearby restaurants and cafes. It's better to go to local restaurants for better food experience."
@@ -108,6 +143,9 @@
             "examples": [
                 "Tell me about Kathmandu",
                 "What is Kathmandu?",
+                "kathmandu", 
+                "ktm",
+                 "capital city",
                 "Give me some information about Kathmandu",
                 "What is Kathmandu known for?"
             ],
@@ -124,7 +162,7 @@
                         "what else"
                     ],
                     "responses": [
-                        "Kathmandu is one of the oldest continuously inhabited places in the world, founded in the 2nd century AD. The valley was historically called the Nepal Mandala (the name for the cosmic elements of water Dha mandala in Newari, and cosmos), and has been the home of the Newar people, a cosmopolitan urban civilization in the Himalayan foothills.[citation needed] The city was the royal capital of the Kingdom of Nepal and hosts palaces, mansions and gardens built by the Nepali aristocracy. It has been home to the headquarters of the South Asian Association for Regional Cooperation (SAARC) since 1985. Today, it is the seat of government of the Federal Democratic Republic of Nepal, established in 2008, and is part of Bagmati Province. Kathmandu is and has been for many years the centre of Nepal's history, art, culture, and economy. It has a multi-ethnic population within a Hindu majority. Religious and cultural festivities form a major part of the lives of people residing in Kathmandu. Tourism is an important part of the economy in the city. In 2013, Kathmandu was ranked third among the top ten upcoming travel destinations in the world by TripAdvisor, and ranked first in Asia. The city is considered the gateway to the Nepal Himalayas and is home to several World Heritage Sites: the Durbar Square, Swayambhu Mahachaitya, Bouddha and Pashupatinath.[9] Kathmandu valley is growing at 4 per cent per year according to the World Bank in 2010,[10] making it one of the fastest-growing metropolitan areas in South Asia, and the first region in Nepal to face the unprecedented challenges of rapid urbanization and modernization at a metropolitan scale. It is the largest metropolitan area located in the Himalayas."
+                        "Kathmandu is one of the oldest continuously inhabited places in the world, founded in the 2nd century AD. The valley was historically called the Nepal Mandala (the name for the cosmic elements of water Dha mandala in Newari, and cosmos), and has been the home of the Newar people, a cosmopolitan urban civilization in the Himalayan foothills.[citation needed] The city was the royal capital of the Kingdom of Nepal and hosts palaces, mansions and gardens built by the Nepali aristocracy. It has been home to the headquarters of the South Asian Association for Regional Cooperation (SAARC) since 1985. Today, it is the seat of government of the Federal Democratic Republic of Nepal, established in 2008, and is part of Bagmati Province. Kathmandu is and has been for many years the centre of Nepal's history, art, culture, and economy. It has a multi-ethnic population within a Hindu majority. Religious and cultural festivities form a major part of the lives of people residing in Kathmandu. Tourism is an important part of the economy in the city. In 2013, Kathmandu was ranked third among the top ten upcoming travel destinations in the world by TripAdvisor, and ranked first in Asia. The city is considered the gateway to the Nepal Himalayas and is home to several World Heritage Sites: the Durbar Square, Swayambhu Mahachaitya, Bouddha and Pashupatinath.[9] Kathmandu valley is growing at 4 per cent per year according to the World Bank in 2010, making it one of the fastest-growing metropolitan areas in South Asia, and the first region in Nepal to face the unprecedented challenges of rapid urbanization and modernization at a metropolitan scale. It is the largest metropolitan area located in the Himalayas."
                     ]
                 },
                 {
@@ -198,21 +236,31 @@
                 "What are the World Heritage Sites in Kathmandu?",
                 "Tell me about Kathmandu's UNESCO World Heritage Sites",
                 "Which UNESCO sites are located in Kathmandu?",
-                "world heritage site", "cultural sites"
+                "world heritage site", "cultural sites", "unesco",
+                "kathmandu world heritage sites", "world heritage sites"
             ],
             "responses": [
                 "Kathmandu is home to several UNESCO World Heritage Sites, including:\n\n1. **Kathmandu Durbar Square**: A historic royal palace complex located in the heart of Kathmandu. It includes the **Hanuman Dhoka Palace**, **Kumari Ghar** (the residence of the living goddess), and **Kasthamandap** (a wooden pavilion). The square is culturally significant, serving as the political and cultural heart of the city for centuries.\n\n2. **Swayambhunath Stupa (Monkey Temple)**: A sacred Buddhist site with panoramic views of the city. It features a large stupa with the eyes of Buddha and is surrounded by shrines, statues, and numerous monkeys. The site is a spiritual retreat and a significant landmark for both Buddhists and Hindus.\n\n3. **Boudhanath Stupa**: One of the largest Buddhist stupas in the world, located in the northeastern part of Kathmandu. It has a large white dome and gold spire, surrounded by monasteries, prayer wheels, and Tibetan shops. It is an important center for Tibetan Buddhism and a major pilgrimage site.\n\n4. **Pashupatinath Temple**: A revered Hindu temple complex dedicated to Lord Shiva, located on the banks of the Bagmati River. It includes cremation ghats and is considered one of the holiest Hindu sites. The main temple, a pagoda-style structure, houses the sacred Pashupatinath idol.\n\n5. **Bhaktapur Durbar Square**: Located in Bhaktapur, just outside Kathmandu, this square features medieval architecture and historical buildings, including the **Vatsala Temple**, **55-Window Palace**, and the **Bhairab Nath Temple**. It showcases the cultural richness of the Malla period.\n\n6. **Patan Durbar Square**: Situated in the city of Patan, this square is famous for its intricate temples, including the **Mahabouddha Temple** and the **Golden Temple**. The square reflects the artistry of the Malla kings and is known for its fine stonework and carvings.\n\n7. **Changu Narayan Temple**: Located in Bhaktapur, this Hindu temple dedicated to Lord Vishnu is believed to be the oldest Hindu temple still in use. It features ancient inscriptions, a pagoda-style architecture, and beautifully crafted woodwork, making it a significant site for historical and religious studies.\n\nEach of these sites holds great cultural, religious, and historical importance. They showcase the rich heritage of Nepal and are visited by people from around the world for both spiritual purposes and historical exploration."
             ]
         },
         {
+            "intent": "durbar_squares",
+            "examples": ["durbar squares", "what are the durbar squares in kathmandu", "durbars in kathmandu", "durbar square"
+        ],
+        "responses" :["The three durbar squares in Kathmandu valley are Bhaktapur Durbar Square, Patan Durbar Square and Kathmandu Durbar square."
+    ]
+        },
+        {
             "intent": "hiking_spots_kathmandu",
             "examples": [
                 "What are the best hiking spots near Kathmandu?",
-                "Where can I hike around Kathmandu?",
-                "Suggest some hiking destinations near Kathmandu", "adventurous spots", "hiking spots"
+                "Where can I hike around Kathmandu?", "hiking",
+                "Suggest some hiking destinations near Kathmandu", 
+                "adventurous spots", 
+                "hiking spots"
             ],
             "responses": [
-                "Kathmandu offers access to stunning hiking trails. Popular hiking spots near the city include: \n1. Champadevi, Hiking to Swayambhu, shivpuri national park, canyoning in sundarijal, paragliding in godavari"
+                "Kathmandu offers access to stunning hiking trails and adventurous spots. Popular hiking spots near the city include: \n1. Champadevi, Hiking to Swayambhu, Shivapuri national park. Canyoning in sundarijal, Paragliding in godavari are other adventurous spots in Kathmandu"
             ]
         },
         {
@@ -221,7 +269,6 @@
                 "Tell me about Bhaktapur", "baktapur",
                 "What is Bhaktapur?",
                 "Give me some information about Bhaktapur",
-                "What are the key attractions in Bhaktapur?",
                 "Bhaktapur"
             ],
             "responses": [
@@ -277,9 +324,8 @@
                     "intent": "Bhaktapur.palace",
                     "examples": [
                         "What is the purpose of the 55-Window Palace?",
-                        "55 window palace",
-                        "55 jhyale"
-                    ],
+                        "55 window palace", "museum",
+                        "55 jhyale"                     ],
                     "responses": [
                         "The 55-Window Palace was the royal residence during the Malla kings' reign and remains an architectural landmark in Bhaktapur. It is famous for its intricately carved wooden windows and doors, which are significant examples of Newari craftsmanship.One of the most stunning buildings in the durbar square is the Palace with Fifty-Five Windows. This palace was built by King Bhupatindra Malla in 1677. The Palace of 55 (Fifty-Five) Windows got its name from the façade's fifty-five intricately carved wooden windows. This palace is constructed around a number of interconnected interior courtyards. According to legend, there were initially 99 courtyards, but currently there are just nine. The 'Golden Gate' main entrance gate is another outstanding feature of this palace. In the early eighteenth century, King Jayastithi Malla later erected this gate to the palace. Metal embossed with gold plating is used to embellish this gate. It leads to the palace's entrance courtyard."
                     ]
@@ -287,18 +333,46 @@
                 {
                     "intent": "Bhaktapur.festivals",
                     "examples": [
-                        "How do traditional festivals impact Bhaktapur Durbar Square?", "festivals"
+                        "How do traditional festivals impact Bhaktapur Durbar Square?", 
+                        "festivals", "festival", "tradition", "culture", "culture and tradition"
                     ],
                     "responses": [
-                        "Traditional festivals, such as Bisket Jatra, bring the community together and help preserve the cultural heritage of Bhaktapur Durbar Square."
+                        "Traditional festivals, such as Bisket Jatra, Gai Jatra, Indra Jatra bring the community together and help preserve the cultural heritage of Bhaktapur Durbar Square."
                     ]
                 },
+                {
+                    "intent": "bisket.jatra",
+                    "examples": [
+                       "Bisket Jatra"
+                    ],
+                    "responses": [
+                        "Bisket Jatra is the nepali new year festival.It is mostly celebrated in newari communities. It is a grand celebration where a massive chariot of Lord Bhairab is pulled through the streets. It involves tongue-piercing rituals and a famous tug-of-war between the chariot teams."
+                    ]
+                },
+                {
+                    "intent": "gai.jatra",
+                    "examples": [
+                       "Gai Jatra"
+                    ],
+                    "responses": [
+                        "Gai jatra is festival of cows. Families who have lost loved ones participate in a procession with cows or dressed-up children.It is a mix of remembrance, humor, and satire in Newar society."
+                    ]
+                },
+                {
+                    "intent": "indra.jatra",
+                    "examples": [
+                       "indra Jatra"
+                    ],
+                    "responses": [
+                        "Indra Jatra: Honoring Lord Indra (god of rain) with masked dances and religious processions." ]
+                    },
+                
                 {
                     "intent": "vatsala.temple",
                     "examples": [
                         "What is the architectural style of the Vatsala Temple?",
                         "vatsala temple",
-                        "temples in bhaktapur"
+                        "temples in bhaktapur", "temples", "temple"
                     ],
                     "responses": [
                         "The Vatsala Temple showcases traditional Newari architecture with its finely crafted wooden windows and intricate carvings.The Vatsala Durga (also known as the Vatsala Devi) is located on the east side of the Bhaktapur Darbar Square. It is a sikhara-style monument dedicated to the Vatsala manifestation of the female deity Durga. The temple was the third Vatsala temple constructed in Bhaktapur's Darbar Square, following two earlier temples constructed by King Jitamitra Malla (r. 1663-96). The first temple is a miniature shrine located behind the Pashupatinath temple; the second was constructed behind the Siddhi Lakshmi temple but was destroyed in the 1934 earthquake. The third temple, shown in this series of images, was likely built late in the 1690s, but the precise date is unknown. The only date that can be fixed is the replacement of the temple's bell in 1721, suggesting that the temple had already existed long enough for the original bell to require replacement"
@@ -320,6 +394,19 @@
                     "examples":[ "location", "where is bhaktapur durbar square located?"],
                     "responses":[
                         "The ancient city Bhaktapur lies on the Eastern part of Kathmandu valley which is also known as Bhadgaon or Khwopa, Bhaktapur. It is regarded as the abode of traditional Nepali culture, custom and unique arts of wooden and potteries. The historical monument on around signifies medieval age culture and tradition of Nepal and this old city is inhabited by indigenous Newari people in large group. The main attractive monuments are Nyatapola Temple, statue of King Bhupatindra Malla, Peacock Window, Golden Gate and fifty-five windowed palace of Bhaktapur Durbar Square."
+                    ]
+                },
+                {
+                    "intent": "openinghours.entryfee",
+                    "examples": [
+                        "What are the opening hours of Bhaktapur Durbar Square?",
+                        "opening hours",
+                        "How much is the entry fee for Bhaktapur Durbar Square?",
+                        "entry fee", "entry fees",
+                        "Is Bhaktapur Durbar Square accessible for disabled visitors?", "opening hours and entry fee", "visiting hours", "opening time"
+                    ],
+                    "responses": [
+                        "Bhaktapur Durbar Square is open to visitors 24/7 for general strolling. However, to access major sites like museums and galleries within the square, tickets are required. The ticket counters operate from 7:00 AM to 7:00 PM daily. \n Entry Fees: Foreign Nationals: NPR 1,800 \n SAARC Nationals: NPR 500 \n Chinese Nationals: NPR 500 \n Nepalese Citizens: Free"
                     ]
                 },
                 {
@@ -372,6 +459,7 @@
                         "Pottery Square is renowned for its traditional pottery-making, where artisans create various clay products that are sold to locals and tourists.ottery Square in Bhaktapur, Nepal, is a vibrant hub of culture, craft, and creativity. It’s a place where the traditional art of pottery is still alive and thriving, with local artisans shaping clay into various forms, from pots and vases to intricate sculptures.Use maps to see pottery square."
                     ]
                 },
+
                 {
                     "intent": "ask_about_lions_gate",
                     "examples": [
@@ -395,15 +483,17 @@
                     ]
                 },
                 {
-                    "intent": "bhaktapur_famous",
+                    "intent": "bhaktapur_major.attraction",
                     "examples": [
                         "What is bhaktapur famous for?",
                         "bhaktapur popularity",
-                        "famous bhaktapur",
-                        "major attraction"
+                        "famous bhaktapur", "places to visit",
+                        "tourist activities", "tourist attractions", 
+                        "tourist site", "attractions", "attraction",
+                        "major attraction", "major attractions"
                     ],
                     "responses": [
-                        "Bhaktapur is also famous for its cuisine with the jūjū dhau, a type of yogurt made from buffalo milk being the most popular. Bhaktapur's potters and handicraft industries are also known nationwide.Major attractions are 55 window palace,Lions gate, architecture, pottery, peacock window, temples."
+                        "Bhaktapur is also famous for its cuisine with the jūjū dhau, a type of yogurt made from buffalo milk being the most popular. Bhaktapur's potters and handicraft industries are also known nationwide.Major attractions are 55 window palace,Lions gate, architecture, pottery, peacock window, temples like Vatsala temple, Siddhi Laxmi temple, Nyatapola Temple, Bhairavnath Temple, Taleju Bhawani temple"
                     ]
                 },
                 {
@@ -442,7 +532,7 @@
                     "intent": "ask_about_local_artisans_contribution",
                     "examples": [
                         "How do local artisans contribute to Bhaktapur Durbar Square?",
-                        "local art"
+                        "local art", "art", "souvenirs"
                     ],
                     "responses": [
                         "Local artisans contribute by practicing traditional crafts such as wood carving, pottery, and metalwork, which help maintain the cultural heritage of Bhaktapur."
@@ -465,7 +555,19 @@
                     "responses": [
                         "Bhaktapur Durbar Square promotes cultural exchange through its festivals, events, and educational programs that showcase Nepal's rich cultural heritage."
                     ]
-                }    
+                },
+                {
+                    "intent": "bhaktapur.photo",
+                    "examples": [
+                      "Is photography allowed at durbar square?",
+                      "Is photography allowed?", "photo", "photographs", "photography",
+                      "can i take pictures?"
+                    ],
+                    "responses": [
+                        "Photography is allowed, but there is an entry fee for tourists, which helps with the preservation of the area. Strict photography restrictions apply to some temples and religious sites.As with the other Durbar Squares, commercial photography requires a permit."
+                    ]
+                }
+
             ]
         },
         {
@@ -475,7 +577,7 @@
                 "Where is Kathmandu Durbar Square located?",
                 "Why is Kathmandu Durbar Square important?",
                 "kathmandu durvar square",
-                "ktm durbar square",
+                "ktm durbar square", "kathmandu durbar",
                 "basantapur"
             ],
             "responses": [
@@ -483,7 +585,7 @@
             ],
             "follow_up_questions": [
                 {"intent": "more",
-            "examples": ["more", "more about basantapur"
+            "examples": ["more", "more about basantapur", "tell me more", "what else"
             ],
         "responses": [ "TALEJU TEMPLE: The Taleju Temple is the tallest of all structures, built by King Mahendra Malla in 1549 AD. This temple is open to the public for one day each year during the Dashain festival.\n KUMARI TEMPLE: The 17th century Kumari Temple, or the temple of Living Goddess is an example of highly developed Nepali craftsmanship. This is the official residence of Living Goddess Kumari of Kathmandu. Visitors can get a peek of the living goddess and seek blessings during special hours.\n JAGANNATH TEMPLE: Built in the 16th century, the Jagannath Temple is known for the fascinating erotic figures carved on the wooden struts.\n NASAL CHOWK:  This lovely courtyard inside the main entrance will be your first experience of the historic royal residence. Nasal Chowk was built during the Malla dynasty, although many of the structures in the area were built during the Rana period. Nasal Chowk was utilized for coronations throughout the Rana regime, and the practice persisted until 2001.\n NARSINGHA STATUE: Narsingha is thought to be Lord Vishnu in his man-lion avatar, disemboweling a demon. Pratap Malla erected the stone image in 1673, and according to the inscription on the monument, he did so out of fear of upsetting Vishnu by dancing in a Narsingha attire.\n SWET BHAIRAV: Swet Bhairav is a statue of Bhairav, avatar of Shiva. This Bhairav temple is open to the public once in year during the festival of Indra Jatra during August-September.\n SHISHA BAITHAK: Shisha Baithak is an open patio with the Malla throne on display, and pictures of the Shah kings.\n TRIBHUWAN MUSEUM: Along with memorials to Kings Mahendra and Birendra, the Tribhuwan Museum commemorates King Tribhuvan and his successful insurrection against their regime. The museum exhibits the  king's bedroom and study, complete with real personal belongings that provide a surreal look into his existence. The king's boxing gloves, the walking staff with a spring-loaded sword hidden inside, and his dusty, empty aquarium provide some mysterious moments. There are several spectacular thrones, numerous hunting photographs, and the typical coin collection on display.\n KAL BHAIRAB: The Kal Bhairav is one of the largest 17th century stone statues in Kathmandu, representing the terrifying aspect of Lord Shiva." ]
         },
@@ -501,6 +603,28 @@
                     ]
                 },
                 {
+                    "intent": "living.goddess",
+                    "examples": [
+                        "can i see living goddess?",
+                        "living goddess",
+                        "Is photography allowed?", "goddess kumari", "kumari"
+                    ],
+                    "responses": [
+                        "Yes, you may see Kumari at Kumari Ghar’s window during certain hours, but photography is not allowed inside."
+                    ]
+                },
+                {
+                    "intent": "who.is.living.goddess",
+                    "examples": [
+                       "who is living goddess?",
+                       "how is living goddess chosen?",
+                       "living goddess kumari of nepal", "kumari ghar"
+                    ],
+                    "responses": [
+                        "Kumari ghar is the residence of the living Goddess. The Kumari, or Living Goddess, is a prepubescent girl worshipped as the physical embodiment of the Hindu goddess Taleju (Durga) in Nepal.The Kumari tradition is a centuries-old practice in Nepal where a young girl is chosen to be the human manifestation of the goddess Taleju, worshipped by both Hindus and Buddhists. She is chosen from the Newar Buddhist community and remains a deity until she reaches puberty. The most famous Kumari resides in Kathmandu Durbar Square, but there are also Kumaris in Patan and Bhaktapur."
+                    ]
+                },
+                {
                     "intent": "architecture",
                     "examples": [
                         "What are the main architectural highlights of Kathmandu Durbar Square?",
@@ -512,12 +636,12 @@
                     ]
                 },
                 {
-                    "intent": "opening.hours",
+                    "intent": "openinghours_entryfee",
                     "examples": [
                         "What are the opening hours of Kathmandu Durbar Square?",
                         "opening hours",
                         "How much is the entry fee for Kathmandu Durbar Square?",
-                        "entry fee",
+                        "entry fee", "opening time",
                         "Is Kathmandu Durbar Square accessible for disabled visitors?", "opening hours and entry fee", "visiting hours"
                     ],
                     "responses": [
@@ -525,18 +649,17 @@
                     ]
                 },
                 {
-                    "intent": "faqs",
+                    "intent": "ktm.attractions",
                     "examples": [
-                        "How can I get to Kathmandu Durbar Square?",
-                        "What other attractions are near Kathmandu Durbar Square?",
-                        "Is Kathmandu Durbar Square safe for tourists?",
-                        "What is the best time to visit Kathmandu Durbar Square?"
+                        "major attraction", "major attractions",
+                        "attractions", "attraction", "tourist activities",
+                        "tourist attractions", "what to visit", "where to visit", 
+                        "places to visit", "sites to visit",
+                        "faqs"
+ 
                     ],
                     "responses": [
-                        "You can reach the square by taxi, rickshaw, or on foot from central Kathmandu areas like Thamel.",
-                        "Nearby attractions include Swayambhunath (Monkey Temple), Garden of Dreams, and Thamel.",
-                        "Kathmandu Durbar Square is generally safe for tourists, but it's always good to be cautious and aware of your surroundings.",
-                        "The best time to visit is during the autumn (September to November) and spring (March to May) seasons when the weather is pleasant."
+                       " Hanuman Dhoka Palace – A historic palace with intricate architecture and a museum showcasing Nepalese history. \n  Kumari Ghar (Kumari Palace) – The residence of the living goddess Kumari, where you might get a glimpse of her. \n Taleju Temple – A magnificent 16th-century temple dedicated to Goddess Taleju, standing tall within the square.\n Jagannath Temple – Known for its erotic carvings and beautiful wooden architecture.\n Shiva-Parvati Temple – A temple with statues of Lord Shiva and Parvati peering from the windows.\n Kasthamandap – The legendary wooden pavilion that gave Kathmandu its name, originally built from a single tree.\n Freak Street (Jhochhen Tole) – A historic street famous for its hippie culture in the 1960s and 70s."
                     ]
                 },
                 {
@@ -564,11 +687,24 @@
                     ]
                 },
                 {
+                    "intent": "photography",
+                    "examples": [
+                        "Is photography allowed?",
+                        "Is photography allowed at durbar square?",
+                        "photo", "photographs", "photography",
+                        "can i take pictures?", "pictures", 
+                        "can i take pictures inside kathmandu durbar square?"
+                    ],
+                    "responses": [
+                       "Photography is generally allowed, but there are some restrictions. No photography is allowed inside the Kumari Ghar (Living Goddess' residence), where visitors are asked not to take photos out of respect for the tradition. Professional photography (e.g., for commercial purposes) typically requires a special permit."
+                    ]
+                },
+                {
                     "intent": "how_to_reach_kathmandu_durbar_square",
                     "examples": [
                         "How accessible is Kathmandu Durbar Square from various parts of the city?",
                         "Can you walk to Kathmandu Durbar Square from Thamel?",
-                        "How can you reach Kathmandu Durbar Square by car or taxi?",
+                        "How can you reach Kathmandu Durbar Square ?",
                         "What public transportation options are available to reach Kathmandu Durbar Square?",
                         "Is it possible to reach Kathmandu Durbar Square by bicycle?"
                     ],
@@ -579,6 +715,28 @@
                         "Public transportation is readily available in the city and is a cheap and convenient way to get around. Several bus stops and pickup points are located near the square, such as RNAC, Ratnapark, Lainchaur, and Sahid Gate. You can take a bus or microbus to get there.",
                         "Yes, you can rent a bike or bring your own and ride to the square. Unlike vehicles, bicycles are allowed inside the square. You can also join a guided bike tour to visit the square and other popular attractions in the city."
                     ]
+                }, 
+                 {
+                    "intent": "tips_for_visitors",
+                    "examples": [
+                        "What safety tips should visitors keep in mind?",
+                        "What cultural etiquette should visitors follow?", "tips",
+                        "What type of footwear is recommended for visiting Kathmandu Durbar Square?",
+                        "How should visitors respect the local culture at Kathmandu Durbar Square?"
+                    ],
+                    "responses": [
+                        "Visitors should be mindful of their belongings, especially during crowded festivals.Visitors should respect local customs and traditions, and dress modestly when visiting temples. Wear comfortable shoes, as the square is a large area with many landmarks and attractions to explore, ensuring you can walk around comfortably. Visitors should dress modestly, remove their shoes before entering temples or other religious sites, and behave respectfully towards others."
+                    ]
+                },
+
+                {
+                    "intent": "hanuman_dhoka",
+                    "examples": [
+                      "hanuman dhoka"
+                    ],
+                    "responses": [
+                        "Hanuman Dhoka is a historical palace complex located in the heart of Kathmandu, near Basantapur Durbar Square. It was once the royal palace for the Malla kings and later the Shah kings of Nepal. \n Historical Significance: 1. Royal Palace: Hanuman Dhoka was the residence of Nepal's royal family for several centuries. The name Hanuman Dhoka comes from the Hanuman statue at the entrance, which is believed to have been built to protect the royal family. \n 2. King Prithvi Narayan Shah: Hanuman Dhoka is historically significant as the place where King Prithvi Narayan Shah declared the unification of Nepal in the 18th century. \n 3. Hanuman Statue: A large statue of Lord Hanuman stands at the entrance, which is a major attraction. \n 4. Nasal Chowk: A beautiful courtyard within the palace where the kings held ceremonies."
+                    ]
                 }
             ]
         },
@@ -588,7 +746,8 @@
                 "Tell me about Pashupatinath",
                 "What is Pashupatinath?",
                 "Give me some information about Pashupatinath",
-                " Pashupatinath"
+                " Pashupatinath", "pashupatinath temple",
+                "pashupati", "pashpati"
             ],
             "responses": [
                 "The Pashupatinath Temple (Nepali: पशुपतिनाथ मन्दिर) is a Hindu temple dedicated to Pashupati, a form of Shiva. It is located in Kathmandu, Nepal, on the bank of the Bagmati River. The temple was classified as a World Heritage Site in 1979. This 'extensive Hindu temple precinct' is a 'sprawling collection of temples, ashrams, images and inscriptions raised over the centuries along the banks of the sacred Bagmati river', and is one of seven monument groups in UNESCO's designation of Kathmandu Valley."
@@ -605,8 +764,12 @@
                         "Pashupatinath Temple is located in Kathmandu, Nepal, on the banks of the Bagmati River. Address: Pashupati Nath Road, Kathmandu 44600. Go to maps for better location"
                     ]
                 },
-                {"intent": "more",
-                 "examples":["more", "more about pashupatinath"],
+                {
+                    "intent": "more",
+
+                 "examples":["more", 
+                 "more about pashupatinath"],
+
                  "responses": ["Pashupatinath Temple, located on the banks of the Bagmati River in Kathmandu, Nepal, is one of the holiest Hindu temples dedicated to Lord Shiva. It is a UNESCO World Heritage Site and an important pilgrimage destination for Hindus worldwide. The temple complex, known for its pagoda-style architecture and sacred atmosphere, is considered a major spiritual center. The inner temple houses a sacred lingam (symbol of Lord Shiva), and only Hindus are permitted to enter it. Non-Hindus can still enjoy the temple’s beauty and observe the rituals from across the river. \n The temple complex is open daily from 4:00 AM to 9:00 PM, with the inner temple being accessible in the morning (5:00 AM to 12:00 PM) and evening (5:00 PM to 7:00 PM). Foreign nationals are required to pay an entrance fee of NPR 1,000, while Indian and Nepalese nationals can enter for free.\n The temple is also famous for its cremation ghats along the Bagmati River, where Hindu funeral rites are performed. Pashupatinath is not only a religious site but also a place of cultural significance, attracting visitors for both its spiritual importance and the tranquil beauty of the surrounding area."]
                       },
                 {
@@ -614,8 +777,8 @@
                     "examples": [
                         "Which deity is worshipped at Pashupatinath?",
                         "Who is the main deity of Pashupatinath?",
-                        "main deity",
-                        "main god",
+                        "main deity", "what god", "what god is worshipped",
+                        "main god","worship",
                         "which god"
                     ],
                     "responses": [
@@ -639,7 +802,7 @@
                     "examples": [
                      "opening hours and entry fee", 
                      "opening hours", "visiting hours",
-                      "entry fees",
+                      "entry fees", "opening time",
                        "when does it open?",
                         "entry fee"
                     ],
@@ -663,8 +826,8 @@
                     "examples": [
                         "Who can enter the inner sanctum of Pashupatinath?",
                         "Are non-Hindus allowed inside Pashupatinath?",
-                        "hindus in pashupatinath",
-                        "muslims",
+                        "hindus in pashupatinath", "rules",
+                        "muslims", "can a tourist go?",
                         "christains",
                         "religions"
                     ],
@@ -687,7 +850,7 @@
                     "examples": [
                         "What rituals are performed at Pashupatinath?",
                         "What is the Bhasm Aarti at Pashupatinath?",
-                        "aarati",
+                        "aarati", "culture",
                         "rituals"
                     ],
                     "responses": [
@@ -704,7 +867,18 @@
                     "responses": [
                         "Pashupatinath is one of the holiest Shiva temples in the world and a UNESCO World Heritage Site. It is a major pilgrimage site for Hindus, especially during Maha Shivaratri."
                     ]
+                },
+                {
+                    "intent": "pashupati.attractions",
+                    "examples": [
+                       "major attraction", "major attractions", "tourist activities",
+                       "tourist site", "tourist attractions", "everything i need to know about pashupatinath"
+                    ],
+                    "responses": [
+                        "Pashupatinath Temple is one of the holiest Hindu temples in Nepal and a UNESCO World Heritage Site. It attracts thousands of visitors each year, both for its spiritual significance and architectural beauty.\n  Here are the major attractions at Pashupatinath Temple: 1. Pashupatinath Temple Significance: The main temple, dedicated to Lord Shiva, is the most important part of the complex. It is the most revered pilgrimage site for Hindus and is believed to be one of the 12 Jyotirlingas (sacred shrines of Shiva) in the world. \n Golden Roof and Architecture: The temple is known for its golden roof and intricate pagoda-style architecture, with beautiful wooden carvings and detailed designs.\n 2. Bhasmeshwor (Cremation Ghats) Cremation Rituals: The Bhasmeshwor Ghat along the Bagmati River is a place where Hindus perform cremation rituals. Visitors can observe the traditional funeral process, which is an integral part of Hindu culture. \n Spiritual Significance: The ghats are considered highly sacred, and it is believed that those who are cremated here attain moksha (liberation from the cycle of rebirth).\n 3. Sadhus (Holy Men)Presence of Sadhus: You’ll encounter Sadhus—holy men dressed in vibrant colors, who are followers of Lord Shiva. They often perform rituals, meditate, and can be seen around the temple.\n Spiritual Experience: It’s common for visitors to interact with these Sadhus, take photographs, and seek blessings.\n 4. Kailashnath Mahadev Statue. Size and Significance: The Kailashnath Mahadev Statue, located nearby (in Sanga, just outside the temple complex), is one of the tallest statues of Lord Shiva in the world. It's an impressive modern-day attraction and a must-see for visitors to Pashupatinath.\n 5.Pagoda-style Architecture and Temples \n Various Temples: The Pashupatinath temple complex consists of several smaller temples dedicated to different gods and goddesses, such as Madhyameshwar, Guhyeshwari, and Bhairab. \n Architecture: The temples feature classic Newar architecture with pagoda-style roofs and intricately carved wooden windows and doors.\n 6. The Bagmati River \n Spiritual Importance: The Bagmati River, flowing next to the temple complex, is considered holy. Many devotees come to bathe in the river for purification and spiritual cleansing. \n Rituals on the Banks: Along the riverbanks, you can witness a variety of religious rituals, including offerings and prayers. \n 7. The Ashram of the Shiva Lingam. \n Sacred Site: The Shiva Lingam is an abstract representation of Lord Shiva, and the ashram dedicated to it is considered highly sacred by devotees. The worship of this deity is an important part of the temple experience."
+                    ]
                 }
+
             ]
         },
         {
@@ -798,11 +972,11 @@
                     ]
                 },
                 {
-                    "intent": "ask_about_tourist_activities",
+                    "intent": "bouddha.major.attraction",
                     "examples": [
-                        "What can I do at Boudhanath?",
+                        "What can I do at Boudhanath?", "tourist site",
                         "What activities are available for tourists at Boudhanath?",
-                        "tourist activities"
+                        "tourist activities", "major attraction", "major attractions", "tourist attractions"
                     ],
                     "responses": [
                         "Visitors can walk around the stupa, participate in circumambulation, observe rituals, visit nearby monasteries, and shop for Tibetan handicrafts."
@@ -813,7 +987,8 @@
                     "examples": [
                         "What are the opening hours of Boudhanath?",
                         "When is Boudhanath open?",
-                        "opening hours", "visiting hours"
+                        "opening hours", "visiting hours", 
+                        "opening time"
                     ],
                     "responses": [
                         "Boudhanath Stupa is open every day, typically from 6:00 AM to 7:00 PM."
@@ -824,7 +999,7 @@
                     "examples": [
                         "Is there an entry fee for Boudhanath?",
                         "How much is the entry fee for Boudhanath?",
-                        "entry fee"
+                        "entry fee", "entry fees"
                     ],
                     "responses": [
                         "Yes, the entry fee for foreign nationals is NPR 400, while Nepali citizens can visit for free."
@@ -843,8 +1018,8 @@
                 {
                     "intent": "ask_about_monasteries",
                     "examples": [
-                        "What are the famous monasteries near Boudhanath?",
-                        "Can you tell me about the monasteries near Boudhanath?"
+                        "What are the famous monasteries near Boudhanath?", "monastry",
+                        "Can you tell me about the monasteries near Boudhanath?", "monastries"
                     ],
                     "responses": [
                         "Some of the well-known monasteries near Boudhanath include the Shechen Monastery, the Kagyu Monastery, and the Tibetan Buddhist Monastery."
@@ -864,7 +1039,7 @@
                     "intent": "ask_about_special_events",
                     "examples": [
                         "What festivals are celebrated at Boudhanath?",
-                        "Are there any special events at Boudhanath?"
+                        "Are there any special events at Boudhanath?", "festivals"
                     ],
                     "responses": [
                         "Boudhanath Stupa is a focal point for Tibetan Buddhist festivals, including Losar (Tibetan New Year), Buddha Jayanti, and the Monlam Prayer Festival."
@@ -874,7 +1049,7 @@
                     "intent": "ask_about_tibetans",
                     "examples": [
                         "Why are there so many Tibetans at Boudhanath?",
-                        "What role do Tibetans play at Boudhanath?"
+                        "What role do Tibetans play at Boudhanath?", "tibetians"
                     ],
                     "responses": [
                         "Boudhanath Stupa is a prominent site for Tibetans in Nepal. It has a strong Tibetan community and is a spiritual and cultural hub for Tibetan refugees in Nepal."
@@ -896,7 +1071,7 @@
                     "intent": "ask_about_transportation",
                     "examples": [
                         "How can I get to Boudhanath?",
-                        "What is the best way to reach Boudhanath?"
+                        "What is the best way to reach Boudhanath?", "how to reach?"
                     ],
                     "responses": [
                         "Boudhanath Stupa is easily accessible by taxi, rickshaw, or public transportation. It's about a 15-minute drive from the center of Kathmandu."
@@ -974,7 +1149,7 @@
                     "intent": "more",
                     "examples":[ "more", "details", "more about patan"
                 ],
-                "responses": ["Patan Durbar Square (Nepal Bhasa: 𑐫𑐮 𑐮𑐵𑐫𑐎𑐹‎/यल लायकु, Nepali: पाटन दरवार) is situated at the centre of the city of Lalitpur in Nepal. It is one of the three Durbar Squares in the Kathmandu Valley, all of which are UNESCO World Heritage Sites. One of its attractions is the medieval royal palace where the Malla Kings of Lalitpur resided.The Durbar Square is a marvel of Newar architecture. The square floor is tiled with red bricks.[1] There are many temples and statues in the area. The main temples are aligned opposite the western face of the palace.[2] The entrance of the temples faces east, towards the palace. There is also a bell situated in the alignment beside the main temples.[3] The Square also holds old Newari residential houses. There are other temples and structures in and around Patan Durbar Square built by the Newa People. A center of both Hinduism and Buddhism, Patan Durbar Square has 136 (bahals) (courtyards) and 55 major temples."]
+                "responses": ["Patan Durbar Square (Nepali: पाटन दरवार) is situated at the centre of the city of Lalitpur in Nepal. It is one of the three Durbar Squares in the Kathmandu Valley, all of which are UNESCO World Heritage Sites. One of its attractions is the medieval royal palace where the Malla Kings of Lalitpur resided.The Durbar Square is a marvel of Newar architecture. The square floor is tiled with red bricks.[1] There are many temples and statues in the area. The main temples are aligned opposite the western face of the palace.[2] The entrance of the temples faces east, towards the palace. There is also a bell situated in the alignment beside the main temples.[3] The Square also holds old Newari residential houses. There are other temples and structures in and around Patan Durbar Square built by the Newa People. A center of both Hinduism and Buddhism, Patan Durbar Square has 136 (bahals) (courtyards) and 55 major temples."]
                 },
 
                 {
@@ -1056,7 +1231,8 @@
                     "examples": [
                         "What is the entry fee for different visitors?",
                         "What are the opening hours?", "entry fee", "entry fees",
-                        "opening hours", "opening hours and entry fee", "visiting hours"
+                        "opening hours", "opening hours and entry fee", "visiting hours",
+                        "opening time"
                     ],
                     "responses": [
                         "Entry fees vary for foreigners, SAARC nationals, and locals. For SAARC nationals, the entry fee is NRs 150, and for foreigners, it is NRs 1000.The square is open from 7 AM to 7 PM."
@@ -1065,16 +1241,13 @@
                 {
                     "intent": "tips_for_visitors",
                     "examples": [
-                        "What safety tips should visitors keep in mind?",
+                        "What safety tips should visitors keep in mind?", "tips",
                         "What cultural etiquette should visitors follow?",
                         "What type of footwear is recommended for visiting Patan Durbar Square?",
                         "How should visitors respect the local culture at Patan Durbar Square?"
                     ],
                     "responses": [
-                        "Visitors should be mindful of their belongings, especially during crowded festivals.",
-                        "Respect local customs, dress modestly when visiting temples, and be aware of sacred spaces.",
-                        "Wear comfortable shoes as the area is large and includes many temples and courtyards to explore.",
-                        "Remove shoes when entering temples and behave respectfully toward local customs and traditions."
+                        "Visitors should be mindful of their belongings, especially during crowded festivals.\n Respect local customs, dress modestly when visiting temples, and be aware of sacred spaces. \n Wear comfortable shoes as the area is large and includes many temples and courtyards to explore. \n Remove shoes when entering temples and behave respectfully toward local customs and traditions."
                     ]
                 },
                 {
@@ -1084,11 +1257,12 @@
                         "Can you walk to Patan Durbar Square from Thamel?",
                         "How can you reach Patan Durbar Square by car or taxi?",
                         "What public transportation options are available to reach Patan Durbar Square?",
-                        "Is it possible to reach Patan Durbar Square by bicycle?"
+                        "Is it possible to reach Patan Durbar Square by bicycle?",
+                        "how to reach?"
                     ],
                     "responses": [
                         "Patan Durbar Square is easily accessible from various parts of the city, including Thamel, by taxi, rickshaw, or walking.",
-                        "You can walk from Thamel to Patan Durbar Square in about 20 minutes.",
+                        " Thamel to Patan Durbar Square is 5-6km according to route. It takes about 1 hour to 1 hour 30 minutes by walking.",
                         "You can hire a car or taxi to take you close to the square; however, vehicles are not allowed inside the square area.",
                         "Public transportation is available, including buses and microbuses from Ratnapark, Sahid Gate, and nearby areas.",
                         "Yes, bicycles are allowed inside Patan Durbar Square, and you can rent a bike to explore the area."
@@ -1119,7 +1293,7 @@
                 "Tell me about Swayambhunath",
                 "What is Swayambhunath?",
                 "Swayambhunath", "swayambhunath", 
-                "swayambhu",
+                "swayambhu", "swayambunath",
                 "monkey temple"
             ],
             "responses": [
@@ -1156,6 +1330,15 @@
                     ]
                 },
                 {
+                    "intent": "swayambhu.attractions",
+                    "examples": [
+                        "major attraction", "major attractions", "attraction", "places to visit"
+                    ],
+                    "responses": [
+                       " Swayambhunath, also known as the Monkey Temple, is one of the most iconic and sacred Buddhist sites in Nepal. Located on a hilltop in Kathmandu, it offers breathtaking views of the city and is a UNESCO World Heritage Site.\n The centerpiece of the site, the white dome and golden spire represent enlightenment.\n The all-seeing eyes of Buddha symbolize wisdom and awareness."
+                    ]
+                },
+                {
                     "intent": "ask_about_why_are_the_monkeys",
                     "examples": [
                         "Why are the monkeys at Swayambhunath considered holy?",
@@ -1176,219 +1359,27 @@
                     ]
                 },
                 {
-                    "intent": "ask_about_which_indian_emperor_is",
+                    "intent": "swayambhu.architecture",
                     "examples": [
-                        "Which Indian emperor is said to have visited Swayambhunath?"
+                       "architecture", "swayambhunath architecture", "swayambhu archutecture"
                     ],
                     "responses": [
-                        "Emperor Ashoka is said to have visited Swayambhunath in the 3rd century BCE."
-                    ]
-                },
-        
-                {
-                    "intent": "ask_about_which_kathmandu_king_constructed",
-                    "examples": [
-                        "Which Kathmandu king constructed the eastern stairway?", "who?"
-                    ],
-                    "responses": [
-                        "King Pratap Malla constructed the eastern stairway in the 17th century."
+                        "Swayambhunath, also known as the Monkey Temple, features a dome-shaped stupa with a golden spire adorned with Buddha's all-seeing eyes. The structure represents the five elements—earth, water, fire, air, and space—blending traditional Nepalese and Tibetan Buddhist styles. Surrounding the stupa are prayer wheels, smaller shrines, and statues, with intricately carved wooden toranas at the entrances."
                     ]
                 },
                 {
-                    "intent": "ask_about_when_was_the_major",
+                    "intent": "swayambhu.culture",
                     "examples": [
-                        "When was the major renovation of Swayambhunath completed?"
+                       "culture", "swayambhunath culture", "swayambhu culture", "festivals"
                     ],
                     "responses": [
-                        "A major renovation was completed in May 2010."
+                        "Pilgrims and monks perform Kora (circumambulation) around the stupa while spinning prayer wheels.\n Devotees light butter lamps and offer prayers in the morning and evening.\n Chanting of Buddhist mantras like 'Om Mani Padme Hum' echoes throughout the site.\n Buddha Jayanti: Celebrates the birth of Lord Buddha with special prayers, butter lamp offerings, and processions at Swayambhunath."
                     ]
                 },
                 {
-                    "intent": "ask_about_how_much_gold_was",
+                    "intent": "openingtime.and.entryfee",
                     "examples": [
-                        "How much gold was used to regild Swayambhunath during the 2010 renovation?"
-                    ],
-                    "responses": [
-                        "20 kg of gold was used to regild Swayambhunath."
-                    ]
-                },
-                {
-                    "intent": "ask_about_which_organization_funded_the",
-                    "examples": [
-                        "Which organization funded the 2010 renovation of Swayambhunath?"
-                    ],
-                    "responses": [
-                        "The Tibetan Nyingma Meditation Center of California funded the renovation."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_happened_to_pratapur",
-                    "examples": [
-                        "What happened to Pratapur Temple in 2011?"
-                    ],
-                    "responses": [
-                        "Pratapur Temple was damaged by a lightning strike in 2011."
-                    ]
-                },
-                {
-                    "intent": "ask_about_how_was_swayambhunath_affected",
-                    "examples": [
-                        "How was Swayambhunath affected by the 2015 Nepal earthquake?"
-                    ],
-                    "responses": [
-                        "Swayambhunath suffered damage in the 2015 Nepal earthquake."
-                    ]
-                },
-                {
-                    "intent": "more_about_hiking",
-                    "examples": [
-                      "Tell me more about the hike at Swayambhunath",
-                      "What else can I expect on the hike?", "hiking in swayambhu"
-                    ],
-                    "responses": [
-                      "The hike to Swayambhunath offers a unique experience as you ascend the steps lined with statues and prayer wheels, with several points along the way offering rest stops and beautiful views. Once at the top, you’ll be rewarded with a stunning view of Kathmandu Valley and the surrounding hills, making it a popular spot for both spiritual and nature enthusiasts. Besides the stupa, you can explore the nearby shrines and Buddhist monuments. It’s also a peaceful place to meditate and reflect. It’s a moderate hike suitable for most fitness levels and is a great way to experience both the culture and beauty of Nepal."
-                    ]
-                  },
-              
-                {
-                    "intent": "ask_about_what_are_the_components",
-                    "examples": [
-                        "What are the components of Swayambhunath's stupa?"
-                    ],
-                    "responses": [
-                        "The stupa consists of a dome, a cube structure with Buddha's eyes, pentagonal toranas, thirteen tiers, and a Gajur at the top."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_the_dome",
-                    "examples": [
-                        "What does the dome at the base of the stupa symbolize?"
-                    ],
-                    "responses": [
-                        "The dome represents the entire world."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_do_the_thirteen",
-                    "examples": [
-                        "What do the thirteen pinnacles on the stupa represent?"
-                    ],
-                    "responses": [
-                        "The thirteen pinnacles symbolize the thirteen stages of spiritual realizations to reach enlightenment."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_do_the_eyes",
-                    "examples": [
-                        "What do the eyes on the stupa represent?"
-                    ],
-                    "responses": [
-                        "The eyes represent Wisdom and Compassion, known as the Eyes of Buddha."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_is_the_meaning",
-                    "examples": [
-                        "What is the meaning of the third eye on the stupa?"
-                    ],
-                    "responses": [
-                        "The third eye symbolizes cosmic rays that emanate when Buddha preaches."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_the_curly",
-                    "examples": [
-                        "What does the curly symbol between the Buddha's eyes represent?"
-                    ],
-                    "responses": [
-                        "It represents the Nepali number one, symbolizing unity and the path to enlightenment."
-                    ]
-                },
-                {
-                    "intent": "ask_about_who_are_the_panch",
-                    "examples": [
-                        "Who are the Panch Buddhas?"
-                    ],
-                    "responses": [
-                        "The Panch Buddhas are Vairochana, Akshobhya, Ratna Sambhava, Amitabha, and Amoghsiddhi."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_vairochana_represent",
-                    "examples": [
-                        "What does Vairochana represent?"
-                    ],
-                    "responses": [
-                        "Vairochana represents the cosmic element of form and occupies the center."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_akshobhya_represent",
-                    "examples": [
-                        "What does Akshobhya represent?"
-                    ],
-                    "responses": [
-                        "Akshobhya represents the cosmic element of consciousness and faces east."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_ratna_sambhava",
-                    "examples": [
-                        "What does Ratna Sambhava represent?"
-                    ],
-                    "responses": [
-                        "Ratna Sambhava represents the cosmic element of sensation and faces south."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_amitabha_represent",
-                    "examples": [
-                        "What does Amitabha represent?"
-                    ],
-                    "responses": [
-                        "Amitabha represents the cosmic element of perception and faces west."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_amoghsiddhi_represent",
-                    "examples": [
-                        "What does Amoghsiddhi represent?"
-                    ],
-                    "responses": [
-                        "Amoghsiddhi represents the cosmic element of action and faces north."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_is_the_swayambhu",
-                    "examples": [
-                        "What is the Swayambhu Purana?"
-                    ],
-                    "responses": [
-                        "Swayambhu Purana is a Buddhist scripture about the origin and development of Kathmandu Valley."
-                    ]
-                },
-                {
-                    "intent": "ask_about_what_does_the_swayambhu",
-                    "examples": [
-                        "What does the Swayambhu Purana describe?"
-                    ],
-                    "responses": [
-                        "It describes the Buddhas who came to Kathmandu and the first and second Buddhas in Buddhism."
-                    ]
-                },
-                {
-                    "intent": "ask_about_which_kings_inscription_confirms",
-                    "examples": [
-                        "Which king's inscription confirms Swayambhunath's age?"
-                    ],
-                    "responses": [
-                        "King Vrsadeva's inscription from 640 CE confirms its age."
-                    ]
-                },
-                {
-                    "intent": "visiting_time",
-                    "examples": [
-                        "when does it open?", "opening hours and entry fee", "opening hours", "entry fee", "entry fees", "visiting hours"
+                        "when does it open?", "opening hours and entry fee", "opening hours", "entry fee", "entry fees", "visiting hours", "opening time"
                     ],
                     "responses": [ "It opens 24 hours a day. \n Entry Fees: Foreign Nationals: NPR 200 ,SAARC Nationals: NPR 50 \n Nepalese Citizens: Free "
                     ]
@@ -1396,16 +1387,17 @@
                 {
                     "intent": "ask_about_which_hindu_deity_is",
                     "examples": [
-                        "Which Hindu deity is associated with Swayambhunath?"
+                        "Which Hindu deity is associated with Swayambhunath?", "is swayambhu only for buddha",
+                        "is it only for buddhist", "can hindu go?"
                     ],
                     "responses": [
-                        "Harati Devi, the goddess of smallpox and children, is associated with Swayambhunath."
+                        "Harati Devi, the goddess of smallpox and children, is associated with Swayambhunath. People of all religion can visit Swayambhu."
                     ]
                 },
                 {
                     "intent": "ask_about_how_do_pilgrims_worship",
                     "examples": [
-                        "How do pilgrims worship at Swayambhunath?"
+                        "How do pilgrims worship at Swayambhunath?", "worship"
                     ],
                     "responses": [
                         "Pilgrims ascend the eastern steps before dawn and perform clockwise circumambulations of the stupa."
@@ -1414,7 +1406,7 @@
                 {
                     "intent": "ask_about_what_is_the_significance",
                     "examples": [
-                        "What is the significance of Swayambhunath to Newar Buddhists?"
+                        "What is the significance of Swayambhunath to Newar Buddhists?", "significance"
                     ],
                     "responses": [
                         "Swayambhunath is the most sacred site for Buddhist Newars."
@@ -1423,7 +1415,7 @@
                 {
                     "intent": "ask_about_what_is_the_tibetan",
                     "examples": [
-                        "What is the Tibetan name for Swayambhunath and its meaning?"
+                        "What is the Tibetan name for Swayambhunath and its meaning?", "tibetian", "another name for swayambhu"
                     ],
                     "responses": [
                         "The Tibetan name is 'Phags.pa Shing.kun,' meaning 'Sublime Trees.'"
@@ -1441,7 +1433,7 @@
                 {
                     "intent": "ask_about_what_do_the_eyes",
                     "examples": [
-                        "What do the eyes painted on the stupa represent?"
+                        "What do the eyes painted on the stupa represent?", "eyes of buddha", "eyes"
                     ],
                     "responses": [
                         "The eyes represent wisdom and compassion."
@@ -1450,25 +1442,16 @@
                 {
                     "intent": "ask_about_what_does_the_dome",
                     "examples": [
-                        "What does the dome at the base of the stupa symbolize?"
+                        "What does the dome at the base of the stupa symbolize?", "dome"
                     ],
                     "responses": [
                         "The dome represents the entire world."
                     ]
                 },
                 {
-                    "intent": "ask_about_who_is_believed_to",
-                    "examples": [
-                        "Who is believed to have visited Swayambhunath in the 3rd century BCE?"
-                    ],
-                    "responses": [
-                        "Emperor Ashoka is believed to have visited in the 3rd century BCE."
-                    ]
-                },
-                {
                     "intent": "ask_about_what_is_the_significance",
                     "examples": [
-                        "What is the significance of the number thirteen on the stupa?"
+                        "What is the significance of the number thirteen on the stupa?", "number 13"
                     ],
                     "responses": [
                         "The thirteen tiers symbolize the thirteen stages to enlightenment."
@@ -1663,7 +1646,7 @@
                     "examples": [
                         "What are the opening hours of Swayambhunath?",
                         "opening hours", "visiting hours",
-                        "when does it open?"
+                        "when does it open?", "opening time"
                     ],
                     "responses": [
                         "Swayambhunath is open from early morning around 5 AM to 7 PM in the evening."
@@ -1837,17 +1820,19 @@
               "Tell me about hiking in Champadevi",
               "Is there hiking at Champadevi?",
               "What is the hike like in Champadevi?",
-              "Hiking in Champadevi"
+              "Hiking in Champadevi",
+              "champadevi"
             ],
             "responses": [
-              "Champadevi is a popular hiking destination located just outside of Kathmandu Valley, offering a peaceful escape into nature. The hike to Champadevi is moderately challenging and is often chosen by both locals and tourists. It takes you through lush forests, with plenty of opportunities to enjoy panoramic views of the surrounding hills, the Kathmandu Valley, and even the distant Himalayan ranges. Along the way, you’ll encounter ancient shrines and scenic spots perfect for photography or taking a rest. This is an excellent hike for nature lovers and those looking for a relatively peaceful escape from the city."
+              "Champadevi is a popular beginner friendly hiking destination located just outside of Kathmandu Valley, offering a peaceful escape into nature. The hike to Champadevi is moderately challenging and is often chosen by both locals and tourists. It takes you through lush forests, with plenty of opportunities to enjoy panoramic views of the surrounding hills, the Kathmandu Valley, and even the distant Himalayan ranges. Along the way, you’ll encounter ancient shrines and scenic spots perfect for photography or taking a rest. This is an excellent hike for nature lovers and those looking for a relatively peaceful escape from the city."
             ],
             "follow_up_questions": [
               {
                 "intent": "more_about_hiking",
                 "examples": [
                   "Tell me more about the hike at Champadevi",
-                  "What else can I expect on the hike?", "more"
+                  "What else can I expect on the hike?", 
+                  "more", "details", "what else?", "how long does it take?"
                 ],
                 "responses": [
                   "The hike to Champadevi takes around 3 to 4 hours to complete, depending on your pace, and covers a distance of about 6-7 kilometers. The trail begins from the Godawari area and ascends steadily through dense forests filled with a variety of plant species, birds, and wildlife. As you approach the summit, you'll enjoy breathtaking views of the Kathmandu Valley, Phulchoki Hill, and the mountains on the horizon. At the top, there is a small temple dedicated to Goddess Champadevi, making it a spiritual as well as scenic journey. The area around the summit is serene and offers a perfect place for meditation or a quiet break."
@@ -1858,7 +1843,8 @@
                 "examples": [
                   "Do I need a guide to hike in champadevi?",
                   "Are there guides available for hiking in champadevi",
-                  "Can I hire a guide for hiking in champadevi?"
+                  "Can I hire a guide for hiking in champadevi?", 
+                  "guides", "guide"
                 ],
                 "responses": [
                   "While hiking in Champadevi is generally safe and well-marked, hiring a guide can enhance your experience, especially if you are unfamiliar with the area or want more insights about the local flora, fauna, and culture. Guides are available in Kathmandu, and they can offer additional services such as transportation to the trailheads. A guide can also ensure your safety, help you navigate the trails, and provide local knowledge about the park’s history and ecology."
@@ -1869,7 +1855,8 @@
                 "examples": [
                   "Is hiking to Champadevi difficult?",
                   "How tough is the hike to Champadevi?",
-                  "Is it easy to hike to Champadevi?"
+                  "Is it easy to hike to Champadevi?",
+                  "how difficult", "difficulty"
                 ],
                 "responses": [
                   "The hike to Champadevi is moderate in difficulty. It involves a steady ascent, and while the trail is well-maintained, it can get tiring due to the continuous uphill climb. The terrain varies from smooth paths to slightly rocky sections, and the hike may be challenging for beginners, but it is manageable for most people with average fitness levels. The scenic views and peaceful surroundings make the effort worth it."
@@ -1885,7 +1872,32 @@
                 "responses": [
                   "During the hike, you'll be surrounded by beautiful nature, with dense forests of oak, rhododendron, and pine trees. The trail is also home to various wildlife, including birds, monkeys, and occasional sightings of other animals. As you ascend, you’ll have stunning views of the Kathmandu Valley, and on clear days, the Himalayan ranges come into view. The final stretch offers spectacular views of the surrounding hills and valleys. At the summit, the Champadevi temple offers a peaceful atmosphere and a great spot to reflect and enjoy the view."
                 ]
+              },
+              {
+                "intent": "camping.at.champadevi",
+                "examples": [
+                  "Can i camp at Champadevi?",
+                  "Camping in champadevi", "camping",
+                  " Champadevi camping", "Is camping allowed on Champadevi Hill?",
+                  "Are there designated camping spots at Champadevi?",
+                   "Do I need a permit for camping in Champadevi?"
+                ],
+                "responses": [
+                  "Yes, you can camp at the top of Champadevi, but there are no official campsites, so you will need to bring your own gear.No special permit is required for camping at Champadevi, but it's always a good idea to inform locals or authorities about your plans."
+                ]
+              },
+              {
+                "intent": "starting.point",
+                "examples": [
+                  "Starting point of hike in Champadevi?",
+                 "How do i get to champadevi camping site?",
+                  "Route to champadevi", "hiking route to champadevi"
+                   ],
+                "responses": [
+                  "You can start your hike from Pharping or Hattiban Resort, which are common starting points. The hike takes 2-3 hours to reach the summit."
+                ]
               }
+
             ]
           },
           {
@@ -1897,7 +1909,7 @@
               "What is rock climbing like in Nagarjun?"
             ],
             "responses": [
-              "Nagarjun is a popular spot for outdoor enthusiasts, offering a variety of activities including rock climbing. The area around Nagarjun, particularly in the Nagarjun Forest Reserve, features several climbing routes with varying levels of difficulty. The rocky terrain and natural cliffs make it an ideal location for both beginners and experienced climbers. The region offers a beautiful and serene environment for those seeking adventure while enjoying the natural surroundings. You'll also find opportunities to hike and explore the nearby Nagarjun Hill, which adds to the charm of this climbing destination."
+              "Nagarjun is a popular spot for outdoor enthusiasts, offering a variety of activities including rock climbing. It is beginner friendly. The area around Nagarjun, particularly in the Nagarjun Forest Reserve, features several climbing routes with varying levels of difficulty. The rocky terrain and natural cliffs make it an ideal location for both beginners and experienced climbers. The region offers a beautiful and serene environment for those seeking adventure while enjoying the natural surroundings. You'll also find opportunities to hike and explore the nearby Nagarjun Hill, which adds to the charm of this climbing destination."
             ],
             "follow_up_questions": [
               {
@@ -1931,6 +1943,28 @@
                 ],
                 "responses": [
                   "For rock climbing in Nagarjun, you'll need proper climbing gear, including climbing shoes, chalk, a harness, and a rope, especially if you're planning to climb technical routes. There are climbing shops in Kathmandu where you can rent or buy equipment. It's also advisable to climb with a guide, particularly if you're unfamiliar with the area or new to climbing. A guide can provide safety instructions, route recommendations, and ensure that you're climbing safely. Many local climbing companies offer guided tours for both beginners and advanced climbers."
+                ]
+              },
+              {
+                "intent": "how.to.get",
+                "examples": [
+                  "How to get to Nagarjun?",
+                  " Nagarjun rock climbing site",
+                "Nagarjun rock climbing route"
+                ],
+                "responses": [
+                  "You can reach the site by taxi, private vehicle, or local bus from Kathmandu to the Balaju Bypass area, then hike or drive to the climbing spot inside the national park."
+                ]
+              },
+              {
+                "intent": "cost_and_permit",
+                "examples": [
+                 "cost for rock climbing in nagarjun",
+                 "cost", "price", "pay", "permit", "permission",
+                 "do i need a permit to climb nagarjun"
+                ],
+                "responses": [
+                  "Yes, you need an entry permit for Shivapuri Nagarjun National Park, which costs Rs. 100 for Nepalese, Rs. 600 for SAARC nationals, and Rs. 1000 for foreigners."
                 ]
               }
             ]
@@ -2222,6 +2256,17 @@
                   "Canyoning in Sundarijal requires a moderate level of physical fitness. The activity involves walking on uneven and slippery terrain, rappelling down waterfalls, jumping into pools of water, and sometimes climbing or sliding over rocks. While it’s not an extreme sport, participants should be comfortable with water and heights. If you're unsure about your fitness level, it’s a good idea to consult with the operator before booking."
                 ]
               }
+            ]
+          },
+          {
+            "intent": "food.and.water.in.hiking",
+            "examples":[
+                "can we buy food and water?",
+                "food and water",
+                "food", "water"
+            ],
+            "responses": [
+                "No, there are no shops inside the climbing area. Bring your own food and water."
             ]
           }
           ]

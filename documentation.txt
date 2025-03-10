@@ -705,7 +705,7 @@ body:
     socialLinks[instagram]: "http://instagram.com/johndoe"
     socialLinks[facebook]: "http://facebook.com/johndoe"
 
-get: http://localhost:5500/user/guides
+get: http://localhost:5500/user/guides  ---GUIDE KO IMAGE DISPLAY GARDA CHAI assest/upload/{profileIimage} GARNU PARXA HAI 
 Authorization: Bearer <your-jwt-token>
 Content-Type: multipart/form-data
 response:

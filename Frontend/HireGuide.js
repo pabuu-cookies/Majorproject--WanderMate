@@ -1,5 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
+import { Asset } from "expo-asset";
+
 import {
   View,
   Text,
@@ -10,37 +12,24 @@ import {
   Alert,
   Image,
   StyleSheet,
+  Linking,
 } from "react-native";
 import { Calendar } from "react-native-calendars";
 import api from "./api";
 
-const demoGuides = [
-  {
-    id: "1",
-    name: "John Doe",
-    description: "Experienced mountain guide.",
-    image: require("./assets/logo.png"),
-    availableDates: ["2025-02-10", "2025-02-15"],
-  },
-  {
-    id: "2",
-    name: "Jane Smith",
-    description: "Expert in historical tours.",
-    image: require("./assets/logo.png"),
-    availableDates: ["2025-02-12", "2025-02-20"],
-  },
-];
+const demoGuides = [];
 
 const demoHiredGuide = {
   id: "3",
   name: "Alex Johnson",
   description: "Local wildlife expert.",
-  image: require("./assets/logo.png"),
-  selectedDates: ["2025-02-08", "2025-02-14"],
+  image:
+    "http://192.168.1.73:5500/assets/upload/1741617886882-0cd66959-e063-46e9-8246-8fbf9d35c5b0.jpeg", //apiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+  availableDates: ["2025-02-08", "2025-02-14"],
   status: "pending",
 };
 
-const API_endpoint = "/hire/guide/"; // MILAYERA CHANGE GARNU PARXA
+const API_endpoint = "/user/hire/";
 
 const HireGuide = () => {
   const [guides, setGuides] = useState(demoGuides); //replace demo guides with fetched guidess
@@ -48,13 +37,81 @@ const HireGuide = () => {
   const [selectedDates, setSelectedDates] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
   const [hiredGuide, setHiredGuide] = useState(demoHiredGuide); //replace demo gudes with hired guides
+  const [authToken, setAuthToken] = useState(null);
 
-  //   useEffect(() => {
-  //     fetch("https://your-backend-api.com/guides")
-  //       .then((res) => res.json())
-  //       .then((data) => setGuides([...demoGuides, ...data]))
-  //       .catch((err) => console.error(err));
-  //   }, []);
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          setAuthToken(token);
+        }
+      } catch (error) {
+        console.error("Error retrieving auth token", error);
+      }
+    };
+
+    fetchToken();
+  }, []);
+
+  useEffect(() => {
+    const fetchGuides = async () => {
+      if (!authToken) return;
+      try {
+        const response = await api.get(`/user/guides`, {
+          headers: { Authorization: `Bearer ${authToken}` },
+        });
+        const transformedGuides = response.data.map((guide) => ({
+          id: guide._id,
+          name: guide.name,
+          description: guide.description || "",
+          image: `http://192.168.1.73:5500/assets/upload/${
+            //apiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            guide.profileImage || "logo.png"
+          }`,
+          availableDates: guide.availableDates || [],
+          status: guide.status,
+          languages: guide.languages || [],
+        }));
+        setGuides(transformedGuides);
+      } catch (error) {
+        console.error("Error fetching guides", error);
+      }
+    };
+
+    const fetchUserGuides = async () => {
+      if (!authToken) return;
+      try {
+        const response = await api.get(`/hire-requests/user`, {
+          headers: { Authorization: `Bearer ${authToken}` },
+        });
+        const transformedGuides = response.data.map((request) => ({
+          id: request.guide._id,
+          name: request.guide.name,
+          description: request.guide.description || "",
+          image: `http://192.168.1.73:5500/assets/upload/${
+            //apiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            request.guide.profileImage || "logo.png"
+          }`,
+          availableDates: request.guide.availableDates || [],
+          status: request.status,
+          languages: request.guide.languages || [],
+        }));
+        console.log("\n\n\nMy requests:\n\n", response.data);
+
+        const hired = transformedGuides.find(
+          (guide) => guide.status === "accepted"
+        );
+        setHiredGuide(hired);
+        console.log(hired, hiredGuide);
+      } catch (error) {
+        console.error("Error fetching guides", error);
+      }
+    };
+
+    fetchUserGuides();
+    fetchGuides();
+  }, [authToken]);
 
   const openCalendar = (guide) => {
     setSelectedGuide(guide);
@@ -79,11 +136,9 @@ const HireGuide = () => {
   const sendHireRequest = async (newHiredGuide) => {
     const token = await AsyncStorage.getItem("authToken");
     api
-      .post(
-        `${API_endpoint}`,
-        { newHiredGuide: newHiredGuide },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
+      .get(`${API_endpoint}${newHiredGuide.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         console.log("Successfully Added Guide:", response.data);
       })
@@ -105,7 +160,14 @@ const HireGuide = () => {
       selectedDates: Object.keys(selectedDates),
       status: "pending",
     };
-
+    const newHiredGuideSave = {
+      id: selectedGuide.id,
+      name: selectedGuide.name,
+      description: selectedGuide.description,
+      image: selectedGuide.image,
+      availableDates: Object.keys(selectedDates),
+      status: "pending",
+    };
     // Log the data being sent to the backend
     console.log("Data being sent to backend:", newHiredGuide);
 
@@ -117,13 +179,21 @@ const HireGuide = () => {
         {
           text: "Confirm",
           onPress: () => {
-            setHiredGuide(newHiredGuide);
+            setHiredGuide(newHiredGuideSave);
             Alert.alert("Success", "Booking request sent!");
             sendHireRequest(newHiredGuide);
           },
         },
       ]
     );
+  };
+  const openInstagramProfile = () => {
+    if (hiredGuide && hiredGuide.instagram) {
+      const instagramUrl = "http://instagram.com/prachi.s_";
+      Linking.openURL(instagramUrl).catch((err) =>
+        console.error("Error opening Instagram profile", err)
+      );
+    }
   };
 
   const handleCancel = () => {
@@ -136,32 +206,59 @@ const HireGuide = () => {
       {hiredGuide && (
         <View style={styles.hiredGuideContainer}>
           <Text style={styles.sectionTitle}>Your Guide</Text>
-          <Image source={hiredGuide.image} style={styles.guideImage} />
+          <Image source={{ uri: hiredGuide.image }} style={styles.guideImage} />
           <Text style={styles.guideName}>{hiredGuide.name}</Text>
           <Text style={styles.guideDescription}>{hiredGuide.description}</Text>
+          <View style={styles.languagesContainer}>
+            <Text style={styles.languagesTitle}>Languages:</Text>
+            {(hiredGuide.languages || []).map((language, index) => (
+              <Text key={index} style={styles.languageText}>
+                {language}
+              </Text>
+            ))}
+          </View>
           <Text style={styles.guideDates}>
-            Selected Dates: {hiredGuide.selectedDates.join(", ")}
+            Selected Dates: {hiredGuide.availableDates.join(", ")}
           </Text>
           <Text
             style={[
               styles.status,
-              { color: hiredGuide.status === "hired" ? "green" : "orange" },
+              { color: hiredGuide.status === "accepted" ? "green" : "orange" },
             ]}
           >
             Status: {hiredGuide.status}
           </Text>
-          <Button title="Cancel Booking" onPress={handleCancel} color="red" />
+          {hiredGuide.status !== "accepted" ? (
+            <Button title="Cancel Booking" onPress={handleCancel} color="red" />
+          ) : (
+            <TouchableOpacity onPress={openInstagramProfile}>
+              <Text style={styles.instagramLink}>Instagram: @prachi.s_</Text>
+            </TouchableOpacity>
+          )}
         </View>
       )}
       <Text style={styles.sectionTitle}>Available Guides</Text>
       <FlatList
-        data={guides.filter((g) => !hiredGuide || g.id !== hiredGuide.id)}
+        data={guides.filter((g) => g.id !== (hiredGuide ? hiredGuide.id : -1))}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.guideCard}>
-            <Image source={item.image} style={styles.guideImage} />
+            <Image
+              source={{
+                uri: item.image,
+              }}
+              style={styles.guideImage}
+            />
             <Text style={styles.guideName}>{item.name}</Text>
             <Text style={styles.guideDescription}>{item.description}</Text>
+            <View style={styles.languagesContainer}>
+              <Text style={styles.languagesTitle}>Languages:</Text>
+              {(item.languages || []).map((language, index) => (
+                <Text key={index} style={styles.languageText}>
+                  {language}
+                </Text>
+              ))}
+            </View>
             <TouchableOpacity
               onPress={() => openCalendar(item)}
               style={styles.button}
@@ -274,70 +371,25 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: "#fff",
   },
+  instagramLink: {
+    fontSize: 14,
+    color: "#1e90ff",
+    marginBottom: 10,
+  },
+  languagesContainer: {
+    flexDirection: "row",
+    marginBottom: 10,
+  },
+  languagesTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  languageText: {
+    fontSize: 14,
+    color: "#444",
+    marginHorizontal: 5,
+  },
 });
 
 export default HireGuide;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     padding: 20,
-//   },
-//   sectionTitle: {
-//     fontSize: 20,
-//     fontWeight: "bold",
-//     marginBottom: 10,
-//   },
-//   guideCard: {
-//     padding: 15,
-//     borderBottomWidth: 1,
-//     borderBottomColor: "#ddd",
-//   },
-//   guideImage: {
-//     width: 80,
-//     height: 80,
-//     borderRadius: 40,
-//   },
-//   guideName: {
-//     fontSize: 18,
-//   },
-//   guideDescription: {
-//     fontSize: 14,
-//     color: "gray",
-//   },
-//   button: {
-//     marginTop: 10,
-//     backgroundColor: "#007BFF",
-//     padding: 10,
-//     borderRadius: 5,
-//   },
-//   buttonText: {
-//     color: "white",
-//     textAlign: "center",
-//   },
-//   hiredGuideContainer: {
-//     padding: 15,
-//     backgroundColor: "#f8f8f8",
-//     marginBottom: 20,
-//     borderRadius: 10,
-//   },
-//   guideDates: {
-//     fontSize: 16,
-//     marginTop: 5,
-//   },
-//   status: {
-//     fontSize: 16,
-//   },
-//   modalContainer: {
-//     flex: 1,
-//     backgroundColor: "white",
-//     padding: 20,
-//     marginTop: 100,
-//   },
-//   modalTitle: {
-//     fontSize: 18,
-//     marginBottom: 10,
-//   },
-// });
-
-// export default HireGuide;

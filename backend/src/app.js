@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const connectMongoDB = require("./services/connection");
@@ -15,6 +16,10 @@ app.use(router);
 app.get("/test", (req, res) => {
   res.send("Test route is working!");
 });
+app.use(
+  "/assets/upload",
+  express.static(path.join(__dirname, "../../Frontend/assets", "upload"))
+);
 
 (async () => {
   try {

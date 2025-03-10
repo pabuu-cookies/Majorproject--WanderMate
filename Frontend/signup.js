@@ -39,19 +39,26 @@ export default function SignUpScreen({ navigation }) {
       );
 
       const data = response.data;
-      console.log(data);
+      console.log("Response:", data);
 
-      if (data.success) {
-        navigation.navigate("Home");
+      // Check for success based on the backend response structure
+      if (data.status === "success" || data._id) {
+        // Navigate to "Profile" if role is "guide", otherwise navigate to "Home"
+        if (role === "guide") {
+          navigation.navigate("Profile");
+        } else {
+          navigation.navigate("Home");
+        }
       } else {
         Alert.alert("Error", data.message || "Registration failed.");
       }
     } catch (error) {
-      console.error(
-        "Error during signup:",
-        error.response?.data || error.message
+      console.error("Error during signup:", error);
+      Alert.alert(
+        "Error",
+        error.response?.data?.message ||
+          "Something went wrong. Please try again."
       );
-      Alert.alert("Error", "Something went wrong. Please try again.");
     }
   };
 
@@ -93,7 +100,7 @@ export default function SignUpScreen({ navigation }) {
           <View
             style={[
               styles.radioCircle,
-              role === "tourist" && styles.radioSelected,
+              role === "user" && styles.radioSelected,
             ]}
           />
           <Text style={styles.radioText}>Tourist</Text>

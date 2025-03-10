@@ -14,9 +14,12 @@ import Feather from "@expo/vector-icons/Feather";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import socket from "./socket";
+import api from "./api";
+
 // import { io } from "socket.io-client";
 
-// const API_endpoint = "/guide/requests/"; // Replace with your backend endpoint
+const API_endpoint = "/guide/requests/"; // Replace with your backend endpoint
 // const socket = io("https://your-backend-socket-server.com"); // Replace with your socket server URL
 const demoRequests = [
   {
@@ -42,90 +45,88 @@ const demoRequests = [
 const GuideRequests = () => {
   const navigation = useNavigation();
   const [requests, setRequests] = useState([]);
+  const [authToken, setAuthToken] = useState(null);
+  const [notifications, setNotifications] = useState(demoRequests);
 
-  // useEffect(() => {
-  //   fetchRequests();
-  //   setupSocket();
-  // }, []);
+  useEffect(() => {
+    socket.on("notification", (request) => {
+      console.log("Aayo meesage", request);
+      setRequests((prevRequests) => [...prevRequests, request]);
+    });
 
-  // const fetchRequests = async () => {
-  //   const token = await AsyncStorage.getItem("authToken");
-  //   fetch(API_endpoint, {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setRequests(data))
-  //     .catch((err) => console.error("Error fetching requests:", err));
-  // };
+    const fetchToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          console.log("token set", token);
+          setAuthToken(token);
+        }
+      } catch (error) {
+        console.error("Error retrieving auth token", error);
+      }
+    };
+    fetchToken();
 
-  // const setupSocket = () => {
-  //   socket.on("connect", () => {
-  //     console.log("Connected to socket server");
-  //   });
+    // Clean up the socket connection on unmount
+    return () => {
+      socket.off("notification");
+    };
+  }, []);
 
-  //   socket.on("newRequest", (newRequest) => {
-  //     setRequests((prevRequests) => [newRequest, ...prevRequests]);
-  //   });
-
-  //   socket.on("requestUpdated", (updatedRequest) => {
-  //     setRequests((prevRequests) =>
-  //       prevRequests.map((req) =>
-  //         req.id === updatedRequest.id ? updatedRequest : req
-  //       )
-  //     );
-  //   });
-  // };
-
-  const handleAccept = (requestId) => {
-    // updateRequestStatus(requestId, "accepted");
-    console.log("accepted", requestId);
+  const fetchRequests = async () => {
+    const response = await api.get("/hire-requests/guide", {
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+    let backendData = response.data;
+    console.log("got requests", backendData);
+    setRequests(
+      backendData.map((request) => ({
+        id: request._id,
+        name: request.client.name,
+        selectedDates: request.client.availableDates,
+        status: request.status,
+        createdAt: new Date(request.createdAt),
+      }))
+    );
   };
 
-  const handleReject = (requestId) => {
-    console.log("rejetcted", requestId);
-    // updateRequestStatus(requestId, "rejected");
+  useEffect(() => {
+    const fetchUserIdAndJoinSocketRoom = async () => {
+      try {
+        console.log("TOKEN:           ", authToken);
+        const response = await api.get(`/user`, {
+          headers: { Authorization: `Bearer ${authToken}` },
+        });
+        console.log("object");
+        const userId = response.data._id;
+        socket.emit("joinRoom", { roomId: userId });
+        console.log("jpoined troom", userId);
+      } catch (error) {
+        // console.error("Error fetching id", error);
+      }
+    };
+
+    fetchUserIdAndJoinSocketRoom();
+    fetchRequests();
+  }, [authToken]);
+
+  const sendGuideResponse = async (resp, id) => {
+    console.log("Response", resp, id);
+    const response = await api.patch(
+      `/hire-requests/${id}`,
+      {
+        status: resp,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response.data, "request response");
+    fetchRequests();
   };
-
-  // const updateRequestStatus = async (requestId, status) => {
-  //   const token = await AsyncStorage.getItem("authToken");
-
-  //   // Send the PATCH request to update the status
-  //   fetch(`${API_endpoint}${requestId}/`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ status }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // Notify the server about the update
-  //       socket.emit("updateRequest", data);
-
-  //       // Update the local state
-  //       if (status === "rejected") {
-  //         // Remove the rejected request from the list
-  //         setRequests((prevRequests) =>
-  //           prevRequests.filter((req) => req.id !== requestId)
-  //         );
-  //       } else {
-  //         // Update the status of the request
-  //         setRequests((prevRequests) =>
-  //           prevRequests.map((req) =>
-  //             req.id === requestId ? { ...req, status: status } : req
-  //           )
-  //         );
-  //       }
-
-  //       // Show a success message
-  //       Alert.alert("Success", `Request ${status}`);
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error updating request:", err);
-  //       Alert.alert("Error", "Failed to update the request status.");
-  //     });
-  // };
 
   return (
     <View style={{ flex: 1, flexDirection: "row" }}>
@@ -153,7 +154,7 @@ const GuideRequests = () => {
       <View style={styles.container}>
         <Text style={styles.sectionTitle}>Hire Requests</Text>
         <FlatList
-          data={demoRequests} //change thissssssssssssssssssss
+          data={requests}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <View style={styles.requestCard}>
@@ -175,13 +176,13 @@ const GuideRequests = () => {
                 <View style={styles.buttonContainer}>
                   <TouchableOpacity
                     style={[styles.button, { backgroundColor: "green" }]}
-                    onPress={() => handleAccept(item.id)}
+                    onPress={() => sendGuideResponse("accepted", item.id)}
                   >
                     <Text style={styles.buttonText}>Accept</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.button, { backgroundColor: "red" }]}
-                    onPress={() => handleReject(item.id)}
+                    onPress={() => sendGuideResponse("cancelled", item.id)}
                   >
                     <Text style={styles.buttonText}>Reject</Text>
                   </TouchableOpacity>

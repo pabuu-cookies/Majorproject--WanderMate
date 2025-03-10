@@ -28,15 +28,26 @@ export default function LoginForm({ navigation }) {
         email: username,
         password,
       });
-      // Check if the response contains a token
-      if (response.data && response.data.token) {
-        // Save the token to AsyncStorage
-        await AsyncStorage.setItem("authToken", response.data.token);
 
-        // Navigate to the home screen
-        navigation.navigate("Home");
+      // Check if the response contains a token and user data
+      if (response.data && response.data.token && response.data.user) {
+        const { token, user } = response.data;
+
+        // Save the token to AsyncStorage
+        await AsyncStorage.setItem("authToken", token);
+
+        // Navigate based on the user's role
+        if (user.role === "user") {
+          navigation.navigate("Home");
+        } else if (user.role === "user") {
+          navigation.navigate("Profile");
+        } else if (user.role === "guide") {
+          navigation.navigate("Profile");
+        } else {
+          Alert.alert("Error", "Unknown user role.");
+        }
       } else {
-        // If no token is found in the response
+        // If no token or user data is found in the response
         Alert.alert("Error", "Login failed. Please check your credentials.");
       }
     } catch (error) {

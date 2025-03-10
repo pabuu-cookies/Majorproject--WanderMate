@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,6 +9,8 @@ import {
   Alert,
 } from "react-native";
 import StarRating from "./starRating";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import api from "./api";
 
 const MemoizedStarRating = React.memo(StarRating);
 
@@ -17,9 +19,6 @@ const ReviewItem = React.memo(({ item, onDelete }) => (
     <Text style={styles.reviewUser}>{item.user}</Text>
     <Text style={styles.reviewText}>{item.review}</Text>
     <Text style={styles.reviewRating}>Rating: {item.rating}/5</Text>
-    {item.user === "You" && (
-      <Button title="Delete" onPress={() => onDelete(item.id)} color="red" />
-    )}
   </View>
 ));
 
@@ -28,62 +27,79 @@ const ReviewsComponent = () => {
   const [userRating, setUserRating] = useState(0);
   const [userReview, setUserReview] = useState("");
   const [reviews, setReviews] = useState([]);
-  const [yourReviews, setYourReviews] = useState([]);
   const [isPlaceSearched, setIsPlaceSearched] = useState(false);
+  const [authToken, setAuthToken] = useState(null);
 
   const reviewInputRef = useRef(null);
 
-  const handleSearch = () => {
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          setAuthToken(token);
+        }
+      } catch (error) {
+        console.error("Error retrieving auth token", error);
+      }
+    };
+
+    fetchToken();
+  }, []);
+
+  const handleSearch = async () => {
     if (!placeName.trim()) {
       alert("Please enter a place name.");
       return;
     }
 
     setIsPlaceSearched(true);
-    const mockReviews = [
-      { id: 1, user: "John Doe", review: "Great place!", rating: 5 },
-      { id: 2, user: "Jane Smith", review: "Nice atmosphere.", rating: 4 },
-      { id: 3, user: "Alice", review: "Could be better.", rating: 3 },
-    ];
-    setReviews(mockReviews);
+    const response = await api.get(`/review/place/?place=${placeName}`, {
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+
+    const transformedReviews = response.data.map((review) => ({
+      id: review._id,
+      user: review.user.name,
+      review: review.reviewText || "",
+      rating: review.rating,
+    }));
+
+    setReviews(transformedReviews);
   };
 
-  const handleSubmitReview = () => {
+  const handleSubmitReview = async () => {
     if (userRating === 0 || !userReview.trim()) {
       alert("Please provide a rating and write a review.");
       return;
     }
 
     const newReview = {
-      id: Date.now(),
-      user: "You",
-      review: userReview,
+      place: placeName,
+      reviewText: userReview,
       rating: userRating,
+      visitDate: "2024-10-12",
+      visitType: "solo",
     };
 
-    setYourReviews((prev) => [newReview, ...prev]);
-    setReviews((prev) => [newReview, ...prev]);
+    const response = await api.post("/review/", newReview, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(response.data);
+    const toSetYourReviews = {
+      id: response.data._id,
+      user: "You",
+      review: response.data.reviewText || "",
+      rating: response.data.rating,
+    };
+
+    setReviews((prev) => [toSetYourReviews, ...prev]);
 
     setUserReview("");
     setUserRating(0);
-  };
-
-  const handleDeleteReview = (id) => {
-    Alert.alert(
-      "Delete Review",
-      "Are you sure you want to delete this review?",
-      [
-        { text: "Cancel", style: "cancel" },
-        {
-          text: "Delete",
-          style: "destructive",
-          onPress: () => {
-            setYourReviews((prev) => prev.filter((review) => review.id !== id));
-            setReviews((prev) => prev.filter((review) => review.id !== id));
-          },
-        },
-      ]
-    );
   };
 
   return (
@@ -143,7 +159,7 @@ const ReviewsComponent = () => {
 
       ListFooterComponent={
         <View>
-          {isPlaceSearched && placeName.toLowerCase() === "pashupatinath" && (
+          {isPlaceSearched && (
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Reviews for {placeName}</Text>
               <FlatList
@@ -157,21 +173,6 @@ const ReviewsComponent = () => {
               />
             </View>
           )}
-
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Your Reviews</Text>
-            <FlatList
-              data={yourReviews}
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => (
-                <ReviewItem item={item} onDelete={handleDeleteReview} />
-              )}
-              ListEmptyComponent={
-                <Text>You haven't reviewed any places yet.</Text>
-              }
-              scrollEnabled={false}
-            />
-          </View>
         </View>
       }
       keyExtractor={(_, index) => index.toString()}

@@ -6,7 +6,6 @@ class ReviewController {
   async createReview(req, res, next) {
     const { place, rating, visitDate, visitType, reviewText } = req.body;
     const userId = req.userId;
-
     try {
       const newReview = await reviewService.createReview({
         place,

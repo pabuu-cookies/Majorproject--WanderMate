@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -18,19 +18,83 @@ import { useNavigation } from "@react-navigation/native";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
 
   const [profile, setProfile] = useState({
-    profilePicture: null,
-    bio: "",
-    gender: "",
-    bookedDates: [],
+    profilePicture: null, // File object (image file)
+    name: "", // String: User's name
+    email: "", // String: User's email
+    bio: "", // String: Description
+    gender: "", // String: User's gender
+    bookedDates: [], // Array of strings: Booked dates in "YYYY-MM-DD" format
+    status: "available", // String: Availability status
+    languages: [], // Array of strings: Known languages
+    experience: 0, // Number: Years of experience
+    socialLinks: {
+      // Object: Social links
+      website: "",
+      instagram: "",
+      facebook: "",
+    },
   });
+
   const [open, setOpen] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [tempBookedDates, setTempBookedDates] = useState({});
+  const [authToken, setAuthToken] = useState(null);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          setAuthToken(token);
+        }
+      } catch (error) {
+        console.error("Error retrieving auth token", error);
+      }
+    };
+
+    fetchToken();
+  }, []);
+
+  useEffect(() => {
+    const fetchGuideProfile = async () => {
+      try {
+        const response = await api.get(`/user`, {
+          headers: { Authorization: `Bearer ${authToken}` },
+        });
+        console.log("object", authToken);
+        const backendData = response.data;
+
+        setProfile({
+          image: `http://192.168.1.73:5500/assets/upload/${
+            //api changeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+            backendData.profileImage || "logo.png"
+          }`,
+          name: backendData.name || "",
+          email: backendData.email || "",
+          bio: backendData.description || "",
+          gender: "",
+          bookedDates: backendData.availableDates || [],
+          status: backendData.status || "available",
+          languages: backendData.languages || [],
+          experience: backendData.experience || 0,
+          socialLinks: {
+            website: "",
+            instagram: "",
+            facebook: "",
+          },
+        });
+      } catch (error) {
+        console.log("Error fetching guide", error);
+      }
+    };
+    fetchGuideProfile();
+  }, [authToken]);
 
   const handleImagePick = async () => {
     console.log("Launching image library...");
@@ -56,7 +120,7 @@ const ProfileScreen = () => {
       console.log("Selected image URI:", result.assets[0].uri);
       setProfile((prev) => ({
         ...prev,
-        profilePicture: result.assets[0].uri,
+        profilePicture: result.assets[0],
       }));
     }
   };
@@ -84,12 +148,55 @@ const ProfileScreen = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("profile details:", profile);
     try {
-      await api.post("/user/profile/update", profile);
-      alert("Profile updated successfully!");
+      const authToken = await AsyncStorage.getItem("authToken");
+
+      const formData = new FormData();
+      if (profile.profilePicture) {
+        const uri = profile.profilePicture.uri;
+        let filename = uri.split("/").pop();
+        let match = /\.(\w+)$/.exec(filename);
+        let type = match ? `image/${match[1]}` : `image`;
+
+        formData.append("profileImage", { uri, name: filename, type });
+      }
+      formData.append("name", profile.name);
+      formData.append("email", profile.email);
+      formData.append("description", profile.bio);
+      profile.bookedDates.forEach((date) =>
+        formData.append("availableDates[]", date)
+      );
+      formData.append("status", profile.status);
+      profile.languages.forEach((language) =>
+        formData.append("languages[]", language)
+      );
+      formData.append("experience", profile.experience.toString()); // Ensure it's a string
+      formData.append("socialLinks[website]", profile.socialLinks.website);
+      formData.append("socialLinks[instagram]", profile.socialLinks.instagram);
+      formData.append("socialLinks[facebook]", profile.socialLinks.facebook);
+
+      formData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+        if (key === "profileImage") {
+          console.log(value);
+        }
+      });
+
+      const response = await api.post("/user/profile/update", formData, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log("Profile updated successfully:", response.data);
+      return response.data;
     } catch (error) {
-      console.error("Error updating profile:", error);
+      console.error(
+        "Error updating profile:",
+        error.response?.data || error.message
+      );
+      throw error;
     }
   };
 
@@ -112,11 +219,7 @@ const ProfileScreen = () => {
       <ScrollView style={{ flex: 1, padding: 20 }}>
         <TouchableOpacity onPress={handleImagePick}>
           <Image
-            source={
-              profile.profilePicture
-                ? { uri: profile.profilePicture }
-                : require("./assets/logo.png")
-            }
+            source={{ uri: profile.image }}
             style={{ width: 100, height: 100, borderRadius: 50 }}
           />
         </TouchableOpacity>
@@ -154,8 +257,15 @@ const ProfileScreen = () => {
           Booked Days:
         </Text>
         <TouchableOpacity onPress={() => setShowCalendar(true)}>
-          <Text style={{ fontWeight: "bold", marginTop: 10, fontSize: 15 }}>
-            Select Dates
+          <Text
+            style={{
+              fontWeight: "bold",
+              marginTop: 10,
+              fontSize: 15,
+              color: "blue",
+            }}
+          >
+            Select Dates :
           </Text>
         </TouchableOpacity>
         {showCalendar && (
@@ -185,6 +295,28 @@ const ProfileScreen = () => {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => <Text>{item}</Text>}
           scrollEnabled={false}
+        />
+        <Text style={{ fontWeight: "bold", marginTop: 20, fontSize: 20 }}>
+          Languages:
+        </Text>
+        <TextInput
+          value={profile.languages.join(", ")}
+          onChangeText={(text) =>
+            setProfile((prev) => ({
+              ...prev,
+              languages: text.split(",").map((lang) => lang.trim()),
+            }))
+          }
+          style={{ borderBottomWidth: 1, marginBottom: 10 }}
+          placeholder="Enter languages separated by commas"
+        />
+
+        <Text style={{ fontWeight: "bold", marginTop: 20, fontSize: 20 }}>
+          Social Links:
+        </Text>
+        <TextInput
+          value={profile.socialLinks.website}
+          placeholder="https://www.instagram.com/prachi.s_/"
         />
 
         <TouchableOpacity

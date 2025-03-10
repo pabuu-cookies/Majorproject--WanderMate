@@ -752,7 +752,7 @@ RESPONSE:
     "__v": 0,
     "description": "i m dope guide",
     "profileImage": "1741573428545-download.jpg"
-  }
+  },{...}
 ]
 
 HIRE A GUIDE: 

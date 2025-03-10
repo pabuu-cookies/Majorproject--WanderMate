@@ -24,7 +24,7 @@ function authenticateToken(req, res, next) {
       next();
     });
   } catch (error) {
-    console.log(error);
+    console.log(errorl);
     return res
       .status(HttpMessage.INTERNAL_SERVER_ERROR.statusCode)
       .json({ message: HttpMessage.INTERNAL_SERVER_ERROR.message });

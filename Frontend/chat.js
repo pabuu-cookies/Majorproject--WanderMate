@@ -59,7 +59,7 @@ const ChatScreen = () => {
 
     try {
       const response = await axios.post(
-        "http://192.168.1.66:3000/chat",
+        "http://192.168.1.73:3000/chat",
         { message },
         {
           headers: {

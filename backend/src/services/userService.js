@@ -85,6 +85,11 @@ class UserService {
     return guides;
   }
 
+  async getUserById(userId) {
+    const user = await User.findById(userId);
+    return user;
+  }
+
   async hireGuide(userId, guideId) {
     try {
       const user = await User.findById(userId);

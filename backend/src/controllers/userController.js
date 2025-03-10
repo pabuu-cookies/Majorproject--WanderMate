@@ -45,6 +45,19 @@ class userController {
       next();
     }
   }
+  async getUserById(req, res, next) {
+    try {
+      const userId = req.userId;
+      const results = await UserService.getUserById(userId);
+      res.locals.responseData = results;
+      console.log(results);
+      next();
+    } catch (error) {
+      res.locals.responseData = { error: error };
+      console.log(error);
+      next();
+    }
+  }
 
   async updateGuideProfile(req, res, next) {
     const profileData = req.body;

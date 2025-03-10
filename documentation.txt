@@ -1028,5 +1028,25 @@ response:{
   "message": "All notifications cleared"
 }
 
-
+get user by id 
+get: http://localhost:5500/user
+authentication token : required
+response:{
+  "_id": "67ce420cbf967a3ef10f5c77",
+  "name": "pabuu",
+  "email": "pkuu@gmail.com",
+  "role": "guide",
+  "password": "$2b$10$tlj6YNT3G6pa95h1ECcdx.1SbTlthMklV8fEkKXA/A8kV6NuRJIdS",
+  "availableDates": [
+    "2002-03012",
+    "2022-13-04"
+  ],
+  "status": "hired",
+  "languages": [],
+  "certifications": [],
+  "specialties": [],
+  "__v": 0,
+  "description": "i m dope guide",
+  "profileImage": "1741573428545-download.jpg"
+}
 
